@@ -1,0 +1,41 @@
+{
+  "title": "Our Services",
+  "heading": "Comprehensive Marketing Solutions",
+
+  "button": "Explore All Services",
+
+  "items": [
+    {
+      "title": "Performance Marketing",
+      "description": "Maximize ROI through paid campaigns."
+    },
+    {
+      "title": "Google Ads",
+      "description": "Generate qualified leads."
+    },
+    {
+      "title": "Meta Ads",
+      "description": "Scale Facebook & Instagram campaigns."
+    },
+    {
+      "title": "SEO",
+      "description": "Increase organic traffic."
+    },
+    {
+      "title": "Website Development",
+      "description": "Build high-converting websites."
+    },
+    {
+      "title": "Landing Pages",
+      "description": "Increase conversion rate."
+    },
+    {
+      "title": "Brand Identity",
+      "description": "Build memorable brands."
+    },
+    {
+      "title": "Marketing Automation",
+      "description": "Automate repetitive marketing tasks."
+    }
+  ]
+}

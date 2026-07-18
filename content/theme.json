@@ -1,0 +1,22 @@
+{
+    "colors": {
+        "primary": "#0A355B",
+        "accent": "#FF7A1A",
+        "secondary": "#46D3F3",
+        "background": "#FFFFFF",
+        "surface": "#F8FAFC",
+        "text": "#0F172A"
+    },
+    "typography": {
+        "heading": "Manrope",
+        "body": "Inter"
+    },
+    "borderRadius": {
+        "small": "12px",
+        "medium": "16px",
+        "large": "24px"
+    },
+    "spacing": {
+        "unit": 8
+    }
+}

@@ -1,0 +1,15 @@
+{
+  "pageTransition": "fade",
+
+  "heroAnimation": "stagger",
+
+  "cardHover": "lift",
+
+  "scrollReveal": "fadeUp",
+
+  "counterAnimation": true,
+
+  "parallax": true,
+
+  "smoothScroll": true
+}

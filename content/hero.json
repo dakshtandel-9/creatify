@@ -1,0 +1,36 @@
+{
+  "badge": "#1 Performance Marketing Agency",
+  "heading": "We Drive Growth. You Get",
+  "headingHighlight": "Results.",
+  "subheading": "Data-driven marketing strategies that generate qualified leads, increase conversions, and scale your business profitably.",
+  "primaryButton": "Book a Free Consultation",
+  "secondaryButton": "See Our Work",
+
+  "trustBadges": [
+    { "title": "Performance Focused", "subtitle": "ROI-Driven Strategies" },
+    { "title": "Transparent Reporting", "subtitle": "Real-Time & Accurate" },
+    { "title": "Proven Results", "subtitle": "200+ Successful Campaigns" }
+  ],
+
+  "dashboard": {
+    "title": "Performance Overview",
+    "cards": [
+      {
+        "title": "Revenue",
+        "value": "₹48.2L"
+      },
+      {
+        "title": "ROAS",
+        "value": "4.52x"
+      },
+      {
+        "title": "Conversions",
+        "value": "5482"
+      },
+      {
+        "title": "Ad Spend",
+        "value": "₹10.6L"
+      }
+    ]
+  }
+}
