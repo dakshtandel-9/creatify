@@ -8,13 +8,8 @@ import type {
   NavigationContent,
   HeaderContent,
   HeroContent,
-  AboutContent,
   ServicesContent,
   IndustriesContent,
-  StatsContent,
-  CaseStudiesContent,
-  ProcessContent,
-  TestimonialsContent,
   FaqContent,
   ContactContent,
   FooterContent,
@@ -39,13 +34,8 @@ export const getSeoContent = () => readContent<SeoContent>("seo.json");
 export const getNavigationContent = () => readContent<NavigationContent>("navigation.json");
 export const getHeaderContent = () => readContent<HeaderContent>("header.json");
 export const getHeroContent = () => readContent<HeroContent>("hero.json");
-export const getAboutContent = () => readContent<AboutContent>("about.json");
 export const getServicesContent = () => readContent<ServicesContent>("services.json");
 export const getIndustriesContent = () => readContent<IndustriesContent>("industries.json");
-export const getStatsContent = () => readContent<StatsContent>("stats.json");
-export const getCaseStudiesContent = () => readContent<CaseStudiesContent>("case-studies.json");
-export const getProcessContent = () => readContent<ProcessContent>("process.json");
-export const getTestimonialsContent = () => readContent<TestimonialsContent>("testimonials.json");
 export const getFaqContent = () => readContent<FaqContent>("faq.json");
 export const getContactContent = () => readContent<ContactContent>("contact.json");
 export const getFooterContent = () => readContent<FooterContent>("footer.json");

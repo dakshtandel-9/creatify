@@ -1,41 +1,64 @@
 {
   "title": "Our Services",
-  "heading": "Comprehensive Marketing Solutions",
+  "heading": "Everything Your Business Needs to Scale",
+  "description": "Every service is built as part of one system — strategy, creative, and technology working together to turn spend into measurable, compounding growth.",
 
   "button": "Explore All Services",
 
   "items": [
     {
-      "title": "Performance Marketing",
-      "description": "Maximize ROI through paid campaigns."
+      "title": "Strategic Marketing",
+      "description": "Data-driven campaigns engineered around revenue, not vanity metrics.",
+      "features": ["Google Ads", "Meta Ads", "Conversion Tracking"],
+      "accent": "orange",
+      "eyebrow": "ADS • ADS • ADS",
+      "image": "",
+      "imageRatio": "4:3 (e.g. 800×600)"
     },
     {
-      "title": "Google Ads",
-      "description": "Generate qualified leads."
+      "title": "Creative Design",
+      "description": "Scroll-stopping visuals and branding that make your audience pay attention.",
+      "features": ["Brand Identity", "Ad Creative", "Design Systems"],
+      "accent": "blue",
+      "eyebrow": "DESIGN • DESIGN • DESIGN",
+      "image": "",
+      "imageRatio": "4:3 (e.g. 800×600)"
     },
     {
-      "title": "Meta Ads",
-      "description": "Scale Facebook & Instagram campaigns."
+      "title": "Social Media Management",
+      "description": "Consistent, on-brand presence that keeps your community engaged.",
+      "features": ["Content Calendar", "Community Management", "Platform Strategy"],
+      "accent": "pink",
+      "eyebrow": "SOCIAL • SOCIAL • SOCIAL",
+      "image": "",
+      "imageRatio": "4:3 (e.g. 800×600)"
+    },
+    {
+      "title": "Tech Solution",
+      "description": "Fast, reliable websites and integrations built to scale with you.",
+      "features": ["Custom Design", "Core Web Vitals", "CMS Integration"],
+      "accent": "cyan",
+      "eyebrow": "WEB • WEB • WEB",
+      "image": "",
+      "imageRatio": "4:3 (e.g. 800×600)"
     },
     {
       "title": "SEO",
-      "description": "Increase organic traffic."
+      "description": "Technical and content strategy built for rankings that last.",
+      "features": ["Technical Audits", "Content Strategy", "Link Building"],
+      "accent": "green",
+      "eyebrow": "SEO • SEO • SEO",
+      "image": "",
+      "imageRatio": "4:3 (e.g. 800×600)"
     },
     {
-      "title": "Website Development",
-      "description": "Build high-converting websites."
-    },
-    {
-      "title": "Landing Pages",
-      "description": "Increase conversion rate."
-    },
-    {
-      "title": "Brand Identity",
-      "description": "Build memorable brands."
-    },
-    {
-      "title": "Marketing Automation",
-      "description": "Automate repetitive marketing tasks."
+      "title": "Automation",
+      "description": "Streamlined workflows that save time and cut manual busywork.",
+      "features": ["Workflow Automation", "Reporting", "Integrations"],
+      "accent": "purple",
+      "eyebrow": "AUTOMATE • AUTOMATE • AUTOMATE",
+      "image": "",
+      "imageRatio": "4:3 (e.g. 800×600)"
     }
   ]
 }

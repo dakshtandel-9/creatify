@@ -51,8 +51,6 @@ export type HeaderContent = {
 
 export type HeroDashboardCard = { title: string; value: string };
 
-export type HeroTrustBadge = { title: string; subtitle: string };
-
 export type HeroContent = {
   badge: string;
   heading: string;
@@ -60,26 +58,28 @@ export type HeroContent = {
   subheading: string;
   primaryButton: string;
   secondaryButton: string;
-  trustBadges: HeroTrustBadge[];
   dashboard: {
     title: string;
     cards: HeroDashboardCard[];
   };
 };
 
-export type AboutContent = {
+export type ServiceAccent = "orange" | "blue" | "green" | "purple" | "cyan" | "pink";
+
+export type ServiceItem = {
   title: string;
-  heading: string;
   description: string;
   features: string[];
-  button: string;
+  accent: ServiceAccent;
+  eyebrow?: string;
+  image?: string;
+  imageRatio?: string;
 };
-
-export type ServiceItem = { title: string; description: string };
 
 export type ServicesContent = {
   title: string;
   heading: string;
+  description: string;
   button: string;
   items: ServiceItem[];
 };
@@ -109,11 +109,6 @@ export type CaseStudiesContent = {
   heading: string;
   button: string;
   items?: CaseStudyEntry[];
-};
-
-export type ProcessContent = {
-  title: string;
-  steps: string[];
 };
 
 export type TestimonialEntry = {

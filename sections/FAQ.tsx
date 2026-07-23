@@ -24,15 +24,15 @@ export function FAQ({ content }: FAQProps) {
     : [items];
 
   return (
-    <Section id="faq">
+    <Section id="faq" tone="surface">
       <Container wide={useTwoColumns} className={useTwoColumns ? undefined : "max-w-3xl"}>
         <SectionHeading eyebrow="FAQ" title={content.title} />
 
         <div
           className={
             useTwoColumns
-              ? "mt-14 grid grid-cols-1 lg:grid-cols-2 gap-x-12"
-              : "mt-14"
+              ? "mt-16 grid grid-cols-1 lg:grid-cols-2 gap-x-12"
+              : "mt-16"
           }
         >
           {columns.map((column, colIndex) => (

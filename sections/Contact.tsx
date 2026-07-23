@@ -43,7 +43,7 @@ export function Contact({ content }: ContactProps) {
   ];
 
   return (
-    <Section id="contact" tone="surface">
+    <Section id="contact">
       <Container wide>
         <div className="grid grid-cols-1 lg:grid-cols-[0.85fr_1.15fr] gap-12 lg:gap-16">
           <div>

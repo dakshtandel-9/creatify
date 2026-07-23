@@ -20,7 +20,7 @@ export function SectionHeading({
   return (
     <div
       className={cn(
-        "flex flex-col gap-4",
+        "flex flex-col gap-3",
         align === "center"
           ? "items-center text-center mx-auto max-w-2xl"
           : "items-start text-left max-w-2xl",
@@ -39,7 +39,7 @@ export function SectionHeading({
       ) : null}
       <h2
         className={cn(
-          "text-3xl sm:text-4xl lg:text-[3rem] font-bold leading-[1.1]",
+          "text-[28px] sm:text-4xl lg:text-[44px] font-bold leading-[1.15]",
           tone === "dark" ? "text-text-on-dark" : "text-primary-900"
         )}
       >
@@ -48,7 +48,7 @@ export function SectionHeading({
       {description ? (
         <p
           className={cn(
-            "text-base sm:text-lg leading-relaxed",
+            "text-base sm:text-[18px] leading-relaxed",
             tone === "dark" ? "text-text-on-dark-muted" : "text-text-muted"
           )}
         >

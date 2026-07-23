@@ -1,24 +1,51 @@
 "use client";
 
+import { useRef } from "react";
 import Image from "next/image";
-import { motion } from "framer-motion";
-import { Zap, ArrowRight, PlayCircle, Gauge, BarChart3, TrendingUp } from "lucide-react";
+import { Zap, ArrowRight, PlayCircle } from "lucide-react";
 import { Container } from "@/components/layout/Container";
 import { Button } from "@/components/ui/Button";
 import { Badge } from "@/components/ui/Badge";
 import { DotGrid } from "@/components/ui/DotGrid";
-import { fadeUp, staggerContainer } from "@/animations/variants";
+import { gsap, useGSAP } from "@/lib/gsap";
 import type { HeroContent } from "@/types/cms";
-
-const TRUST_BADGE_ICONS = [Gauge, BarChart3, TrendingUp];
 
 type HeroProps = {
   content: HeroContent;
 };
 
 export function Hero({ content }: HeroProps) {
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useGSAP(
+    () => {
+      const mm = gsap.matchMedia();
+
+      mm.add("(prefers-reduced-motion: no-preference)", () => {
+        const tl = gsap.timeline({
+          defaults: { ease: "power3.out", duration: 0.7 },
+        });
+
+        tl.from(".hero-badge", { autoAlpha: 0, y: 24 })
+          .from(".hero-heading", { autoAlpha: 0, y: 40 }, "-=0.45")
+          .from(".hero-subheading", { autoAlpha: 0, y: 28 }, "-=0.4")
+          .from(".hero-actions", { autoAlpha: 0, y: 24 }, "-=0.4")
+          .from(
+            ".hero-dashboard",
+            { autoAlpha: 0, y: 20, scale: 0.95, duration: 0.8 },
+            "-=0.3"
+          )
+          .from(".hero-certified", { autoAlpha: 0, y: 12 }, "-=0.4");
+      });
+
+      return () => mm.revert();
+    },
+    { scope: sectionRef }
+  );
+
   return (
     <section
+      ref={sectionRef}
       id="home"
       className="relative overflow-hidden bg-background pt-[96px] pb-20 sm:pt-[112px] sm:pb-28 lg:pt-[128px] lg:pb-32"
     >
@@ -48,99 +75,77 @@ export function Hero({ content }: HeroProps) {
       </div>
 
       <Container wide className="relative z-10 px-6 sm:px-10 lg:px-16">
-        <div className="grid grid-cols-1 lg:grid-cols-[50%_50%] items-center gap-16 lg:gap-4">
-          <motion.div
-            variants={staggerContainer(0.12)}
-            initial="hidden"
-            animate="visible"
-            className="max-w-2xl"
-          >
-            <motion.div variants={fadeUp}>
-              <Badge icon={Zap} variant="accent" className="uppercase tracking-wide text-xs">
-                {content.badge}
-              </Badge>
-            </motion.div>
-
-            <motion.h1
-              variants={fadeUp}
-              className="mt-6 text-4xl sm:text-5xl lg:text-[3.75rem] font-bold leading-[1.08] tracking-tight text-text"
-            >
-              {(() => {
-                const breakIndex = content.heading.indexOf(". ") + 1;
-                const firstLine = content.heading.slice(0, breakIndex);
-                const secondLine = content.heading.slice(breakIndex + 1);
-                return (
-                  <>
-                    {firstLine}
-                    <br />
-                    {secondLine}{" "}
-                  </>
-                );
-              })()}
-              <span className="text-accent-500">{content.headingHighlight}</span>
-            </motion.h1>
-
-            <motion.p
-              variants={fadeUp}
-              className="mt-6 text-lg leading-relaxed text-text-muted"
-            >
-              {content.subheading}
-            </motion.p>
-
-            <motion.div
-              variants={fadeUp}
-              className="mt-8 flex flex-col sm:flex-row gap-4"
-            >
-              <Button
-                href="#contact"
-                size="lg"
-                icon={ArrowRight}
-                className="bg-accent-500 hover:bg-accent-600 shadow-none hover:shadow-none hover:translate-y-0"
-              >
-                {content.primaryButton}
-              </Button>
-              <Button href="#services" variant="secondary" size="lg" icon={PlayCircle} iconPosition="left">
-                {content.secondaryButton}
-              </Button>
-            </motion.div>
-
-            <motion.div
-              variants={fadeUp}
-              className="mt-10 flex flex-nowrap items-start gap-x-6 gap-y-4 overflow-x-auto"
-            >
-              {content.trustBadges.map((badge, i) => {
-                const Icon = TRUST_BADGE_ICONS[i % TRUST_BADGE_ICONS.length];
-                return (
-                  <div key={badge.title} className="flex shrink-0 items-center gap-2.5">
-                    <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-primary-50 text-primary-700">
-                      <Icon className="h-4 w-4" aria-hidden="true" />
-                    </span>
-                    <div className="whitespace-nowrap">
-                      <p className="text-sm font-semibold text-text">{badge.title}</p>
-                      <p className="text-xs text-text-subtle">{badge.subtitle}</p>
-                    </div>
-                  </div>
-                );
-              })}
-            </motion.div>
+        <motion.div
+          variants={staggerContainer(0.12)}
+          initial="hidden"
+          animate="visible"
+          className="mx-auto max-w-3xl flex flex-col items-center text-center"
+        >
+          <motion.div variants={fadeUp}>
+            <Badge icon={Zap} variant="accent" className="uppercase tracking-wide text-xs">
+              {content.badge}
+            </Badge>
           </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95, y: 20 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.3 }}
-            className="relative mx-auto w-full max-w-[1200px] lg:pl-0"
+          <motion.h1
+            variants={fadeUp}
+            className="mt-6 text-4xl sm:text-5xl lg:text-[3.75rem] font-bold leading-[1.08] tracking-tight text-text"
           >
-            <Image
-              src="/images/heroImage1.png"
-              alt={content.dashboard.title}
-              width={1600}
-              height={983}
-              priority
-              className="h-auto w-full rounded-2xl"
-            />
+            {(() => {
+              const breakIndex = content.heading.indexOf(". ") + 1;
+              const firstLine = content.heading.slice(0, breakIndex);
+              const secondLine = content.heading.slice(breakIndex + 1);
+              return (
+                <>
+                  {firstLine}
+                  <br />
+                  {secondLine}{" "}
+                </>
+              );
+            })()}
+            <span className="text-accent-500">{content.headingHighlight}</span>
+          </motion.h1>
+
+          <motion.p
+            variants={fadeUp}
+            className="mt-6 text-lg leading-relaxed text-text-muted"
+          >
+            {content.subheading}
+          </motion.p>
+
+          <motion.div
+            variants={fadeUp}
+            className="mt-8 flex flex-col sm:flex-row gap-4"
+          >
+            <Button
+              href="#contact"
+              size="lg"
+              icon={ArrowRight}
+              className="bg-accent-500 hover:bg-accent-600 shadow-none hover:shadow-none hover:translate-y-0"
+            >
+              {content.primaryButton}
+            </Button>
+            <Button href="#services" variant="secondary" size="lg" icon={PlayCircle} iconPosition="left">
+              {content.secondaryButton}
+            </Button>
           </motion.div>
-        </div>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95, y: 20 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.3 }}
+          className="relative mx-auto mt-16 lg:mt-20 w-full max-w-[880px]"
+        >
+          <Image
+            src="/images/heroImage1.png"
+            alt={content.dashboard.title}
+            width={1600}
+            height={983}
+            priority
+            className="h-auto w-full rounded-2xl"
+          />
+        </motion.div>
 
         <motion.div
           initial={{ opacity: 0, y: 12 }}

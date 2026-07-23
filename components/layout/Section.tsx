@@ -26,8 +26,8 @@ export function Section({
       className={cn(
         toneStyles[tone],
         compact
-          ? "py-12 sm:py-16 lg:py-20"
-          : "py-16 sm:py-20 lg:py-24 xl:py-32",
+          ? "py-14 sm:py-18 lg:py-24"
+          : "py-20 sm:py-24 lg:py-28 xl:py-36",
         className
       )}
       {...props}
