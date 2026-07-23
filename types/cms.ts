@@ -57,7 +57,6 @@ export type HeroContent = {
   headingHighlight: string;
   subheading: string;
   primaryButton: string;
-  secondaryButton: string;
   dashboard: {
     title: string;
     cards: HeroDashboardCard[];

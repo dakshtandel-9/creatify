@@ -1,8 +1,20 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { createContext, useContext, useEffect, useRef } from "react";
 import Lenis from "lenis";
 import { ScrollTrigger } from "@/lib/gsap";
+
+type LenisControls = {
+  stop: () => void;
+  start: () => void;
+};
+
+const LenisContext = createContext<LenisControls | null>(null);
+
+/** Lets descendants pause/resume the global Lenis smooth scroll, e.g. while a modal is open. */
+export function useLenisControls() {
+  return useContext(LenisContext);
+}
 
 /** Wires up Lenis smooth scrolling for the whole app; respects reduced motion. */
 export function SmoothScrollProvider({ children }: { children: React.ReactNode }) {
@@ -40,5 +52,10 @@ export function SmoothScrollProvider({ children }: { children: React.ReactNode }
     };
   }, []);
 
-  return <>{children}</>;
+  const controls: LenisControls = {
+    stop: () => lenisRef.current?.stop(),
+    start: () => lenisRef.current?.start(),
+  };
+
+  return <LenisContext.Provider value={controls}>{children}</LenisContext.Provider>;
 }

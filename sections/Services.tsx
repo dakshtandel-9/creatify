@@ -123,14 +123,14 @@ export function Services({ content }: ServicesProps) {
         >
           <div className="p-6 shadow-lg sm:p-10 lg:p-14">
             <div className="flex flex-col items-center gap-3 border-b border-border pb-8 text-center sm:pb-10">
-              <span className="-rotate-3 text-sm font-semibold text-accent-600 [font-family:var(--font-display)]">
+              <span className="text-[21px] font-semibold text-accent-600 [font-family:var(--font-display)]">
                 {content.title}
               </span>
               <h2 className="text-3xl font-bold leading-[1.1] text-primary-900 sm:text-4xl lg:text-[44px]">
                 {content.heading}
               </h2>
               {content.description ? (
-                <p className="max-w-xl text-base text-text-muted sm:text-[17px]">
+                <p className="max-w-[346px] text-base text-text-muted sm:text-[17px] lg:max-w-[560px]">
                   {content.description}
                 </p>
               ) : null}
@@ -163,7 +163,7 @@ export function Services({ content }: ServicesProps) {
             </ul>
 
             <div className="mt-10 flex justify-center sm:mt-12">
-              <div className="inline-flex items-center gap-1.5 rounded-full border border-border bg-surface px-5 py-2.5 text-sm text-text-muted">
+              <div className="inline-flex max-w-full items-center gap-1.5 whitespace-nowrap rounded-full border border-border bg-surface px-3 py-2.5 text-xs text-text-muted sm:px-5 sm:text-sm">
                 Want to discuss?{" "}
                 <a
                   href="#contact"
@@ -259,13 +259,13 @@ export function Services({ content }: ServicesProps) {
                   <div className="grid grid-cols-1 sm:grid-cols-2">
                     {imageFirst ? (
                       <>
-                        <div className="p-3 sm:p-4">{imageBlock}</div>
-                        {textBlock}
+                        <div className="order-1 p-3 sm:order-none sm:p-4">{imageBlock}</div>
+                        <div className="order-2 sm:order-none sm:contents">{textBlock}</div>
                       </>
                     ) : (
                       <>
-                        {textBlock}
-                        <div className="p-3 sm:p-4">{imageBlock}</div>
+                        <div className="order-2 sm:order-none sm:contents">{textBlock}</div>
+                        <div className="order-1 p-3 sm:order-none sm:p-4">{imageBlock}</div>
                       </>
                     )}
                   </div>

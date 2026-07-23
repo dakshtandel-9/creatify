@@ -1,9 +1,9 @@
 {
   "items": [
-    { "title": "Home", "href": "#home" },
     { "title": "Services", "href": "#services" },
-    { "title": "Testimonials", "href": "#testimonials" },
-    { "title": "Process", "href": "#how-it-started" },
-    { "title": "Contact", "href": "#contact" }
+    { "title": "Clients", "href": "#testimonials" },
+    { "title": "Why Creatify?", "href": "#why-us" },
+    { "title": "Reviews", "href": "#testimonials" },
+    { "title": "FAQs", "href": "#faq" }
   ]
 }

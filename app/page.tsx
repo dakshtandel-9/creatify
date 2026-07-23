@@ -1,13 +1,11 @@
 import PillNav from "@/components/ui/PillNav";
 import { Hero } from "@/sections/Hero";
-import { LogoCloud } from "@/sections/LogoCloud";
 import { Services } from "@/sections/Services";
 import { Testimonials } from "@/sections/Testimonials";
 import { WhatMakesUsDifferent } from "@/sections/WhatMakesUsDifferent";
 import { HowItStarted } from "@/sections/HowItStarted";
 import { ServicesFaq } from "@/sections/ServicesFaq";
 
-import { Contact } from "@/sections/Contact";
 import { Footer } from "@/sections/Footer";
 import {
   getSiteContent,
@@ -16,7 +14,6 @@ import {
   getHeroContent,
   getServicesContent,
   getTestimonialsContent,
-  getContactContent,
   getFooterContent,
 } from "@/lib/content";
 import { buildServiceJsonLd, buildFaqJsonLd } from "@/lib/seo";
@@ -28,7 +25,6 @@ export default function Home() {
   const hero = getHeroContent();
   const services = getServicesContent();
   const testimonials = getTestimonialsContent();
-  const contact = getContactContent();
   const footer = getFooterContent();
 
   const serviceJsonLd = buildServiceJsonLd(site, services.items);
@@ -50,7 +46,7 @@ export default function Home() {
       ) : null}
       <PillNav
         items={navigation.items.map((item) => ({ label: item.title, href: item.href }))}
-        activeHref="#home"
+        activeHref=""
         ctaLabel={header.primaryButton.text}
         ctaHref={header.primaryButton.link}
         baseColor="#0A355B"
@@ -60,15 +56,13 @@ export default function Home() {
       />
       <main>
         <Hero content={hero} />
-        <LogoCloud />
         <Services content={services} />
         <Testimonials content={testimonials} />
         {services.comparison ? <WhatMakesUsDifferent content={services.comparison} /> : null}
         {services.process ? <HowItStarted content={services.process} /> : null}
         {services.faq ? <ServicesFaq content={services.faq} /> : null}
-        <Contact content={contact} />
       </main>
-      <Footer content={footer} navigation={navigation} services={services} />
+      <Footer content={footer} navigation={navigation} />
     </>
   );
 }

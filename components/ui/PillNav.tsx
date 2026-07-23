@@ -111,7 +111,7 @@ const PillNav = ({
 
     const menu = mobileMenuRef.current;
     if (menu) {
-      gsap.set(menu, { visibility: "hidden", opacity: 0, scaleY: 1 });
+      gsap.set(menu, { visibility: "hidden", opacity: 0, y: -12 });
     }
 
     if (initialLoadAnimation) {
@@ -164,11 +164,13 @@ const PillNav = ({
     if (hamburger) {
       const lines = hamburger.querySelectorAll<HTMLSpanElement>(".hamburger-line");
       if (newState) {
-        gsap.to(lines[0], { rotation: 45, y: 3, duration: 0.3, ease });
-        gsap.to(lines[1], { rotation: -45, y: -3, duration: 0.3, ease });
+        gsap.to(lines[0], { rotation: 45, y: 7, duration: 0.3, ease });
+        gsap.to(lines[1], { autoAlpha: 0, duration: 0.2, ease });
+        gsap.to(lines[2], { rotation: -45, y: -7, duration: 0.3, ease });
       } else {
         gsap.to(lines[0], { rotation: 0, y: 0, duration: 0.3, ease });
-        gsap.to(lines[1], { rotation: 0, y: 0, duration: 0.3, ease });
+        gsap.to(lines[1], { autoAlpha: 1, duration: 0.2, delay: 0.1, ease });
+        gsap.to(lines[2], { rotation: 0, y: 0, duration: 0.3, ease });
       }
     }
 
@@ -177,12 +179,11 @@ const PillNav = ({
         gsap.set(menu, { visibility: "visible" });
         gsap.fromTo(
           menu,
-          { opacity: 0, y: 10, scaleY: 1 },
+          { opacity: 0, y: -12 },
           {
             opacity: 1,
             y: 0,
-            scaleY: 1,
-            duration: 0.3,
+            duration: 0.35,
             ease,
             transformOrigin: "top center",
           }
@@ -190,9 +191,8 @@ const PillNav = ({
       } else {
         gsap.to(menu, {
           opacity: 0,
-          y: 10,
-          scaleY: 1,
-          duration: 0.2,
+          y: -12,
+          duration: 0.25,
           ease,
           transformOrigin: "top center",
           onComplete: () => {
@@ -270,6 +270,7 @@ const PillNav = ({
         >
           <span className="hamburger-line" />
           <span className="hamburger-line" />
+          <span className="hamburger-line" />
         </button>
       </nav>
 
@@ -286,17 +287,6 @@ const PillNav = ({
               </a>
             </li>
           ))}
-          {ctaLabel && ctaHref && (
-            <li>
-              <a
-                href={ctaHref}
-                className="mobile-menu-link mobile-menu-cta"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                {ctaLabel}
-              </a>
-            </li>
-          )}
         </ul>
       </div>
     </div>

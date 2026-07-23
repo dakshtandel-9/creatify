@@ -2,11 +2,9 @@
 
 import { useRef } from "react";
 import Image from "next/image";
-import { Zap, ArrowRight, PlayCircle } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { Container } from "@/components/layout/Container";
 import { Button } from "@/components/ui/Button";
-import { Badge } from "@/components/ui/Badge";
-import { BorderGlow } from "@/components/ui/BorderGlow";
 import { DotGrid } from "@/components/ui/DotGrid";
 import { gsap, useGSAP } from "@/lib/gsap";
 import type { HeroContent } from "@/types/cms";
@@ -27,23 +25,10 @@ export function Hero({ content }: HeroProps) {
           defaults: { ease: "power3.out", duration: 0.7 },
         });
 
-        tl.from(".hero-badge", { autoAlpha: 0, y: 24 })
-          .from(".hero-heading", { autoAlpha: 0, y: 40 }, "-=0.45")
+        tl.from(".hero-heading", { autoAlpha: 0, y: 40 })
           .from(".hero-subheading", { autoAlpha: 0, y: 28 }, "-=0.4")
           .from(".hero-actions", { autoAlpha: 0, y: 24 }, "-=0.4")
-          .from(
-            ".hero-dashboard-float",
-            { autoAlpha: 0, y: 20, scale: 0.95, duration: 0.8 },
-            "-=0.3"
-          )
-          .from(".hero-certified", { autoAlpha: 0, y: 12 }, "-=0.4")
-          .to(".hero-dashboard-float", {
-            y: -4,
-            duration: 2.6,
-            ease: "sine.inOut",
-            repeat: -1,
-            yoyo: true,
-          });
+          .from(".hero-certified", { autoAlpha: 0, y: 12 }, "-=0.4");
       });
 
       return () => mm.revert();
@@ -55,12 +40,10 @@ export function Hero({ content }: HeroProps) {
     <section
       ref={sectionRef}
       id="home"
-      className="relative overflow-hidden bg-background pt-[96px] pb-20 sm:pt-[112px] sm:pb-28 lg:pt-[128px] lg:pb-32"
+      className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden bg-background pt-[110px] pb-10 sm:pt-[56px] sm:pb-14"
     >
-      {/* Ambient mesh background — restrained, not a wall of gradient */}
+      {/* Ambient background — restrained, not a wall of gradient */}
       <div aria-hidden="true" className="pointer-events-none absolute inset-0 z-0">
-        <div className="absolute -top-40 right-[-10%] h-[520px] w-[520px] rounded-full bg-secondary-100/60 blur-3xl" />
-        <div className="absolute top-1/3 -left-40 h-[420px] w-[420px] rounded-full bg-primary-50 blur-3xl" />
         <div
           className="absolute inset-0"
           style={{
@@ -86,13 +69,7 @@ export function Hero({ content }: HeroProps) {
 
       <Container wide className="relative z-10 px-6 sm:px-10 lg:px-16">
         <div className="mx-auto max-w-3xl flex flex-col items-center text-center">
-          <div className="hero-badge">
-            <Badge icon={Zap} variant="accent" className="uppercase tracking-wide text-xs">
-              {content.badge}
-            </Badge>
-          </div>
-
-          <h1 className="hero-heading mt-6 text-4xl sm:text-5xl lg:text-[3.75rem] font-bold leading-[1.08] tracking-tight text-text">
+          <h1 className="hero-heading text-[53px] sm:text-[80px] lg:text-[90px] font-extrabold leading-[1.15] tracking-tight text-text">
             {(() => {
               const breakIndex = content.heading.indexOf(". ") + 1;
               const firstLine = content.heading.slice(0, breakIndex);
@@ -101,14 +78,15 @@ export function Hero({ content }: HeroProps) {
                 <>
                   {firstLine}
                   <br />
-                  {secondLine}{" "}
+                  {secondLine}
+                  <br className="sm:hidden" />{" "}
                 </>
               );
             })()}
             <span className="text-accent-500">{content.headingHighlight}</span>
           </h1>
 
-          <p className="hero-subheading mt-6 text-lg leading-relaxed text-text-muted">
+          <p className="hero-subheading mt-6 max-w-[280px] sm:max-w-none sm:w-[440px] lg:w-[560px] text-lg leading-relaxed text-text-muted">
             {content.subheading}
           </p>
 
@@ -121,32 +99,11 @@ export function Hero({ content }: HeroProps) {
             >
               {content.primaryButton}
             </Button>
-            <Button href="#services" variant="secondary" size="lg" icon={PlayCircle} iconPosition="left">
-              {content.secondaryButton}
-            </Button>
           </div>
         </div>
 
-        <div className="hero-dashboard-float relative mx-auto mt-20 lg:mt-24 w-full max-w-[880px]">
-          <BorderGlow
-            className="relative w-full drop-shadow-[0_24px_56px_rgba(10,53,91,0.10)]"
-            backgroundColor="#F9FAFC"
-            borderRadius={16}
-            colors={["#ff7a1a", "#46d3f3", "#0a355b"]}
-          >
-            <Image
-              src="/images/heroImage1.png"
-              alt={content.dashboard.title}
-              width={1600}
-              height={983}
-              priority
-              className="h-auto w-full rounded-2xl"
-            />
-          </BorderGlow>
-        </div>
-
-        <div className="hero-certified mt-16 lg:mt-20 flex flex-col items-center gap-6">
-          <p className="text-base font-medium text-text text-center">
+        <div className="hero-certified mt-16 lg:mt-20 flex w-full flex-col items-center gap-6">
+          <p className="whitespace-nowrap text-[13px] font-medium text-text text-center sm:whitespace-normal sm:text-base">
             Our Performance Marketing Services are Certified by
           </p>
           <Image
@@ -154,7 +111,7 @@ export function Hero({ content }: HeroProps) {
             alt="Meta Business Partner, Shopify Partners, Google Partner"
             width={2246}
             height={211}
-            className="h-10 w-auto sm:h-12"
+            className="h-auto w-full sm:h-[88px] sm:w-auto"
           />
         </div>
       </Container>

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
-import { Manrope, Inter } from "next/font/google";
+import { Golos_Text } from "next/font/google";
 import { SmoothScrollProvider } from "@/components/layout/SmoothScrollProvider";
+import { ContactModalProvider } from "@/components/layout/ContactModalProvider";
 import { PageLoader } from "@/components/ui/PageLoader";
 import { getSiteContent, getSeoContent, getContactContent } from "@/lib/content";
 import {
@@ -10,14 +11,8 @@ import {
 } from "@/lib/seo";
 import "./globals.css";
 
-const manrope = Manrope({
-  variable: "--font-manrope",
-  subsets: ["latin"],
-  display: "swap",
-});
-
-const inter = Inter({
-  variable: "--font-inter",
+const golosText = Golos_Text({
+  variable: "--font-golos",
   subsets: ["latin"],
   display: "swap",
 });
@@ -93,7 +88,7 @@ export default function RootLayout({
   const websiteJsonLd = buildWebsiteJsonLd(site);
 
   return (
-    <html lang="en" className={`${manrope.variable} ${inter.variable}`}>
+    <html lang="en" className={golosText.variable}>
       <head>
         <script
           type="application/ld+json"
@@ -110,7 +105,9 @@ export default function RootLayout({
       </head>
       <body className="min-h-screen bg-background text-text antialiased">
         <PageLoader />
-        <SmoothScrollProvider>{children}</SmoothScrollProvider>
+        <SmoothScrollProvider>
+          <ContactModalProvider content={contact}>{children}</ContactModalProvider>
+        </SmoothScrollProvider>
       </body>
     </html>
   );

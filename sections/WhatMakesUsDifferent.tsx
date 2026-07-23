@@ -104,7 +104,7 @@ export function WhatMakesUsDifferent({ content }: WhatMakesUsDifferentProps) {
             </div>
 
             <div className="mt-10 flex justify-center sm:mt-12">
-              <div className="inline-flex items-center gap-1.5 rounded-full border border-border bg-surface px-5 py-2.5 text-sm text-text-muted">
+              <div className="inline-flex max-w-full items-center gap-1.5 whitespace-nowrap rounded-full border border-border bg-surface px-3 py-2.5 text-[11px] text-text-muted sm:px-5 sm:text-sm">
                 {content.footerText}{" "}
                 <a
                   href="#contact"

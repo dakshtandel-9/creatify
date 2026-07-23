@@ -9,4 +9,4 @@ export const NAV_LINKS: NavLink[] = [
 ];
 
 export const BRAND_NAME = "Creadify";
-export const CTA_PRIMARY = "Book Free Strategy Call";
+export const CTA_PRIMARY = "Contact Us";

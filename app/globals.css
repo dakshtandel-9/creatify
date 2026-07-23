@@ -156,8 +156,8 @@
   --color-ink: var(--color-ink);
   --color-ink-elevated: var(--color-ink-elevated);
 
-  --font-display: var(--font-manrope), ui-sans-serif, system-ui, sans-serif;
-  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-golos), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-golos), ui-sans-serif, system-ui, sans-serif;
 
   --radius-sm: var(--radius-sm);
   --radius-md: var(--radius-md);
@@ -216,6 +216,8 @@
 
 html {
   scroll-behavior: auto; /* Lenis handles smooth scroll; avoid double-smoothing */
+  overflow-x: hidden;
+  width: 100%;
 }
 
 body {
@@ -225,6 +227,7 @@ body {
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   overflow-x: hidden;
+  width: 100%;
 }
 
 h1, h2, h3, h4, h5, h6 {
