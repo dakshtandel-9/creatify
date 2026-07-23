@@ -34,13 +34,16 @@ export function Header({ navigation, header, site }: HeaderProps) {
     <header
       className={cn(
         isSticky ? "fixed" : "relative",
-        "inset-x-0 top-0 z-50 h-[72px] lg:h-[88px] transition-all duration-[250ms] ease-[var(--ease-in-out)]",
+        "inset-x-0 top-0 z-50 h-[78px] lg:h-[96px] transition-all duration-[250ms] ease-[var(--ease-in-out)]",
         scrolled || menuOpen
           ? cn("border-b border-border shadow-sm bg-white/85", useGlass && "backdrop-blur-md")
           : "bg-transparent border-b border-transparent"
       )}
     >
-      <Container wide className="flex h-full items-center justify-between">
+      <Container
+        wide
+        className="flex h-full items-center justify-between max-w-[1050px]"
+      >
         <a href="#home" className="flex items-center" aria-label={`${site.name} home`}>
           <Logo />
         </a>

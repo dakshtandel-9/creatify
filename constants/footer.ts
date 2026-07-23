@@ -10,9 +10,8 @@ export const FOOTER_SERVICES = [
 export const FOOTER_QUICK_LINKS = [
   { label: "About", href: "#about" },
   { label: "Services", href: "#services" },
-  { label: "Case Studies", href: "#case-studies" },
-  { label: "Process", href: "#process" },
-  { label: "FAQ", href: "#faq" },
+  { label: "Testimonials", href: "#testimonials" },
+  { label: "Process", href: "#how-it-started" },
   { label: "Contact", href: "#contact" },
 ] as const;
 

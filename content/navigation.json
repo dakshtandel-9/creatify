@@ -2,9 +2,8 @@
   "items": [
     { "title": "Home", "href": "#home" },
     { "title": "Services", "href": "#services" },
-    { "title": "Case Studies", "href": "#case-studies" },
-    { "title": "Process", "href": "#process" },
-    { "title": "FAQ", "href": "#faq" },
+    { "title": "Testimonials", "href": "#testimonials" },
+    { "title": "Process", "href": "#how-it-started" },
     { "title": "Contact", "href": "#contact" }
   ]
 }

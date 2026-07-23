@@ -2,8 +2,10 @@ import PillNav from "@/components/ui/PillNav";
 import { Hero } from "@/sections/Hero";
 import { LogoCloud } from "@/sections/LogoCloud";
 import { Services } from "@/sections/Services";
-import { FAQ } from "@/sections/FAQ";
-import { FinalCTA } from "@/sections/FinalCTA";
+import { Testimonials } from "@/sections/Testimonials";
+import { WhatMakesUsDifferent } from "@/sections/WhatMakesUsDifferent";
+import { HowItStarted } from "@/sections/HowItStarted";
+import { ServicesFaq } from "@/sections/ServicesFaq";
 
 import { Contact } from "@/sections/Contact";
 import { Footer } from "@/sections/Footer";
@@ -13,7 +15,7 @@ import {
   getHeaderContent,
   getHeroContent,
   getServicesContent,
-  getFaqContent,
+  getTestimonialsContent,
   getContactContent,
   getFooterContent,
 } from "@/lib/content";
@@ -25,12 +27,12 @@ export default function Home() {
   const header = getHeaderContent();
   const hero = getHeroContent();
   const services = getServicesContent();
-  const faq = getFaqContent();
+  const testimonials = getTestimonialsContent();
   const contact = getContactContent();
   const footer = getFooterContent();
 
   const serviceJsonLd = buildServiceJsonLd(site, services.items);
-  const faqJsonLd = buildFaqJsonLd(faq.items);
+  const faqJsonLd = services.faq ? buildFaqJsonLd(services.faq.items) : null;
 
   const primaryButtonLink = header.primaryButton.link;
 
@@ -40,10 +42,12 @@ export default function Home() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceJsonLd) }}
       />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
-      />
+      {faqJsonLd ? (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+        />
+      ) : null}
       <PillNav
         items={navigation.items.map((item) => ({ label: item.title, href: item.href }))}
         activeHref="#home"
@@ -58,8 +62,10 @@ export default function Home() {
         <Hero content={hero} />
         <LogoCloud />
         <Services content={services} />
-        <FAQ content={faq} />
-        <FinalCTA />
+        <Testimonials content={testimonials} />
+        {services.comparison ? <WhatMakesUsDifferent content={services.comparison} /> : null}
+        {services.process ? <HowItStarted content={services.process} /> : null}
+        {services.faq ? <ServicesFaq content={services.faq} /> : null}
         <Contact content={contact} />
       </main>
       <Footer content={footer} navigation={navigation} services={services} />

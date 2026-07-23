@@ -31,7 +31,7 @@
 }
 
 .pill-nav {
-  --nav-h: 48px;
+  --nav-h: 56px;
   --logo: 40px;
   --pill-pad-x: 20px;
   --pill-gap: 3px;
@@ -123,6 +123,17 @@
   cursor: pointer;
   position: relative;
   overflow: hidden;
+  transition: background-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.pill.is-active {
+  background: var(--base, #0a355b);
+  color: var(--hover-text, #fff);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.14);
+}
+
+.pill.is-active .pill-label {
+  color: var(--hover-text, #fff);
 }
 
 .pill .hover-circle {

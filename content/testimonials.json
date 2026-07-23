@@ -1,5 +1,54 @@
 {
   "title": "What Our Clients Say",
 
-  "items": []
+  "items": [
+    {
+      "name": "Sarah Mitchell",
+      "role": "Founder & CEO",
+      "company": "Lumen Skincare",
+      "quote": "Creadify rebuilt our funnel from scratch and our paid ROAS doubled inside two months. They actually think like operators, not just marketers.",
+      "rating": 5,
+      "avatar": "https://randomuser.me/api/portraits/women/68.jpg"
+    },
+    {
+      "name": "James Okoye",
+      "role": "Head of Growth",
+      "company": "Northbound Finance",
+      "quote": "The reporting alone is worth it. We finally know which channels are actually driving revenue instead of guessing every quarter.",
+      "rating": 5,
+      "avatar": "https://randomuser.me/api/portraits/men/32.jpg"
+    },
+    {
+      "name": "Priya Raman",
+      "role": "Marketing Director",
+      "company": "Fieldstone Goods",
+      "quote": "Every deliverable shipped on time and the creative team genuinely understood our brand voice from the first draft.",
+      "rating": 5,
+      "avatar": "https://randomuser.me/api/portraits/women/44.jpg"
+    },
+    {
+      "name": "Daniel Cho",
+      "role": "Co-Founder",
+      "company": "Ridgeline Outdoors",
+      "quote": "We tried three agencies before Creadify. This is the first team that treated our budget like it was their own money.",
+      "rating": 5,
+      "avatar": "https://randomuser.me/api/portraits/men/76.jpg"
+    },
+    {
+      "name": "Emily Foster",
+      "role": "VP Marketing",
+      "company": "Bright Harbor SaaS",
+      "quote": "Our SEO traffic grew 3x in six months and the automation work they set up saves the team about ten hours a week.",
+      "rating": 5,
+      "avatar": "https://randomuser.me/api/portraits/women/21.jpg"
+    },
+    {
+      "name": "Marcus Reyes",
+      "role": "Owner",
+      "company": "Reyes & Co. Coffee",
+      "quote": "Social media went from an afterthought to our biggest acquisition channel. Genuinely didn't expect that kind of turnaround.",
+      "rating": 5,
+      "avatar": "https://randomuser.me/api/portraits/men/54.jpg"
+    }
+  ]
 }

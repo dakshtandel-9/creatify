@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import Lenis from "lenis";
+import { ScrollTrigger } from "@/lib/gsap";
 
 /** Wires up Lenis smooth scrolling for the whole app; respects reduced motion. */
 export function SmoothScrollProvider({ children }: { children: React.ReactNode }) {
@@ -21,12 +22,17 @@ export function SmoothScrollProvider({ children }: { children: React.ReactNode }
     });
     lenisRef.current = lenis;
 
+    lenis.on("scroll", ScrollTrigger.update);
+
     let rafId: number;
     function raf(time: number) {
       lenis.raf(time);
       rafId = requestAnimationFrame(raf);
     }
     rafId = requestAnimationFrame(raf);
+
+    ScrollTrigger.addEventListener("refresh", () => lenis.resize());
+    ScrollTrigger.refresh();
 
     return () => {
       cancelAnimationFrame(rafId);

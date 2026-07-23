@@ -5,60 +5,138 @@
 
   "button": "Explore All Services",
 
+  "process": {
+    "title": "ONBOARDING • ONBOARDING • ONBOARDING",
+    "heading": "How it starts?",
+    "steps": [
+      {
+        "title": "Plan Your Growth",
+        "description": "Dream big, strategize with us, and turn plans into profits."
+      },
+      {
+        "title": "Handover the project",
+        "description": "We're your project navigators, turning plans into reality. Smooth sailing guaranteed."
+      },
+      {
+        "title": "Count the profit",
+        "description": "Sit back, relax, and let the profits set sail. Your success story starts with us!"
+      }
+    ]
+  },
+
+  "comparison": {
+    "title": "COMPARE • COMPARE • COMPARE",
+    "heading": "What makes us different?",
+    "subheading": "Creadify V/S Others",
+    "othersLabel": "OTHERS",
+    "oursLabel": "CREADIFY",
+    "othersPoints": [
+      "Longer turnaround time",
+      "Mediocre methods",
+      "Lack of timely reporting",
+      "No prompt answers"
+    ],
+    "oursPoints": [
+      "Faster and quick responses",
+      "Data-driven approach",
+      "Transparent reporting",
+      "Precise execution"
+    ],
+    "footerText": "Still have a question?",
+    "footerLinkText": "Chat with our experts"
+  },
+
+  "faq": {
+    "title": "Need Help?",
+    "emoji": "🧑‍💻",
+    "items": [
+      {
+        "question": "Why should I choose Creadify over other agencies?",
+        "answer": "Choosing Creadify means choosing a results-driven, client-focused, and technologically advanced digital marketing partner. With a proven track record, personalized strategies, and a commitment to transparent communication, we are confident in our ability to elevate your online presence and drive sustainable business growth."
+      },
+      {
+        "question": "What sets Creadify apart from the competition?",
+        "answer": "Creadify stands out in the crowded digital advertising landscape by offering a potent combination of advanced technology, customization options, data-driven insights, and a proven track record."
+      },
+      {
+        "question": "How can Creadify guarantee accurate reporting?",
+        "answer": "Creadify's commitment to accuracy is upheld through advanced technology, real-time validation, transparency, a knowledgeable team, and a rigorous quality control process. By choosing Creadify, clients can trust that their reporting is reliable and reflects the most accurate and current data available."
+      },
+      {
+        "question": "How long does SEO take?",
+        "answer": "Usually 3-6 months depending on competition."
+      },
+      {
+        "question": "Do you offer monthly reporting?",
+        "answer": "Yes, every client receives a clear monthly report covering performance, spend, and next steps."
+      },
+      {
+        "question": "Can you redesign existing websites?",
+        "answer": "Absolutely — we can rebuild or refresh your existing site without losing your current SEO rankings."
+      }
+    ]
+  },
+
   "items": [
     {
       "title": "Strategic Marketing",
-      "description": "Data-driven campaigns engineered around revenue, not vanity metrics.",
-      "features": ["Google Ads", "Meta Ads", "Conversion Tracking"],
+      "description": "Give your brand the spotlight it deserves with paid campaigns that turn attention into revenue.",
+      "features": ["Facebook Ads", "Google Ads"],
       "accent": "orange",
       "eyebrow": "ADS • ADS • ADS",
       "image": "",
-      "imageRatio": "4:3 (e.g. 800×600)"
+      "imageRatio": "4:3 (e.g. 800×600)",
+      "video": "/servicesVideo/Strategic Marketing.mp4"
     },
     {
-      "title": "Creative Design",
-      "description": "Scroll-stopping visuals and branding that make your audience pay attention.",
-      "features": ["Brand Identity", "Ad Creative", "Design Systems"],
+      "title": "Eye-catchy Designs",
+      "description": "Visuals crafted to speak directly to your ideal customers and elevate how your brand is seen.",
+      "features": ["Social Media", "Ads", "Videos"],
       "accent": "blue",
       "eyebrow": "DESIGN • DESIGN • DESIGN",
       "image": "",
-      "imageRatio": "4:3 (e.g. 800×600)"
+      "imageRatio": "4:3 (e.g. 800×600)",
+      "video": "/servicesVideo/Eye-catchy Designs.mp4"
     },
     {
-      "title": "Social Media Management",
-      "description": "Consistent, on-brand presence that keeps your community engaged.",
-      "features": ["Content Calendar", "Community Management", "Platform Strategy"],
+      "title": "Social Media",
+      "description": "Make your brand the talk of the town with management that keeps every platform buzzing.",
+      "features": ["Facebook Ads", "Google Ads"],
       "accent": "pink",
       "eyebrow": "SOCIAL • SOCIAL • SOCIAL",
       "image": "",
-      "imageRatio": "4:3 (e.g. 800×600)"
+      "imageRatio": "4:3 (e.g. 800×600)",
+      "video": "/servicesVideo/Social Media.mp4"
     },
     {
-      "title": "Tech Solution",
-      "description": "Fast, reliable websites and integrations built to scale with you.",
-      "features": ["Custom Design", "Core Web Vitals", "CMS Integration"],
+      "title": "Web Development",
+      "description": "Seamless online experiences built by technical experts who turn digital hiccups into high-fives.",
+      "features": ["Website Development", "Landing Pages"],
       "accent": "cyan",
       "eyebrow": "WEB • WEB • WEB",
       "image": "",
-      "imageRatio": "4:3 (e.g. 800×600)"
+      "imageRatio": "4:3 (e.g. 800×600)",
+      "video": "/servicesVideo/Web Development.mp4"
     },
     {
-      "title": "SEO",
-      "description": "Technical and content strategy built for rankings that last.",
-      "features": ["Technical Audits", "Content Strategy", "Link Building"],
+      "title": "Robust SEO",
+      "description": "Boost your online presence and define digital brilliance with SEO that just works, hassle-free.",
+      "features": ["Social Media", "Ads", "Videos"],
       "accent": "green",
       "eyebrow": "SEO • SEO • SEO",
       "image": "",
-      "imageRatio": "4:3 (e.g. 800×600)"
+      "imageRatio": "4:3 (e.g. 800×600)",
+      "video": "/servicesVideo/Robust SEO.mp4"
     },
     {
       "title": "Automation",
-      "description": "Streamlined workflows that save time and cut manual busywork.",
-      "features": ["Workflow Automation", "Reporting", "Integrations"],
+      "description": "Automate the manual tasks that eat your time, so your team can focus purely on delivering quality.",
+      "features": ["CRM", "Lead Gen", "Business Flows"],
       "accent": "purple",
       "eyebrow": "AUTOMATE • AUTOMATE • AUTOMATE",
       "image": "",
-      "imageRatio": "4:3 (e.g. 800×600)"
+      "imageRatio": "4:3 (e.g. 800×600)",
+      "video": "/servicesVideo/Automation.mp4"
     }
   ]
 }

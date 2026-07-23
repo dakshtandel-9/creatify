@@ -1,5 +1,6 @@
 "use client";
 
+import { useRef } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { motion, AnimatePresence } from "framer-motion";
@@ -7,6 +8,7 @@ import { CheckCircle2, Mail, MapPin, Clock, Phone, Send } from "lucide-react";
 import { Container } from "@/components/layout/Container";
 import { Section } from "@/components/layout/Section";
 import { Button } from "@/components/ui/Button";
+import { BorderGlow } from "@/components/ui/BorderGlow";
 import { FieldWrapper, Input, Select, Textarea } from "@/components/ui/FormField";
 import {
   contactFormSchema,
@@ -15,6 +17,7 @@ import {
   SERVICE_OPTIONS,
 } from "@/lib/validation";
 import { cn } from "@/lib/utils";
+import { gsap, useGSAP } from "@/lib/gsap";
 import type { ContactContent } from "@/types/cms";
 
 type ContactProps = {
@@ -22,6 +25,7 @@ type ContactProps = {
 };
 
 export function Contact({ content }: ContactProps) {
+  const sectionRef = useRef<HTMLElement>(null);
   const {
     register,
     handleSubmit,
@@ -42,11 +46,31 @@ export function Contact({ content }: ContactProps) {
     { icon: Clock, label: "Hours", value: content.workingHours },
   ];
 
+  useGSAP(
+    () => {
+      const tl = gsap.timeline({
+        defaults: { ease: "power2.out", duration: 0.6 },
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top 75%",
+          toggleActions: "play none none reverse",
+        },
+      });
+
+      tl.from(".contact-details > *", { autoAlpha: 0, y: 24, stagger: 0.08 }).from(
+        ".contact-form-card",
+        { autoAlpha: 0, y: 24 },
+        "-=0.4"
+      );
+    },
+    { scope: sectionRef }
+  );
+
   return (
-    <Section id="contact">
+    <Section id="contact" ref={sectionRef}>
       <Container wide>
         <div className="grid grid-cols-1 lg:grid-cols-[0.85fr_1.15fr] gap-12 lg:gap-16">
-          <div>
+          <div className="contact-details">
             <span className="text-sm font-semibold uppercase tracking-[0.08em] text-accent-700">
               Contact
             </span>
@@ -70,9 +94,25 @@ export function Contact({ content }: ContactProps) {
                 );
               })}
             </ul>
+
+            <div className="mt-10 flex items-center gap-3 rounded-2xl border border-border bg-surface px-5 py-4">
+              <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-emerald-50 text-emerald-600">
+                <CheckCircle2 className="h-4.5 w-4.5" aria-hidden="true" />
+              </span>
+              <p className="text-sm text-text-muted">
+                <span className="font-semibold text-primary-900">1 business day</span>{" "}
+                average response time — a strategist reviews every submission.
+              </p>
+            </div>
           </div>
 
-          <div className="rounded-3xl border border-border bg-white shadow-lg p-6 sm:p-10">
+          <BorderGlow
+            className="contact-form-card"
+            backgroundColor="#F9FAFC"
+            borderRadius={24}
+            colors={["#ff7a1a", "#46d3f3", "#0a355b"]}
+          >
+          <div className="shadow-lg p-6 sm:p-10">
             <AnimatePresence mode="wait">
               {isSubmitSuccessful ? (
                 <motion.div
@@ -218,6 +258,7 @@ export function Contact({ content }: ContactProps) {
               )}
             </AnimatePresence>
           </div>
+          </BorderGlow>
         </div>
       </Container>
     </Section>

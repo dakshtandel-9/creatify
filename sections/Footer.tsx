@@ -35,9 +35,9 @@ export function Footer({ content, navigation, services }: FooterProps) {
 
   return (
     <footer className="bg-ink text-text-on-dark">
-      <Container wide className="py-16 sm:py-20">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12">
-          <div className="lg:col-span-1">
+      <Container wide className="py-20 sm:py-24">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-y-14 gap-x-12 lg:divide-x lg:divide-white/10">
+          <div className="lg:col-span-1 lg:pr-8">
             <Logo tone="light" />
             <p className="mt-4 text-sm leading-relaxed text-text-on-dark-muted max-w-xs">
               {content.description}
@@ -52,7 +52,7 @@ export function Footer({ content, navigation, services }: FooterProps) {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={social.label}
-                    className="flex h-10 w-10 items-center justify-center rounded-full border border-white/15 text-text-on-dark-muted transition-colors duration-200 hover:border-white/30 hover:text-white"
+                    className="flex h-10 w-10 items-center justify-center rounded-full border border-white/15 text-text-on-dark-muted transition-all duration-200 hover:-translate-y-0.5 hover:border-accent-400/50 hover:bg-accent-500/10 hover:text-accent-300"
                   >
                     <Icon className="h-4.5 w-4.5" aria-hidden="true" />
                   </a>
@@ -61,7 +61,7 @@ export function Footer({ content, navigation, services }: FooterProps) {
             </div>
           </div>
 
-          <div>
+          <div className="lg:px-8">
             <h3 className="text-sm font-semibold text-white uppercase tracking-wide">
               Quick Links
             </h3>
@@ -79,7 +79,7 @@ export function Footer({ content, navigation, services }: FooterProps) {
             </ul>
           </div>
 
-          <div>
+          <div className="lg:px-8">
             <h3 className="text-sm font-semibold text-white uppercase tracking-wide">
               Services
             </h3>
@@ -97,11 +97,11 @@ export function Footer({ content, navigation, services }: FooterProps) {
             </ul>
           </div>
 
-          <div>
+          <div className="lg:pl-8">
             <h3 className="text-sm font-semibold text-white uppercase tracking-wide">
               Stay Updated
             </h3>
-            <p className="mt-5 text-sm text-text-on-dark-muted">
+            <p className="mt-5 text-sm leading-relaxed text-text-on-dark-muted">
               Growth tactics and case studies, once a month. No spam.
             </p>
 
@@ -110,7 +110,7 @@ export function Footer({ content, navigation, services }: FooterProps) {
                 You&rsquo;re subscribed — welcome aboard.
               </p>
             ) : (
-              <form onSubmit={handleSubscribe} className="mt-4 flex gap-2">
+              <form onSubmit={handleSubscribe} className="mt-5 flex gap-2">
                 <label htmlFor="footer-email" className="sr-only">
                   Email address
                 </label>
@@ -121,12 +121,12 @@ export function Footer({ content, navigation, services }: FooterProps) {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="you@company.com"
-                  className="h-11 min-w-0 flex-1 rounded-lg border border-white/15 bg-white/5 px-3.5 text-sm text-white placeholder:text-text-on-dark-muted focus:outline-none focus:ring-2 focus:ring-accent-400 focus:border-transparent"
+                  className="h-12 min-w-0 flex-1 rounded-lg border border-white/15 bg-white/5 px-4 text-sm text-white placeholder:text-text-on-dark-muted focus:outline-none focus:ring-2 focus:ring-accent-400 focus:border-transparent"
                 />
                 <button
                   type="submit"
                   aria-label="Subscribe"
-                  className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-accent-500 text-white transition-all duration-150 hover:brightness-105 active:scale-95"
+                  className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-accent-500 text-white transition-all duration-150 hover:brightness-105 active:scale-95"
                 >
                   <ArrowRight className="h-4.5 w-4.5" aria-hidden="true" />
                 </button>

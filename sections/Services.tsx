@@ -1,3 +1,6 @@
+"use client";
+
+import { useRef } from "react";
 import Image from "next/image";
 import {
   LineChart,
@@ -11,7 +14,9 @@ import {
 } from "lucide-react";
 import { Container } from "@/components/layout/Container";
 import { Section } from "@/components/layout/Section";
+import { BorderGlow } from "@/components/ui/BorderGlow";
 import { cn } from "@/lib/utils";
+import { gsap, ScrollTrigger, useGSAP } from "@/lib/gsap";
 import type { ServiceAccent, ServicesContent } from "@/types/cms";
 
 type ServicesProps = {
@@ -54,63 +59,122 @@ const PLACEHOLDER_GRADIENTS: Record<ServiceAccent, string> = {
   pink: "from-rose-100 via-accent-100 to-violet-100",
 };
 
+const ACCENT_GLOW: Record<ServiceAccent, [string, string, string]> = {
+  orange: ["#ff7a1a", "#ffc699", "#0a355b"],
+  blue: ["#0a355b", "#46d3f3", "#7eaed3"],
+  green: ["#10b981", "#46d3f3", "#0a355b"],
+  purple: ["#8b5cf6", "#ff7a1a", "#0a355b"],
+  cyan: ["#46d3f3", "#0a355b", "#ff7a1a"],
+  pink: ["#f472b6", "#ff7a1a", "#0a355b"],
+};
+
 export function Services({ content }: ServicesProps) {
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useGSAP(
+    () => {
+      gsap.from(".service-checklist-item", {
+        autoAlpha: 0,
+        y: 20,
+        duration: 0.6,
+        ease: "power2.out",
+        stagger: 0.08,
+        scrollTrigger: {
+          trigger: ".service-checklist",
+          start: "top 80%",
+          toggleActions: "play none none reverse",
+        },
+      });
+
+      gsap.set(".service-row", { autoAlpha: 0, y: 32 });
+
+      ScrollTrigger.batch(".service-row", {
+        start: "top 85%",
+        onEnter: (rows) =>
+          gsap.to(rows, {
+            autoAlpha: 1,
+            y: 0,
+            duration: 0.7,
+            ease: "power2.out",
+            stagger: 0.12,
+            overwrite: true,
+          }),
+        onLeaveBack: (rows) =>
+          gsap.to(rows, { autoAlpha: 0, y: 32, duration: 0.4, overwrite: true }),
+      });
+
+      const images = sectionRef.current?.querySelectorAll("img") ?? [];
+      images.forEach((img) => {
+        if (img.complete) return;
+        img.addEventListener("load", () => ScrollTrigger.refresh(), { once: true });
+      });
+    },
+    { scope: sectionRef }
+  );
+
   return (
-    <Section id="services" tone="surface" className="rounded-t-[100px]">
+    <Section id="services" tone="surface" className="rounded-t-[100px]" ref={sectionRef}>
       <Container>
-        <div className="mx-auto max-w-[880px] rounded-[28px] border border-border bg-white p-6 shadow-lg sm:p-10 lg:p-14">
-          <div className="flex flex-col items-center gap-3 border-b border-border pb-8 text-center sm:pb-10">
-            <span className="-rotate-3 text-sm font-semibold text-accent-600 [font-family:var(--font-display)]">
-              {content.title}
-            </span>
-            <h2 className="text-3xl font-bold leading-[1.1] text-primary-900 sm:text-4xl lg:text-[44px]">
-              {content.heading}
-            </h2>
-            {content.description ? (
-              <p className="max-w-xl text-base text-text-muted sm:text-[17px]">
-                {content.description}
-              </p>
-            ) : null}
-          </div>
+        <BorderGlow
+          className="service-checklist mx-auto max-w-[880px]"
+          backgroundColor="#FEFFFF"
+          borderRadius={28}
+          colors={["#ff7a1a", "#46d3f3", "#0a355b"]}
+        >
+          <div className="p-6 shadow-lg sm:p-10 lg:p-14">
+            <div className="flex flex-col items-center gap-3 border-b border-border pb-8 text-center sm:pb-10">
+              <span className="-rotate-3 text-sm font-semibold text-accent-600 [font-family:var(--font-display)]">
+                {content.title}
+              </span>
+              <h2 className="text-3xl font-bold leading-[1.1] text-primary-900 sm:text-4xl lg:text-[44px]">
+                {content.heading}
+              </h2>
+              {content.description ? (
+                <p className="max-w-xl text-base text-text-muted sm:text-[17px]">
+                  {content.description}
+                </p>
+              ) : null}
+            </div>
 
-          <ul className="grid grid-cols-1 gap-x-12 gap-y-8 pt-8 sm:pt-10 md:grid-cols-2">
-            {content.items.map((item, index) => {
-              const Icon = ICON_BY_TITLE[item.title] ?? FALLBACK_ICONS[index % FALLBACK_ICONS.length];
-              return (
-                <li key={item.title} className="flex items-start gap-4">
-                  <span
-                    className={cn(
-                      "flex h-11 w-11 shrink-0 items-center justify-center rounded-xl",
-                      ACCENT_STYLES[item.accent]
-                    )}
-                  >
-                    <Icon className="h-5 w-5" aria-hidden="true" />
-                  </span>
-                  <div>
-                    <h3 className="text-base font-bold text-primary-900 sm:text-lg">
-                      {item.title}
-                    </h3>
-                    <p className="mt-1.5 text-sm leading-relaxed text-text-muted sm:text-[15px]">
-                      {item.description}
-                    </p>
-                  </div>
-                </li>
-              );
-            })}
-          </ul>
+            <ul className="grid grid-cols-1 gap-x-12 gap-y-8 pt-8 sm:pt-10 md:grid-cols-2">
+              {content.items.map((item, index) => {
+                const Icon = ICON_BY_TITLE[item.title] ?? FALLBACK_ICONS[index % FALLBACK_ICONS.length];
+                return (
+                  <li key={item.title} className="service-checklist-item flex items-start gap-4">
+                    <span
+                      className={cn(
+                        "flex h-11 w-11 shrink-0 items-center justify-center rounded-xl",
+                        ACCENT_STYLES[item.accent]
+                      )}
+                    >
+                      <Icon className="h-5 w-5" aria-hidden="true" />
+                    </span>
+                    <div>
+                      <h3 className="text-base font-bold text-primary-900 sm:text-lg">
+                        {item.title}
+                      </h3>
+                      <p className="mt-1.5 text-sm leading-relaxed text-text-muted sm:text-[15px]">
+                        {item.description}
+                      </p>
+                    </div>
+                  </li>
+                );
+              })}
+            </ul>
 
-          <div className="mt-10 flex justify-center sm:mt-12">
-            <div className="inline-flex items-center gap-1.5 rounded-full border border-border bg-surface px-5 py-2.5 text-sm text-text-muted">
-              Want to discuss?{" "}
-              <a
-                href="#contact"
-                className="font-semibold text-primary-900 underline decoration-1 underline-offset-2 transition-colors duration-150 hover:text-accent-700"
-              >
-                {content.button}
-              </a>
+            <div className="mt-10 flex justify-center sm:mt-12">
+              <div className="inline-flex items-center gap-1.5 rounded-full border border-border bg-surface px-5 py-2.5 text-sm text-text-muted">
+                Want to discuss?{" "}
+                <a
+                  href="#contact"
+                  className="font-semibold text-primary-900 underline decoration-1 underline-offset-2 transition-colors duration-150 hover:text-accent-700"
+                >
+                  {content.button}
+                </a>
+              </div>
             </div>
           </div>
-        </div>
+        </BorderGlow>
 
         <div className="mx-auto mt-8 flex max-w-[880px] flex-col gap-8">
           {content.items.map((item, index) => {
@@ -118,13 +182,22 @@ export function Services({ content }: ServicesProps) {
             const eyebrow = item.eyebrow ?? item.title;
 
             const imageBlock = (
-              <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl">
-                {item.image ? (
+              <div className="group relative aspect-[4/3] w-full overflow-hidden rounded-2xl">
+                {item.video ? (
+                  <video
+                    src={item.video}
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    className="h-full w-full object-cover transition-transform duration-[400ms] ease-[var(--ease-out)] group-hover:scale-[1.04]"
+                  />
+                ) : item.image ? (
                   <Image
                     src={item.image}
                     alt={item.title}
                     fill
-                    className="object-cover"
+                    className="object-cover transition-transform duration-[400ms] ease-[var(--ease-out)] group-hover:scale-[1.04]"
                   />
                 ) : (
                   <div
@@ -173,24 +246,31 @@ export function Services({ content }: ServicesProps) {
             );
 
             return (
-              <div
+              <BorderGlow
                 key={item.title}
-                className="overflow-hidden rounded-[28px] border border-border bg-white shadow-lg"
+                className="service-row transition-transform duration-[400ms] ease-[var(--ease-out)] hover:-translate-y-1.5"
+                backgroundColor="#FEFFFF"
+                borderRadius={28}
+                colors={
+                  ACCENT_GLOW[item.accent] ?? ["#ff7a1a", "#46d3f3", "#0a355b"]
+                }
               >
-                <div className="grid grid-cols-1 sm:grid-cols-2">
-                  {imageFirst ? (
-                    <>
-                      <div className="p-4 sm:p-6">{imageBlock}</div>
-                      {textBlock}
-                    </>
-                  ) : (
-                    <>
-                      {textBlock}
-                      <div className="p-4 sm:p-6">{imageBlock}</div>
-                    </>
-                  )}
+                <div className="overflow-hidden shadow-lg">
+                  <div className="grid grid-cols-1 sm:grid-cols-2">
+                    {imageFirst ? (
+                      <>
+                        <div className="p-3 sm:p-4">{imageBlock}</div>
+                        {textBlock}
+                      </>
+                    ) : (
+                      <>
+                        {textBlock}
+                        <div className="p-3 sm:p-4">{imageBlock}</div>
+                      </>
+                    )}
+                  </div>
                 </div>
-              </div>
+              </BorderGlow>
             );
           })}
         </div>

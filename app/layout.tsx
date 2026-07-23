@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Manrope, Inter } from "next/font/google";
 import { SmoothScrollProvider } from "@/components/layout/SmoothScrollProvider";
+import { PageLoader } from "@/components/ui/PageLoader";
 import { getSiteContent, getSeoContent, getContactContent } from "@/lib/content";
 import {
   buildOrganizationJsonLd,
@@ -108,6 +109,7 @@ export default function RootLayout({
         />
       </head>
       <body className="min-h-screen bg-background text-text antialiased">
+        <PageLoader />
         <SmoothScrollProvider>{children}</SmoothScrollProvider>
       </body>
     </html>

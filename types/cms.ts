@@ -74,6 +74,40 @@ export type ServiceItem = {
   eyebrow?: string;
   image?: string;
   imageRatio?: string;
+  video?: string;
+};
+
+export type ServiceProcessStep = {
+  title: string;
+  description: string;
+};
+
+export type ServicesProcess = {
+  title: string;
+  heading: string;
+  steps: ServiceProcessStep[];
+  image?: string;
+  imageRatio?: string;
+};
+
+export type ServicesComparison = {
+  title: string;
+  heading: string;
+  subheading: string;
+  othersLabel: string;
+  oursLabel: string;
+  othersPoints: string[];
+  oursPoints: string[];
+  footerText: string;
+  footerLinkText: string;
+};
+
+export type ServicesFaqEntry = { question: string; answer: string };
+
+export type ServicesFaq = {
+  title: string;
+  emoji?: string;
+  items: ServicesFaqEntry[];
 };
 
 export type ServicesContent = {
@@ -81,6 +115,9 @@ export type ServicesContent = {
   heading: string;
   description: string;
   button: string;
+  process?: ServicesProcess;
+  comparison?: ServicesComparison;
+  faq?: ServicesFaq;
   items: ServiceItem[];
 };
 

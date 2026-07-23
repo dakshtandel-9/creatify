@@ -4,11 +4,12 @@ type SectionProps = React.HTMLAttributes<HTMLElement> & {
   id?: string;
   tone?: "light" | "surface" | "dark";
   compact?: boolean;
+  ref?: React.Ref<HTMLElement>;
 };
 
 const toneStyles: Record<NonNullable<SectionProps["tone"]>, string> = {
   light: "bg-background text-text",
-  surface: "bg-surface text-text",
+  surface: "bg-background text-text",
   dark: "bg-ink text-text-on-dark",
 };
 
@@ -18,16 +19,18 @@ export function Section({
   compact = false,
   className,
   children,
+  ref,
   ...props
 }: SectionProps) {
   return (
     <section
+      ref={ref}
       id={id}
       className={cn(
         toneStyles[tone],
         compact
-          ? "py-14 sm:py-18 lg:py-24"
-          : "py-20 sm:py-24 lg:py-28 xl:py-36",
+          ? "py-16 sm:py-20 lg:py-24"
+          : "py-20 sm:py-28 lg:py-[120px]",
         className
       )}
       {...props}

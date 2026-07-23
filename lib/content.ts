@@ -10,7 +10,7 @@ import type {
   HeroContent,
   ServicesContent,
   IndustriesContent,
-  FaqContent,
+  TestimonialsContent,
   ContactContent,
   FooterContent,
   AnimationsContent,
@@ -36,7 +36,7 @@ export const getHeaderContent = () => readContent<HeaderContent>("header.json");
 export const getHeroContent = () => readContent<HeroContent>("hero.json");
 export const getServicesContent = () => readContent<ServicesContent>("services.json");
 export const getIndustriesContent = () => readContent<IndustriesContent>("industries.json");
-export const getFaqContent = () => readContent<FaqContent>("faq.json");
+export const getTestimonialsContent = () => readContent<TestimonialsContent>("testimonials.json");
 export const getContactContent = () => readContent<ContactContent>("contact.json");
 export const getFooterContent = () => readContent<FooterContent>("footer.json");
 export const getAnimationsContent = () => readContent<AnimationsContent>("animations.json");
