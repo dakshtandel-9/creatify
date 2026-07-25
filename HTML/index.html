@@ -1,0 +1,698 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Creadify | Performance Marketing Agency</title>
+<meta name="description" content="Grow your business with SEO, Google Ads, Meta Ads, websites, branding and conversion optimization." />
+<meta name="keywords" content="Digital Marketing, SEO, Google Ads, Meta Ads, Performance Marketing, Website Development" />
+<link rel="icon" type="image/svg+xml" href="favicon.svg" />
+<link rel="shortcut icon" href="favicon.ico" />
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<!-- ============================== PAGE LOADER ============================== -->
+<div class="page-loader" id="pageLoader" role="status" aria-live="polite" aria-label="Loading">
+  <div class="page-loader__grid" aria-hidden="true"></div>
+  <div class="page-loader__glow" aria-hidden="true">
+    <div class="page-loader__orb page-loader__orb--blue"></div>
+    <div class="page-loader__orb page-loader__orb--orange"></div>
+  </div>
+  <div class="page-loader__content">
+    <div class="page-loader__logo-wrap">
+      <img src="images/logo.png" alt="Creadify" class="page-loader__logo" />
+    </div>
+    <p class="page-loader__text">Building your growth engine...</p>
+    <div class="page-loader__track">
+      <div class="page-loader__fill" id="loaderFill"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================== NAV ============================== -->
+<div class="pill-nav-container">
+  <nav class="pill-nav" aria-label="Primary">
+    <a class="pill-logo" href="#home" aria-label="Home">
+      <img src="images/logo.png" alt="Creadify" />
+    </a>
+
+    <div class="pill-nav-items desktop-only">
+      <ul class="pill-list" role="menubar">
+        <li role="none"><a role="menuitem" href="#services" class="pill">Services</a></li>
+        <li role="none"><a role="menuitem" href="#testimonials" class="pill">Clients</a></li>
+        <li role="none"><a role="menuitem" href="#why-us" class="pill">Why Creatify?</a></li>
+        <li role="none"><a role="menuitem" href="#testimonials" class="pill">Reviews</a></li>
+        <li role="none"><a role="menuitem" href="#faq" class="pill">FAQs</a></li>
+      </ul>
+    </div>
+
+    <a href="#contact" class="pill-cta desktop-only">Contact Us</a>
+
+    <button class="mobile-menu-button mobile-only" id="mobileMenuBtn" aria-label="Toggle menu" aria-expanded="false">
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+    </button>
+  </nav>
+
+  <div class="mobile-menu-popover mobile-only" id="mobileMenuPopover">
+    <ul class="mobile-menu-list">
+      <li><a href="#services" class="mobile-menu-link">Services</a></li>
+      <li><a href="#testimonials" class="mobile-menu-link">Clients</a></li>
+      <li><a href="#why-us" class="mobile-menu-link">Why Creatify?</a></li>
+      <li><a href="#testimonials" class="mobile-menu-link">Reviews</a></li>
+      <li><a href="#faq" class="mobile-menu-link">FAQs</a></li>
+      <li><a href="#contact" class="mobile-menu-link">Contact Us</a></li>
+    </ul>
+  </div>
+</div>
+
+<main>
+
+  <!-- ============================== HERO ============================== -->
+  <section id="home" class="hero">
+    <div class="hero-bg" aria-hidden="true">
+      <canvas id="dotGridCanvas"></canvas>
+    </div>
+
+    <div class="container container--wide hero-inner">
+      <div class="hero-content">
+        <h1 class="hero-heading reveal">
+          <span class="hero-mobile-heading">We Drive<br />Growth. You<br />Get <span class="accent">Results.</span></span>
+          <span class="hero-desktop-heading">We Drive Growth.<br />You Get <span class="accent">Results.</span></span>
+        </h1>
+
+        <p class="hero-stats reveal">4+ Years | 151+ Brands | 2+ Crore Ads Spent</p>
+
+        <p class="hero-subheading reveal">Data-driven strategies that generate qualified leads and scale your business profitably.</p>
+
+        <div class="hero-actions reveal">
+          <a href="#contact" class="btn btn-lg btn-hero">
+            <span>Book a Strategy Call</span>
+            <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="hero-certified reveal">
+        <p>Our Performance Marketing Services are Certified by</p>
+        <img src="images/Certified/stripgoogle.png" alt="Meta Business Partner, Shopify Partners, Google Partner" />
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== SERVICES ============================== -->
+  <section id="services" class="section section--surface section--rounded-top">
+    <div class="container">
+      <div class="glow-card services-checklist reveal">
+        <div class="glow-card-inner card-pad">
+          <div class="card-header">
+            <span class="eyebrow">Our Services</span>
+            <h2 class="card-heading">Everything Your Business Needs to Scale</h2>
+            <p class="card-desc">Every service combines strategy, creative, and technology to drive measurable, compounding growth.</p>
+          </div>
+
+          <ul class="checklist-grid reveal-stagger">
+            <li class="checklist-item">
+              <span class="checklist-icon accent-orange">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg>
+              </span>
+              <div class="checklist-text">
+                <h3>Strategic Marketing</h3>
+                <p>Give your brand the spotlight it deserves with paid campaigns that turn attention into revenue.</p>
+              </div>
+            </li>
+            <li class="checklist-item">
+              <span class="checklist-icon accent-blue">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r=".5"/><circle cx="17.5" cy="10.5" r=".5"/><circle cx="8.5" cy="7.5" r=".5"/><circle cx="6.5" cy="12.5" r=".5"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2Z"/></svg>
+              </span>
+              <div class="checklist-text">
+                <h3>Creative Design</h3>
+                <p>Visuals crafted to speak directly to your ideal customers and elevate how your brand is seen.</p>
+              </div>
+            </li>
+            <li class="checklist-item">
+              <span class="checklist-icon accent-pink">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+              </span>
+              <div class="checklist-text">
+                <h3>Social Media Management</h3>
+                <p>Make your brand the talk of the town with management that keeps every platform buzzing.</p>
+              </div>
+            </li>
+            <li class="checklist-item">
+              <span class="checklist-icon accent-cyan">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><path d="M12 18h.01"/></svg>
+              </span>
+              <div class="checklist-text">
+                <h3>Tech Solution</h3>
+                <p>Seamless online experiences built by technical experts who turn digital hiccups into high-fives.</p>
+              </div>
+            </li>
+            <li class="checklist-item">
+              <span class="checklist-icon accent-green">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
+              </span>
+              <div class="checklist-text">
+                <h3>SEO</h3>
+                <p>Boost your online presence and define digital brilliance with SEO that just works, hassle-free.</p>
+              </div>
+            </li>
+            <li class="checklist-item">
+              <span class="checklist-icon accent-purple">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><path d="M14 6.5h7"/><path d="M6.5 10v4"/><rect x="3" y="14" width="7" height="7" rx="1"/><path d="M14 14h7v7h-7z"/></svg>
+              </span>
+              <div class="checklist-text">
+                <h3>Automation</h3>
+                <p>Automate the manual tasks that eat your time, so your team can focus purely on delivering quality.</p>
+              </div>
+            </li>
+          </ul>
+
+          <div class="discuss-pill">
+            <div class="discuss-pill-inner">
+              Want to discuss? <a href="#contact">Explore All Services</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="services-rows">
+
+        <div class="service-row reveal">
+          <div class="service-row-grid">
+            <div class="service-row-media">
+              <div class="service-row-video-wrap">
+                <video src="videos/services/Strategic Marketing.mp4" autoplay loop muted playsinline></video>
+              </div>
+            </div>
+            <div class="service-row-text">
+              <span class="service-eyebrow accent-orange">ADS &bull; ADS &bull; ADS</span>
+              <h3>Strategic Marketing</h3>
+              <p>Give your brand the spotlight it deserves with paid campaigns that turn attention into revenue.</p>
+              <div class="service-features">
+                <span class="feature-chip">Facebook Ads</span>
+                <span class="feature-chip">Google Ads</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="service-row reverse reveal">
+          <div class="service-row-grid">
+            <div class="service-row-text">
+              <span class="service-eyebrow accent-blue">DESIGN &bull; DESIGN &bull; DESIGN</span>
+              <h3>Eye-catchy Designs</h3>
+              <p>Visuals crafted to speak directly to your ideal customers and elevate how your brand is seen.</p>
+              <div class="service-features">
+                <span class="feature-chip">Social Media</span>
+                <span class="feature-chip">Ads</span>
+                <span class="feature-chip">Videos</span>
+              </div>
+            </div>
+            <div class="service-row-media">
+              <div class="service-row-video-wrap">
+                <video src="videos/services/Eye-catchy Designs.mp4" autoplay loop muted playsinline></video>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="service-row reveal">
+          <div class="service-row-grid">
+            <div class="service-row-media">
+              <div class="service-row-video-wrap">
+                <video src="videos/services/Social Media.mp4" autoplay loop muted playsinline></video>
+              </div>
+            </div>
+            <div class="service-row-text">
+              <span class="service-eyebrow accent-pink">SOCIAL &bull; SOCIAL &bull; SOCIAL</span>
+              <h3>Social Media</h3>
+              <p>Make your brand the talk of the town with management that keeps every platform buzzing.</p>
+              <div class="service-features">
+                <span class="feature-chip">Facebook Ads</span>
+                <span class="feature-chip">Google Ads</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="service-row reverse reveal">
+          <div class="service-row-grid">
+            <div class="service-row-text">
+              <span class="service-eyebrow accent-cyan">WEB &bull; WEB &bull; WEB</span>
+              <h3>Web Development</h3>
+              <p>Seamless online experiences built by technical experts who turn digital hiccups into high-fives.</p>
+              <div class="service-features">
+                <span class="feature-chip">Website Development</span>
+                <span class="feature-chip">Landing Pages</span>
+              </div>
+            </div>
+            <div class="service-row-media">
+              <div class="service-row-video-wrap">
+                <video src="videos/services/Web Development.mp4" autoplay loop muted playsinline></video>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="service-row reveal">
+          <div class="service-row-grid">
+            <div class="service-row-media">
+              <div class="service-row-video-wrap">
+                <video src="videos/services/Robust SEO.mp4" autoplay loop muted playsinline></video>
+              </div>
+            </div>
+            <div class="service-row-text">
+              <span class="service-eyebrow accent-green">SEO &bull; SEO &bull; SEO</span>
+              <h3>Robust SEO</h3>
+              <p>Boost your online presence and define digital brilliance with SEO that just works, hassle-free.</p>
+              <div class="service-features">
+                <span class="feature-chip">Social Media</span>
+                <span class="feature-chip">Ads</span>
+                <span class="feature-chip">Videos</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="service-row reverse reveal">
+          <div class="service-row-grid">
+            <div class="service-row-text">
+              <span class="service-eyebrow accent-purple">AUTOMATE &bull; AUTOMATE &bull; AUTOMATE</span>
+              <h3>Automation</h3>
+              <p>Automate the manual tasks that eat your time, so your team can focus purely on delivering quality.</p>
+              <div class="service-features">
+                <span class="feature-chip">CRM</span>
+                <span class="feature-chip">Lead Gen</span>
+                <span class="feature-chip">Business Flows</span>
+              </div>
+            </div>
+            <div class="service-row-media">
+              <div class="service-row-video-wrap">
+                <video src="videos/services/Automation.mp4" autoplay loop muted playsinline></video>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== TESTIMONIALS ============================== -->
+  <section id="testimonials" class="section section--surface">
+    <div class="container container--wide">
+      <div class="testimonials-heading reveal">
+        <span class="eyebrow">Testimonials</span>
+        <h2 class="card-heading">What Our Clients Say</h2>
+      </div>
+    </div>
+
+    <div class="marquee-wrap reveal">
+      <span class="marquee-fade marquee-fade--left" aria-hidden="true"></span>
+      <span class="marquee-fade marquee-fade--right" aria-hidden="true"></span>
+
+      <div class="marquee">
+        <div class="marquee-track" id="marqueeTrack1"></div>
+      </div>
+      <div class="marquee reverse">
+        <div class="marquee-track" id="marqueeTrack2"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== WHAT MAKES US DIFFERENT ============================== -->
+  <section id="why-us" class="section">
+    <div class="container">
+      <div class="glow-card reveal">
+        <div class="glow-card-inner card-pad">
+          <div class="card-header">
+            <span class="eyebrow-pill">COMPARE &bull; COMPARE &bull; COMPARE</span>
+            <h2 class="card-heading">What makes us different?</h2>
+            <p class="card-desc">Creadify V/S Others</p>
+          </div>
+
+          <div class="compare-grid">
+            <div class="compare-divider" aria-hidden="true"></div>
+            <div>
+              <span class="compare-label">OTHERS</span>
+              <ul class="compare-list reveal-stagger">
+                <li>
+                  <span class="compare-bullet compare-bullet--minus">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                  </span>
+                  <span class="others-text">Longer turnaround time</span>
+                </li>
+                <li>
+                  <span class="compare-bullet compare-bullet--minus">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                  </span>
+                  <span class="others-text">Mediocre methods</span>
+                </li>
+                <li>
+                  <span class="compare-bullet compare-bullet--minus">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                  </span>
+                  <span class="others-text">Lack of timely reporting</span>
+                </li>
+                <li>
+                  <span class="compare-bullet compare-bullet--minus">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                  </span>
+                  <span class="others-text">No prompt answers</span>
+                </li>
+              </ul>
+            </div>
+
+            <div>
+              <span class="compare-label compare-label--ours">CREADIFY</span>
+              <ul class="compare-list reveal-stagger">
+                <li>
+                  <span class="compare-bullet compare-bullet--check">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  </span>
+                  <span class="ours-text">Faster and quick responses</span>
+                </li>
+                <li>
+                  <span class="compare-bullet compare-bullet--check">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  </span>
+                  <span class="ours-text">Data-driven approach</span>
+                </li>
+                <li>
+                  <span class="compare-bullet compare-bullet--check">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  </span>
+                  <span class="ours-text">Transparent reporting</span>
+                </li>
+                <li>
+                  <span class="compare-bullet compare-bullet--check">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  </span>
+                  <span class="ours-text">Precise execution</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="discuss-pill">
+            <div class="discuss-pill-inner">
+              Still have a question? <a href="#contact">Chat with our experts</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== HOW IT STARTED ============================== -->
+  <section id="how-it-started" class="section section--surface">
+    <div class="container">
+      <div class="glow-card reveal">
+        <div class="glow-card-inner card-pad">
+          <div class="card-header">
+            <span class="eyebrow-pill">ONBOARDING &bull; ONBOARDING &bull; ONBOARDING</span>
+            <h2 class="card-heading">How it starts?</h2>
+          </div>
+
+          <div class="process-grid">
+            <ol class="process-steps reveal-stagger">
+              <li class="process-step">
+                <span class="process-step-marker">
+                  <span class="process-step-num">01</span>
+                  <span class="process-step-line" aria-hidden="true"></span>
+                </span>
+                <div class="process-step-body">
+                  <h3>Plan Your Growth</h3>
+                  <p>Dream big, strategize with us, and turn plans into profits.</p>
+                </div>
+              </li>
+              <li class="process-step">
+                <span class="process-step-marker">
+                  <span class="process-step-num">02</span>
+                  <span class="process-step-line" aria-hidden="true"></span>
+                </span>
+                <div class="process-step-body">
+                  <h3>Handover the project</h3>
+                  <p>We're your project navigators, turning plans into reality. Smooth sailing guaranteed.</p>
+                </div>
+              </li>
+              <li class="process-step">
+                <span class="process-step-marker">
+                  <span class="process-step-num">03</span>
+                </span>
+                <div class="process-step-body">
+                  <h3>Count the profit</h3>
+                  <p>Sit back, relax, and let the profits set sail. Your success story starts with us!</p>
+                </div>
+              </li>
+            </ol>
+
+            <div class="process-video-wrap">
+              <video src="videos/HIW.mp4" autoplay loop muted playsinline></video>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== FAQ ============================== -->
+  <section id="faq" class="section section--surface">
+    <div class="container">
+      <div class="glow-card reveal" style="background:#F9FAFC">
+        <div class="glow-card-inner card-pad">
+          <div class="card-header faq-header" style="border-bottom:1px solid var(--color-border)">
+            <h2 class="card-heading">Need Help?</h2>
+            <span class="faq-emoji" aria-hidden="true">🧑‍💻</span>
+          </div>
+
+          <div class="faq-list" style="padding-top:32px" id="faqList">
+
+            <div class="faq-item is-open">
+              <button type="button" class="faq-question" aria-expanded="true">
+                <span>Why should I choose Creadify over other agencies?</span>
+                <span class="faq-toggle">
+                  <svg class="icon-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                </span>
+              </button>
+              <div class="faq-answer">
+                <p>Choosing Creadify means choosing a results-driven, client-focused, and technologically advanced digital marketing partner. With a proven track record, personalized strategies, and a commitment to transparent communication, we are confident in our ability to elevate your online presence and drive sustainable business growth.</p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button type="button" class="faq-question" aria-expanded="false">
+                <span>What sets Creadify apart from the competition?</span>
+                <span class="faq-toggle">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                </span>
+              </button>
+              <div class="faq-answer">
+                <p>Creadify stands out in the crowded digital advertising landscape by offering a potent combination of advanced technology, customization options, data-driven insights, and a proven track record.</p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button type="button" class="faq-question" aria-expanded="false">
+                <span>How can Creadify guarantee accurate reporting?</span>
+                <span class="faq-toggle">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                </span>
+              </button>
+              <div class="faq-answer">
+                <p>Creadify's commitment to accuracy is upheld through advanced technology, real-time validation, transparency, a knowledgeable team, and a rigorous quality control process. By choosing Creadify, clients can trust that their reporting is reliable and reflects the most accurate and current data available.</p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button type="button" class="faq-question" aria-expanded="false">
+                <span>How long does SEO take?</span>
+                <span class="faq-toggle">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                </span>
+              </button>
+              <div class="faq-answer">
+                <p>Usually 3-6 months depending on competition.</p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button type="button" class="faq-question" aria-expanded="false">
+                <span>Do you offer monthly reporting?</span>
+                <span class="faq-toggle">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                </span>
+              </button>
+              <div class="faq-answer">
+                <p>Yes, every client receives a clear monthly report covering performance, spend, and next steps.</p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button type="button" class="faq-question" aria-expanded="false">
+                <span>Can you redesign existing websites?</span>
+                <span class="faq-toggle">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                </span>
+              </button>
+              <div class="faq-answer">
+                <p>Absolutely — we can rebuild or refresh your existing site without losing your current SEO rankings.</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============================== FOOTER ============================== -->
+<footer class="footer">
+  <div class="container container--wide footer-inner">
+    <div class="footer-logo">
+      <img src="images/logo.png" alt="Creadify" />
+    </div>
+
+    <div class="footer-divider"></div>
+
+    <div class="footer-bottom">
+      <p class="footer-copy">
+        &copy; 2026 Creadify Private Limited. | <a href="privacy-policy.html">Privacy Policy</a>
+      </p>
+      <div class="footer-socials">
+        <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.94 8.5H3.56V20.5H6.94V8.5Z"/><path d="M5.25 7.02C6.35 7.02 7.25 6.12 7.25 5.02C7.25 3.92 6.35 3.02 5.25 3.02C4.14 3.02 3.25 3.92 3.25 5.02C3.25 6.12 4.14 7.02 5.25 7.02Z"/><path d="M13.28 8.5H10.06V20.5H13.42V14.4C13.42 12.77 13.73 11.19 15.75 11.19C17.74 11.19 17.77 13.05 17.77 14.5V20.5H21.13V13.84C21.13 10.93 20.5 8.69 17.1 8.69C15.47 8.69 14.37 9.59 13.92 10.44H13.28V8.5Z"/></svg>
+        </a>
+        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1" fill="currentColor" stroke="none"/></svg>
+        </a>
+        <a href="https://x.com" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.9 3H21.7L15.5 10.1L22.8 21H17.1L12.6 14.6L7.5 21H4.7L11.3 13.4L4.3 3H10.2L14.3 8.9L18.9 3ZM17.9 19.2H19.5L9.3 4.7H7.6L17.9 19.2Z"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ============================== CONTACT MODAL ============================== -->
+<div class="modal-overlay" id="contactModal" role="presentation">
+  <div class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="contact-modal-title">
+    <button type="button" class="modal-close" id="modalCloseBtn" aria-label="Close contact form">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+
+    <div class="modal-body">
+
+      <div class="modal-form-wrap" id="modalFormWrap">
+        <h2 id="contact-modal-title" class="modal-title">Send a<br />message.</h2>
+        <p class="modal-subtitle">We're here to answer any question you may have.</p>
+
+        <form id="contactForm" novalidate class="form-grid">
+          <div class="form-row">
+            <div class="field">
+              <label for="modal-name">Your Name</label>
+              <input id="modal-name" name="name" class="field-input" placeholder="Jordan Lee" />
+              <p class="field-error" data-error-for="name">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                <span></span>
+              </p>
+            </div>
+            <div class="field">
+              <label for="modal-email">Email Address</label>
+              <input id="modal-email" name="email" type="email" class="field-input" placeholder="jordan@acme.com" />
+              <p class="field-error" data-error-for="email">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                <span></span>
+              </p>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="field">
+              <label for="modal-phone">Phone Number</label>
+              <input id="modal-phone" name="phone" type="tel" class="field-input" placeholder="+1 (555) 000-0000" />
+              <p class="field-error" data-error-for="phone">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                <span></span>
+              </p>
+            </div>
+            <div class="field">
+              <label for="modal-budget">Budget</label>
+              <div class="field-budget-wrap">
+                <span class="field-budget-symbol" aria-hidden="true">&#8377;</span>
+                <input id="modal-budget" name="budget" inputmode="numeric" class="field-input" placeholder="50,000/mo" />
+              </div>
+              <p class="field-error" data-error-for="budget">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                <span></span>
+              </p>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="modal-service">Service</label>
+            <select id="modal-service" name="service" class="field-select" defaultValue="">
+              <option value="" disabled selected>Select a service...</option>
+              <option value="Strategic Marketing">Strategic Marketing</option>
+              <option value="Eye-catchy Designs">Eye-catchy Designs</option>
+              <option value="Social Media">Social Media</option>
+              <option value="Web Development">Web Development</option>
+              <option value="Robust SEO">Robust SEO</option>
+              <option value="Automation">Automation</option>
+            </select>
+            <p class="field-error" data-error-for="service">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+              <span></span>
+            </p>
+          </div>
+
+          <div class="field">
+            <label for="modal-message">Tell us about your project</label>
+            <textarea id="modal-message" name="message" rows="3" class="field-textarea" placeholder="Tell us about your business and goals..."></textarea>
+            <p class="field-error" data-error-for="message">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+              <span></span>
+            </p>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-lg btn-full" id="contactSubmitBtn">
+            <span id="submitBtnLabel">Send Message</span>
+            <svg class="btn-icon" id="submitBtnIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+          </button>
+        </form>
+
+        <div class="modal-contact-grid">
+          <div>
+            <p>Careers</p>
+            <p>Would you like to join our growing team?</p>
+            <a href="mailto:hr@creadify.in">hr@creadify.in</a>
+          </div>
+          <div>
+            <p>Direct Contact</p>
+            <p>Prefer email or a call?</p>
+            <a href="mailto:info@creadify.in">info@creadify.in</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-success" id="modalSuccess">
+        <span class="modal-success-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        </span>
+        <h3>Thanks &mdash; we&rsquo;ve got it.</h3>
+        <p>A strategist will review your details and follow up within one business day.</p>
+        <button type="button" class="btn btn-secondary" id="sendAnotherBtn">Send another message</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script src="js/script.js"></script>
+</body>
+</html>

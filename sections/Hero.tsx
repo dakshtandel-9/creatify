@@ -26,6 +26,7 @@ export function Hero({ content }: HeroProps) {
         });
 
         tl.from(".hero-heading", { autoAlpha: 0, y: 40 })
+          .from(".hero-stats", { autoAlpha: 0, y: 20 }, "-=0.4")
           .from(".hero-subheading", { autoAlpha: 0, y: 28 }, "-=0.4")
           .from(".hero-actions", { autoAlpha: 0, y: 24 }, "-=0.4")
           .from(".hero-certified", { autoAlpha: 0, y: 12 }, "-=0.4");
@@ -67,26 +68,40 @@ export function Hero({ content }: HeroProps) {
         </div>
       </div>
 
-      <Container wide className="relative z-10 px-6 sm:px-10 lg:px-16">
+      <Container wide className="relative z-10 px-2 sm:px-10 lg:px-16">
         <div className="mx-auto max-w-3xl flex flex-col items-center text-center">
-          <h1 className="hero-heading text-[53px] sm:text-[80px] lg:text-[90px] font-extrabold leading-[1.15] tracking-tight text-text">
-            {(() => {
-              const breakIndex = content.heading.indexOf(". ") + 1;
-              const firstLine = content.heading.slice(0, breakIndex);
-              const secondLine = content.heading.slice(breakIndex + 1);
-              return (
-                <>
-                  {firstLine}
-                  <br />
-                  {secondLine}
-                  <br className="sm:hidden" />{" "}
-                </>
-              );
-            })()}
-            <span className="text-accent-500">{content.headingHighlight}</span>
+          <h1 className="hero-heading w-full sm:w-auto text-[50px] sm:text-[80px] lg:text-[90px] font-extrabold leading-[1.15] tracking-tight text-text">
+            <span className="sm:hidden">
+              We Drive
+              <br />
+              Growth. You
+              <br />
+              Get <span className="text-accent-500">{content.headingHighlight}</span>
+            </span>
+            <span className="hidden sm:inline">
+              {(() => {
+                const breakIndex = content.heading.indexOf(". ") + 1;
+                const firstLine = content.heading.slice(0, breakIndex);
+                const secondLine = content.heading.slice(breakIndex + 1);
+                return (
+                  <>
+                    {firstLine}
+                    <br />
+                    {secondLine}{" "}
+                  </>
+                );
+              })()}
+              <span className="text-accent-500">{content.headingHighlight}</span>
+            </span>
           </h1>
 
-          <p className="hero-subheading mt-6 max-w-[280px] sm:max-w-none sm:w-[440px] lg:w-[560px] text-lg leading-relaxed text-text-muted">
+          {content.stats && (
+            <p className="hero-stats mt-4 text-sm sm:text-base font-medium text-text-muted">
+              {content.stats}
+            </p>
+          )}
+
+          <p className="hero-subheading mt-6 w-[95%] max-w-none text-base sm:w-[440px] sm:text-lg lg:w-[560px] leading-relaxed text-text-muted">
             {content.subheading}
           </p>
 

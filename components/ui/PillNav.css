@@ -28,10 +28,10 @@
     top: 0;
     width: 100%;
     left: 0;
-    padding: 0 1.25rem;
-    height: 4.2em;
-    background: #ffffff;
-    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06);
+    padding: 1rem 1.25rem;
+    height: auto;
+    background: transparent;
+    box-shadow: none;
     box-sizing: border-box;
   }
 }
@@ -97,17 +97,17 @@
 
 @media (max-width: 768px) {
   .pill-logo {
-    height: auto;
-    background: transparent;
+    height: 52px;
+    background: #ffffff;
     backdrop-filter: none;
     -webkit-backdrop-filter: none;
     border: none;
-    box-shadow: none;
-    padding: 0;
+    box-shadow: 0 4px 16px rgba(10, 53, 91, 0.12);
+    padding: 0 18px;
   }
 
   .pill-logo svg {
-    height: 28px;
+    height: 26px;
   }
 }
 
@@ -276,6 +276,21 @@
 @media (max-width: 768px) {
   .mobile-menu-button {
     display: flex;
+    width: 52px;
+    height: 52px;
+    flex-shrink: 0;
+    border-radius: 9999px;
+    background: #ffffff;
+    border: none;
+    outline: none;
+    box-shadow: 0 4px 16px rgba(10, 53, 91, 0.12);
+  }
+
+  .mobile-menu-button:focus,
+  .mobile-menu-button:focus-visible,
+  .mobile-menu-button:active {
+    outline: none;
+    border: none;
   }
 }
 
@@ -290,7 +305,7 @@
 
 .mobile-menu-popover {
   position: fixed;
-  top: 4.2em;
+  top: calc(52px + 2rem);
   right: 0;
   left: 0;
   width: 100%;

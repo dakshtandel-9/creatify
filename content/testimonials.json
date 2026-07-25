@@ -3,52 +3,60 @@
 
   "items": [
     {
-      "name": "Sarah Mitchell",
+      "name": "Ramesh Bhatt",
       "role": "Founder & CEO",
-      "company": "Lumen Skincare",
+      "company": "Bhatt Textiles",
       "quote": "Creadify rebuilt our funnel from scratch and our paid ROAS doubled inside two months. They actually think like operators, not just marketers.",
       "rating": 5,
-      "avatar": "https://randomuser.me/api/portraits/women/68.jpg"
+      "avatar": "/Testimonials/ramesh-bhatt.png"
     },
     {
-      "name": "James Okoye",
+      "name": "Anamika Desai",
       "role": "Head of Growth",
-      "company": "Northbound Finance",
+      "company": "Desai Wellness Co.",
       "quote": "The reporting alone is worth it. We finally know which channels are actually driving revenue instead of guessing every quarter.",
       "rating": 5,
-      "avatar": "https://randomuser.me/api/portraits/men/32.jpg"
+      "avatar": "/Testimonials/anamika-desai.png"
     },
     {
-      "name": "Priya Raman",
+      "name": "Ravi Kamat",
       "role": "Marketing Director",
-      "company": "Fieldstone Goods",
+      "company": "Kamat Realty Group",
       "quote": "Every deliverable shipped on time and the creative team genuinely understood our brand voice from the first draft.",
       "rating": 5,
-      "avatar": "https://randomuser.me/api/portraits/women/44.jpg"
+      "avatar": "/Testimonials/ravi-kamat.png"
     },
     {
-      "name": "Daniel Cho",
+      "name": "Asha Harissh",
       "role": "Co-Founder",
-      "company": "Ridgeline Outdoors",
+      "company": "Harissh & Co. Interiors",
       "quote": "We tried three agencies before Creadify. This is the first team that treated our budget like it was their own money.",
       "rating": 5,
-      "avatar": "https://randomuser.me/api/portraits/men/76.jpg"
+      "avatar": "/Testimonials/asha-harissh.png"
     },
     {
-      "name": "Emily Foster",
+      "name": "Rahul Pandit",
       "role": "VP Marketing",
-      "company": "Bright Harbor SaaS",
+      "company": "Pandit Fintech",
       "quote": "Our SEO traffic grew 3x in six months and the automation work they set up saves the team about ten hours a week.",
       "rating": 5,
-      "avatar": "https://randomuser.me/api/portraits/women/21.jpg"
+      "avatar": "/Testimonials/rahul-pandit.png"
     },
     {
-      "name": "Marcus Reyes",
+      "name": "Jasica",
       "role": "Owner",
-      "company": "Reyes & Co. Coffee",
+      "company": "Jasica Boutique",
       "quote": "Social media went from an afterthought to our biggest acquisition channel. Genuinely didn't expect that kind of turnaround.",
       "rating": 5,
-      "avatar": "https://randomuser.me/api/portraits/men/54.jpg"
+      "avatar": "/Testimonials/jasica.png"
+    },
+    {
+      "name": "Sunil Naik",
+      "role": "Operations Director",
+      "company": "Naik Logistics",
+      "quote": "The weekly check-ins alone were worth it. No jargon, no vanity metrics — just a clear picture of what was working and what was changing next.",
+      "rating": 5,
+      "avatar": "/Testimonials/sunil-naik.png"
     }
   ]
 }

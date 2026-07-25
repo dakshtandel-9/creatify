@@ -8,12 +8,7 @@ import { CheckCircle2, X, Send } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { useLenisControls } from "@/components/layout/SmoothScrollProvider";
 import { FieldWrapper, Input, Select, Textarea } from "@/components/ui/FormField";
-import {
-  contactFormSchema,
-  type ContactFormValues,
-  BUDGET_OPTIONS,
-  SERVICE_OPTIONS,
-} from "@/lib/validation";
+import { contactFormSchema, type ContactFormValues } from "@/lib/validation";
 import { cn } from "@/lib/utils";
 import type { ContactContent } from "@/types/cms";
 
@@ -22,6 +17,15 @@ type ContactModalProps = {
   isOpen: boolean;
   onClose: () => void;
 };
+
+const SERVICE_OPTIONS = [
+  "Strategic Marketing",
+  "Eye-catchy Designs",
+  "Social Media",
+  "Web Development",
+  "Robust SEO",
+  "Automation",
+];
 
 export function ContactModal({ content, isOpen, onClose }: ContactModalProps) {
   const panelRef = useRef<HTMLDivElement>(null);
@@ -194,21 +198,22 @@ export function ContactModal({ content, isOpen, onClose }: ContactModalProps) {
                           htmlFor="modal-budget"
                           error={errors.budget?.message}
                         >
-                          <Select
-                            id="modal-budget"
-                            hasError={!!errors.budget}
-                            defaultValue=""
-                            {...register("budget")}
-                          >
-                            <option value="" disabled>
-                              Select a range
-                            </option>
-                            {BUDGET_OPTIONS.map((opt) => (
-                              <option key={opt} value={opt}>
-                                {opt}
-                              </option>
-                            ))}
-                          </Select>
+                          <div className="relative">
+                            <span
+                              className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-base text-text"
+                              aria-hidden="true"
+                            >
+                              ₹
+                            </span>
+                            <Input
+                              id="modal-budget"
+                              inputMode="numeric"
+                              hasError={!!errors.budget}
+                              placeholder="50,000/mo"
+                              className="pl-8"
+                              {...register("budget")}
+                            />
+                          </div>
                         </FieldWrapper>
                       </div>
 
@@ -224,11 +229,11 @@ export function ContactModal({ content, isOpen, onClose }: ContactModalProps) {
                           {...register("service")}
                         >
                           <option value="" disabled>
-                            Select a service
+                            Select a service...
                           </option>
-                          {SERVICE_OPTIONS.map((opt) => (
-                            <option key={opt} value={opt}>
-                              {opt}
+                          {SERVICE_OPTIONS.map((service) => (
+                            <option key={service} value={service}>
+                              {service}
                             </option>
                           ))}
                         </Select>

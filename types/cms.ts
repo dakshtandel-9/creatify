@@ -55,6 +55,7 @@ export type HeroContent = {
   badge: string;
   heading: string;
   headingHighlight: string;
+  stats?: string;
   subheading: string;
   primaryButton: string;
   dashboard: {

@@ -29,7 +29,11 @@ export function buildLocalBusinessJsonLd(site: SiteContent, contact: ContactCont
     telephone: contact.phone,
     address: {
       "@type": "PostalAddress",
-      addressLocality: contact.address,
+      streetAddress: "Flat No 2, 2nd Floor, Khajoorbanna Dargah Road, Mahendru",
+      addressLocality: "Patna",
+      addressRegion: "Bihar",
+      postalCode: "800006",
+      addressCountry: "IN",
     },
     priceRange: "$$$",
   };
