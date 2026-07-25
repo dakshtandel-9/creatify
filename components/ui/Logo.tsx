@@ -12,8 +12,8 @@ export function Logo({ tone = "dark", className }: LogoProps) {
       <Image
         src="/images/logo.png"
         alt="Creadify"
-        width={441}
-        height={105}
+        width={550}
+        height={131}
         priority
         className={cn("h-9 w-auto", tone === "light" && "brightness-0 invert")}
       />
