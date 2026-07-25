@@ -3,18 +3,13 @@ import { cn } from "@/lib/utils";
 import { AlertCircle } from "lucide-react";
 
 type FieldWrapperProps = {
-  label: string;
-  htmlFor: string;
   error?: string;
   children: React.ReactNode;
 };
 
-export function FieldWrapper({ label, htmlFor, error, children }: FieldWrapperProps) {
+export function FieldWrapper({ error, children }: FieldWrapperProps) {
   return (
     <div>
-      <label htmlFor={htmlFor} className="block text-sm font-semibold text-primary-900 mb-1.5">
-        {label}
-      </label>
       {children}
       {error ? (
         <p className="mt-1.5 flex items-center gap-1.5 text-sm text-rose-600" role="alert">
@@ -27,8 +22,8 @@ export function FieldWrapper({ label, htmlFor, error, children }: FieldWrapperPr
 }
 
 const fieldBase =
-  "h-14 w-full rounded-xl border bg-white px-4 text-base text-text placeholder:text-text-subtle " +
-  "transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-offset-0";
+  "h-10 w-full border-0 border-b bg-transparent px-0 text-base text-text placeholder:text-primary-900 rounded-none " +
+  "transition-colors duration-150 focus:outline-none";
 
 export const Input = React.forwardRef<
   HTMLInputElement,
@@ -39,8 +34,8 @@ export const Input = React.forwardRef<
     className={cn(
       fieldBase,
       hasError
-        ? "border-rose-300 focus:border-rose-400 focus:ring-rose-100"
-        : "border-border focus:border-accent-400 focus:ring-accent-100",
+        ? "border-rose-300 focus:border-rose-500"
+        : "border-border focus:border-primary-900",
       className
     )}
     {...props}
@@ -55,11 +50,11 @@ export const Textarea = React.forwardRef<
   <textarea
     ref={ref}
     className={cn(
-      "w-full rounded-xl border bg-white px-4 py-3.5 text-base text-text placeholder:text-text-subtle resize-none",
-      "transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-offset-0",
+      "w-full border-0 border-b bg-transparent px-0 py-2 text-base text-text placeholder:text-primary-900 resize-none rounded-none",
+      "transition-colors duration-150 focus:outline-none",
       hasError
-        ? "border-rose-300 focus:border-rose-400 focus:ring-rose-100"
-        : "border-border focus:border-accent-400 focus:ring-accent-100",
+        ? "border-rose-300 focus:border-rose-500"
+        : "border-border focus:border-primary-900",
       className
     )}
     {...props}
@@ -75,10 +70,10 @@ export const Select = React.forwardRef<
     ref={ref}
     className={cn(
       fieldBase,
-      "appearance-none bg-[url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22%23475569%22 stroke-width=%222%22><path d=%22M6 9l6 6 6-6%22/></svg>')] bg-no-repeat bg-[right_1rem_center] bg-[length:20px] pr-10",
+      "appearance-none bg-[url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22%23475569%22 stroke-width=%222%22><path d=%22M6 9l6 6 6-6%22/></svg>')] bg-no-repeat bg-[right_0.25rem_center] bg-[length:18px] pr-8",
       hasError
-        ? "border-rose-300 focus:border-rose-400 focus:ring-rose-100"
-        : "border-border focus:border-accent-400 focus:ring-accent-100",
+        ? "border-rose-300 focus:border-rose-500"
+        : "border-border focus:border-primary-900",
       className
     )}
     {...props}

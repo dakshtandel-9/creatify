@@ -37,7 +37,7 @@ export function Footer({ content }: FooterProps) {
                 |{" "}
                 <a
                   href={slugify(label)}
-                  className="text-primary-700 transition-colors hover:text-primary-900"
+                  className="text-blue-600 underline transition-colors hover:text-blue-700"
                 >
                   {label}
                 </a>

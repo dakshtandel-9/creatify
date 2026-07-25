@@ -150,57 +150,44 @@ export function ContactModal({ content, isOpen, onClose }: ContactModalProps) {
                       className="mt-8 space-y-5"
                     >
                       <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
-                        <FieldWrapper
-                          label="Your Name"
-                          htmlFor="modal-name"
-                          error={errors.name?.message}
-                        >
+                        <FieldWrapper error={errors.name?.message}>
                           <Input
                             id="modal-name"
+                            placeholder="Your Name"
+                            aria-label="Your Name"
                             hasError={!!errors.name}
-                            placeholder="Jordan Lee"
                             {...register("name")}
                           />
                         </FieldWrapper>
 
-                        <FieldWrapper
-                          label="Email Address"
-                          htmlFor="modal-email"
-                          error={errors.email?.message}
-                        >
+                        <FieldWrapper error={errors.email?.message}>
                           <Input
                             id="modal-email"
                             type="email"
+                            placeholder="Email Address"
+                            aria-label="Email Address"
                             hasError={!!errors.email}
-                            placeholder="jordan@acme.com"
                             {...register("email")}
                           />
                         </FieldWrapper>
                       </div>
 
                       <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
-                        <FieldWrapper
-                          label="Phone Number"
-                          htmlFor="modal-phone"
-                          error={errors.phone?.message}
-                        >
+                        <FieldWrapper error={errors.phone?.message}>
                           <Input
                             id="modal-phone"
                             type="tel"
+                            placeholder="Phone Number"
+                            aria-label="Phone Number"
                             hasError={!!errors.phone}
-                            placeholder="+1 (555) 000-0000"
                             {...register("phone")}
                           />
                         </FieldWrapper>
 
-                        <FieldWrapper
-                          label="Budget"
-                          htmlFor="modal-budget"
-                          error={errors.budget?.message}
-                        >
+                        <FieldWrapper error={errors.budget?.message}>
                           <div className="relative">
                             <span
-                              className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-base text-text"
+                              className="pointer-events-none absolute left-0 top-1/2 -translate-y-1/2 text-base text-text"
                               aria-hidden="true"
                             >
                               ₹
@@ -208,22 +195,20 @@ export function ContactModal({ content, isOpen, onClose }: ContactModalProps) {
                             <Input
                               id="modal-budget"
                               inputMode="numeric"
+                              placeholder="Budget"
+                              aria-label="Budget"
                               hasError={!!errors.budget}
-                              placeholder="50,000/mo"
-                              className="pl-8"
+                              className="pl-4"
                               {...register("budget")}
                             />
                           </div>
                         </FieldWrapper>
                       </div>
 
-                      <FieldWrapper
-                        label="Service"
-                        htmlFor="modal-service"
-                        error={errors.service?.message}
-                      >
+                      <FieldWrapper error={errors.service?.message}>
                         <Select
                           id="modal-service"
+                          aria-label="Service"
                           hasError={!!errors.service}
                           defaultValue=""
                           {...register("service")}
@@ -239,16 +224,13 @@ export function ContactModal({ content, isOpen, onClose }: ContactModalProps) {
                         </Select>
                       </FieldWrapper>
 
-                      <FieldWrapper
-                        label="Tell us about your project"
-                        htmlFor="modal-message"
-                        error={errors.message?.message}
-                      >
+                      <FieldWrapper error={errors.message?.message}>
                         <Textarea
                           id="modal-message"
                           rows={3}
+                          placeholder="Tell us about your project"
+                          aria-label="Tell us about your project"
                           hasError={!!errors.message}
-                          placeholder="Tell us about your business and goals..."
                           {...register("message")}
                         />
                       </FieldWrapper>
@@ -259,7 +241,7 @@ export function ContactModal({ content, isOpen, onClose }: ContactModalProps) {
                         size="lg"
                         icon={Send}
                         loading={isSubmitting}
-                        className={cn("w-full")}
+                        className={cn("w-full bg-[#FF841D] hover:bg-[#e6740f]")}
                       >
                         {isSubmitting ? "Sending..." : content.button}
                       </Button>
@@ -273,7 +255,7 @@ export function ContactModal({ content, isOpen, onClose }: ContactModalProps) {
                         </p>
                         <a
                           href="mailto:hr@creadify.in"
-                          className="mt-1 inline-block text-sm font-bold text-accent-700 hover:text-accent-800"
+                          className="mt-1 inline-block text-sm font-bold text-black hover:text-primary-900"
                         >
                           hr@creadify.in
                         </a>
@@ -285,7 +267,7 @@ export function ContactModal({ content, isOpen, onClose }: ContactModalProps) {
                         </p>
                         <a
                           href={`mailto:${content.email}`}
-                          className="mt-1 inline-block text-sm font-bold text-accent-700 hover:text-accent-800"
+                          className="mt-1 inline-block text-sm font-bold text-black hover:text-primary-900"
                         >
                           {content.email}
                         </a>

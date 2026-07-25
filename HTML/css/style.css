@@ -192,14 +192,14 @@ button { font: inherit; cursor: pointer; }
 .btn:hover .btn-icon { transform: translateX(2px); }
 
 .btn-primary {
-  background: var(--color-accent-700);
+  background: var(--color-accent);
   color: #fff;
   box-shadow: var(--shadow-sm);
 }
 .btn-primary:hover {
   transform: translateY(-2px);
   box-shadow: var(--shadow-glow-accent);
-  background: var(--color-accent-800);
+  background: var(--color-accent-600);
 }
 
 .btn-hero {
@@ -1168,8 +1168,8 @@ button { font: inherit; cursor: pointer; }
 @media (min-width: 640px) { .footer-bottom { flex-direction: row; justify-content: space-between; } }
 
 .footer-copy { text-align: center; font-size: 14px; color: var(--color-text-muted); }
-.footer-copy a { color: var(--color-primary-700); transition: color 150ms; }
-.footer-copy a:hover { color: var(--color-primary-900); }
+.footer-copy a { color: #2563eb; text-decoration: underline; transition: color 150ms; }
+.footer-copy a:hover { color: #1d4ed8; }
 
 .footer-socials { display: flex; align-items: center; justify-content: center; gap: 20px; }
 @media (min-width: 640px) { .footer-socials { justify-content: flex-end; } }
