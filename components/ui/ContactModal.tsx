@@ -70,7 +70,7 @@ export function ContactModal({ content, isOpen, onClose }: ContactModalProps) {
     <AnimatePresence>
       {isOpen ? (
         <motion.div
-          className="fixed inset-0 z-[100] flex justify-center overflow-y-auto overscroll-contain bg-primary-950/60 backdrop-blur-sm px-4 py-6 sm:px-6 sm:py-10"
+          className="fixed inset-0 z-[100] overflow-y-auto overscroll-contain bg-primary-950/60 backdrop-blur-sm"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
@@ -86,7 +86,7 @@ export function ContactModal({ content, isOpen, onClose }: ContactModalProps) {
             role="dialog"
             aria-modal="true"
             aria-labelledby="contact-modal-title"
-            className="relative my-auto w-full max-w-3xl rounded-3xl bg-white shadow-xl"
+            className="relative min-h-dvh w-full bg-white"
             initial={{ y: "-100%", opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: "-60%", opacity: 0 }}
@@ -101,7 +101,7 @@ export function ContactModal({ content, isOpen, onClose }: ContactModalProps) {
               <X className="h-5 w-5" aria-hidden="true" />
             </button>
 
-            <div className="p-6 sm:p-10">
+            <div className="mx-auto max-w-3xl p-6 sm:p-10 lg:py-16">
               <AnimatePresence mode="wait">
                 {isSubmitSuccessful ? (
                   <motion.div

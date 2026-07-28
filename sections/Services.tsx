@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import Image from "next/image";
 import {
   LineChart,
@@ -70,6 +70,31 @@ const ACCENT_GLOW: Record<ServiceAccent, [string, string, string]> = {
 
 export function Services({ content }: ServicesProps) {
   const sectionRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    // Safari can silently ignore the declarative `autoplay` attribute and
+    // fall back to showing its own "tap to play" affordance. Forcing
+    // muted+play() imperatively makes autoplay reliable across browsers.
+    const videos = sectionRef.current?.querySelectorAll("video") ?? [];
+    const tryPlay = (video: HTMLVideoElement) => () => {
+      video.play().catch(() => {});
+    };
+
+    const cleanups = Array.from(videos).map((video) => {
+      video.muted = true;
+      video.defaultMuted = true;
+      const play = tryPlay(video);
+      play();
+      video.addEventListener("loadeddata", play);
+      document.addEventListener("visibilitychange", play);
+      return () => {
+        video.removeEventListener("loadeddata", play);
+        document.removeEventListener("visibilitychange", play);
+      };
+    });
+
+    return () => cleanups.forEach((cleanup) => cleanup());
+  }, []);
 
   useGSAP(
     () => {
@@ -190,6 +215,11 @@ export function Services({ content }: ServicesProps) {
                     loop
                     muted
                     playsInline
+                    controls={false}
+                    preload="auto"
+                    disablePictureInPicture
+                    disableRemotePlayback
+                    aria-hidden="true"
                     className="h-full w-full object-cover transition-transform duration-[400ms] ease-[var(--ease-out)] group-hover:scale-[1.04]"
                   />
                 ) : item.image ? (

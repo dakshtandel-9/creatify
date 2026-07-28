@@ -163,7 +163,7 @@
   left: 50%;
   bottom: 0;
   border-radius: 50%;
-  background: var(--base, #0a355b);
+  background: #e5e7eb;
   z-index: 1;
   display: block;
   pointer-events: none;
@@ -189,7 +189,7 @@
   position: absolute;
   left: 0;
   top: 0;
-  color: var(--hover-text, #fff);
+  color: var(--pill-text, #0a355b);
   z-index: 3;
   display: inline-block;
   will-change: transform, opacity;

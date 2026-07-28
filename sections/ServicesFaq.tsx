@@ -15,7 +15,7 @@ type ServicesFaqProps = {
 
 export function ServicesFaq({ content }: ServicesFaqProps) {
   const sectionRef = useRef<HTMLElement>(null);
-  const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(0);
+  const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null);
 
   useGSAP(
     () => {

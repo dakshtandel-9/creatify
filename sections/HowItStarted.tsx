@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import { Container } from "@/components/layout/Container";
 import { Section } from "@/components/layout/Section";
 import { BorderGlow } from "@/components/ui/BorderGlow";
@@ -14,6 +14,35 @@ type HowItStartedProps = {
 
 export function HowItStarted({ content }: HowItStartedProps) {
   const sectionRef = useRef<HTMLElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    // Safari can silently ignore the declarative `autoplay` attribute (SPA
+    // hydration timing, low power mode, etc.) and fall back to showing its
+    // own "tap to play" affordance. Forcing muted+play() imperatively, and
+    // retrying once metadata/visibility settles, makes autoplay reliable
+    // across browsers instead of leaving that button on screen.
+    video.muted = true;
+    video.defaultMuted = true;
+
+    const tryPlay = () => {
+      video.play().catch(() => {
+        /* retried on loadeddata/visibilitychange below */
+      });
+    };
+
+    tryPlay();
+    video.addEventListener("loadeddata", tryPlay);
+    document.addEventListener("visibilitychange", tryPlay);
+
+    return () => {
+      video.removeEventListener("loadeddata", tryPlay);
+      document.removeEventListener("visibilitychange", tryPlay);
+    };
+  }, []);
 
   useGSAP(
     () => {
@@ -90,12 +119,17 @@ export function HowItStarted({ content }: HowItStartedProps) {
 
               <div className="relative mx-auto aspect-[3/4] w-full max-w-[320px] overflow-hidden rounded-2xl">
                 <video
+                  ref={videoRef}
                   src="/HIW.mp4"
                   autoPlay
                   loop
                   muted
                   playsInline
                   controls={false}
+                  preload="auto"
+                  disablePictureInPicture
+                  disableRemotePlayback
+                  aria-hidden="true"
                   className="h-full w-full object-cover"
                 />
               </div>

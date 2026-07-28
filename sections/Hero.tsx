@@ -2,7 +2,6 @@
 
 import { useRef } from "react";
 import Image from "next/image";
-import { ArrowRight } from "lucide-react";
 import { Container } from "@/components/layout/Container";
 import { Button } from "@/components/ui/Button";
 import { DotGrid } from "@/components/ui/DotGrid";
@@ -74,13 +73,14 @@ export function Hero({ content }: HeroProps) {
             <span className="sm:hidden">
               We Drive
               <br />
-              Growth. You
+              Growth You
               <br />
               Get <span className="text-accent-500">{content.headingHighlight}</span>
             </span>
             <span className="hidden sm:inline">
               {(() => {
-                const breakIndex = content.heading.indexOf(". ") + 1;
+                const breakWord = "Growth";
+                const breakIndex = content.heading.indexOf(breakWord) + breakWord.length;
                 const firstLine = content.heading.slice(0, breakIndex);
                 const secondLine = content.heading.slice(breakIndex + 1);
                 return (
@@ -101,7 +101,7 @@ export function Hero({ content }: HeroProps) {
             </p>
           )}
 
-          <p className="hero-subheading mt-6 w-[95%] max-w-none text-base sm:w-[440px] sm:text-lg lg:w-[560px] leading-relaxed text-text-muted">
+          <p className="hero-subheading mt-1 w-[95%] max-w-none text-base sm:w-[440px] sm:text-lg lg:w-[560px] leading-relaxed text-text-muted">
             {content.subheading}
           </p>
 
@@ -109,8 +109,7 @@ export function Hero({ content }: HeroProps) {
             <Button
               href="#contact"
               size="lg"
-              icon={ArrowRight}
-              className="bg-accent-500 hover:bg-accent-600 shadow-none hover:shadow-none hover:translate-y-0"
+              className="bg-primary hover:bg-primary-700 shadow-none hover:shadow-none hover:translate-y-0"
             >
               {content.primaryButton}
             </Button>
