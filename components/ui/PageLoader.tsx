@@ -9,11 +9,20 @@ const MIN_VISIBLE_MS = 900;
 const EXIT_DURATION_MS = 500;
 const EXIT_HOLD_MS = 150;
 
-export function PageLoader() {
+type PageLoaderProps = {
+  /** Called once, when the loader has finished revealing the page. */
+  onReady?: () => void;
+};
+
+export function PageLoader({ onReady }: PageLoaderProps = {}) {
   const [progress, setProgress] = useState(0);
   const [phase, setPhase] = useState<"loading" | "exiting" | "done">("loading");
   const startedAt = useRef<number>(Date.now());
   const rafId = useRef<number | undefined>(undefined);
+
+  useEffect(() => {
+    if (phase === "done") onReady?.();
+  }, [phase, onReady]);
 
   useEffect(() => {
     // Page served from bfcache (back/forward navigation) — skip the loader entirely.

@@ -5,6 +5,8 @@ import Image from "next/image";
 import { Container } from "@/components/layout/Container";
 import { Button } from "@/components/ui/Button";
 import { DotGrid } from "@/components/ui/DotGrid";
+import BlurText from "@/components/ui/BlurText";
+import { usePageLoaderReady } from "@/components/layout/PageLoaderProvider";
 import { gsap, useGSAP } from "@/lib/gsap";
 import type { HeroContent } from "@/types/cms";
 
@@ -14,6 +16,7 @@ type HeroProps = {
 
 export function Hero({ content }: HeroProps) {
   const sectionRef = useRef<HTMLElement>(null);
+  const isLoaderReady = usePageLoaderReady();
 
   useGSAP(
     () => {
@@ -40,7 +43,7 @@ export function Hero({ content }: HeroProps) {
     <section
       ref={sectionRef}
       id="home"
-      className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden bg-background pt-[110px] pb-10 sm:pt-[56px] sm:pb-14"
+      className="relative flex flex-col items-center justify-center overflow-hidden bg-background pt-[110px] pb-10 sm:min-h-screen sm:pt-[56px] sm:pb-14"
     >
       {/* Ambient background — restrained, not a wall of gradient */}
       <div aria-hidden="true" className="pointer-events-none absolute inset-0 z-0">
@@ -70,14 +73,36 @@ export function Hero({ content }: HeroProps) {
       <Container wide className="relative z-10 px-2 sm:px-10 lg:px-16">
         <div className="mx-auto max-w-3xl flex flex-col items-center text-center">
           <h1 className="hero-heading w-full sm:w-auto text-[50px] sm:text-[80px] lg:text-[90px] font-extrabold leading-[1.15] tracking-tight text-text">
-            <span className="sm:hidden">
-              We Drive
-              <br />
-              Growth You
-              <br />
-              Get <span className="text-accent-500">{content.headingHighlight}</span>
+            <span className="flex flex-col items-center sm:hidden">
+              <BlurText
+                text="We Drive"
+                animateBy="words"
+                direction="top"
+                delay={120}
+                active={isLoaderReady}
+                className="justify-center"
+              />
+              <BlurText
+                text="Growth You"
+                animateBy="words"
+                direction="top"
+                delay={120}
+                active={isLoaderReady}
+                className="justify-center"
+              />
+              <span className="flex flex-wrap justify-center gap-x-3">
+                <BlurText text="Get" animateBy="words" direction="top" delay={120} active={isLoaderReady} />
+                <BlurText
+                  text={content.headingHighlight}
+                  animateBy="words"
+                  direction="top"
+                  delay={120}
+                  active={isLoaderReady}
+                  className="text-accent-500"
+                />
+              </span>
             </span>
-            <span className="hidden sm:inline">
+            <span className="hidden flex-col items-center sm:flex">
               {(() => {
                 const breakWord = "Growth";
                 const breakIndex = content.heading.indexOf(breakWord) + breakWord.length;
@@ -85,13 +110,34 @@ export function Hero({ content }: HeroProps) {
                 const secondLine = content.heading.slice(breakIndex + 1);
                 return (
                   <>
-                    {firstLine}
-                    <br />
-                    {secondLine}{" "}
+                    <BlurText
+                      text={firstLine}
+                      animateBy="words"
+                      direction="top"
+                      delay={120}
+                      active={isLoaderReady}
+                      className="justify-center"
+                    />
+                    <span className="flex flex-wrap justify-center gap-x-3">
+                      <BlurText
+                        text={secondLine}
+                        animateBy="words"
+                        direction="top"
+                        delay={120}
+                        active={isLoaderReady}
+                      />
+                      <BlurText
+                        text={content.headingHighlight}
+                        animateBy="words"
+                        direction="top"
+                        delay={120}
+                        active={isLoaderReady}
+                        className="text-accent-500"
+                      />
+                    </span>
                   </>
                 );
               })()}
-              <span className="text-accent-500">{content.headingHighlight}</span>
             </span>
           </h1>
 

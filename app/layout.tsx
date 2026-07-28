@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Golos_Text } from "next/font/google";
 import { SmoothScrollProvider } from "@/components/layout/SmoothScrollProvider";
 import { ContactModalProvider } from "@/components/layout/ContactModalProvider";
-import { PageLoader } from "@/components/ui/PageLoader";
+import { PageLoaderProvider } from "@/components/layout/PageLoaderProvider";
 import { getSiteContent, getSeoContent, getContactContent } from "@/lib/content";
 import {
   buildOrganizationJsonLd,
@@ -104,10 +104,11 @@ export default function RootLayout({
         />
       </head>
       <body className="min-h-screen bg-background text-text antialiased">
-        <PageLoader />
-        <SmoothScrollProvider>
-          <ContactModalProvider content={contact}>{children}</ContactModalProvider>
-        </SmoothScrollProvider>
+        <PageLoaderProvider>
+          <SmoothScrollProvider>
+            <ContactModalProvider content={contact}>{children}</ContactModalProvider>
+          </SmoothScrollProvider>
+        </PageLoaderProvider>
       </body>
     </html>
   );
