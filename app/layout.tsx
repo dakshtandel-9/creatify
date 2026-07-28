@@ -53,24 +53,31 @@ export async function generateMetadata(): Promise<Metadata> {
       siteName: site.name,
       title: seo.title,
       description: seo.description,
+      // A square 180x180 logo tile (rather than a 1200x630 banner) is what makes
+      // Telegram/WhatsApp/X render the compact "app card" preview: logo thumbnail
+      // on the left, title + description + domain on the right.
       images: [
         {
-          url: "/opengraph-image",
-          width: 1200,
-          height: 630,
+          url: seo.ogImage,
+          width: 180,
+          height: 180,
+          type: "image/png",
           alt: site.name,
         },
       ],
     },
     twitter: {
-      card: "summary_large_image",
+      card: "summary",
       title: seo.title,
       description: seo.description,
-      images: ["/opengraph-image"],
+      images: [seo.ogImage],
     },
     icons: {
-      icon: "/icon.svg",
-      shortcut: "/icon.svg",
+      icon: [
+        { url: "/favicon-32x32.png", type: "image/png", sizes: "32x32" },
+        { url: "/favicon-16x16.png", type: "image/png", sizes: "16x16" },
+      ],
+      apple: [{ url: "/apple-touch-icon.png", type: "image/png", sizes: "180x180" }],
     },
   };
 }

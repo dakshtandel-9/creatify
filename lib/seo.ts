@@ -6,7 +6,7 @@ export function buildOrganizationJsonLd(site: SiteContent, contact: ContactConte
     "@type": "Organization",
     name: site.name,
     url: site.url,
-    logo: `${site.url}/icon.svg`,
+    logo: `${site.url}/icon-512.png`,
     description: site.description,
     sameAs: ["https://linkedin.com", "https://instagram.com", "https://x.com"],
     contactPoint: {
@@ -24,7 +24,7 @@ export function buildLocalBusinessJsonLd(site: SiteContent, contact: ContactCont
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
     name: site.name,
-    image: `${site.url}/icon.svg`,
+    image: `${site.url}/icon-512.png`,
     url: site.url,
     telephone: contact.phone,
     address: {
