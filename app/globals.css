@@ -158,6 +158,7 @@
 
   --font-display: var(--font-golos), ui-sans-serif, system-ui, sans-serif;
   --font-sans: var(--font-golos), ui-sans-serif, system-ui, sans-serif;
+  --font-handwritten: var(--font-handwritten), cursive;
 
   --radius-sm: var(--radius-sm);
   --radius-md: var(--radius-md);

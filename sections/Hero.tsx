@@ -72,7 +72,7 @@ export function Hero({ content }: HeroProps) {
 
       <Container wide className="relative z-10 px-2 sm:px-10 lg:px-16">
         <div className="mx-auto max-w-3xl flex flex-col items-center text-center">
-          <h1 className="hero-heading w-full sm:w-auto text-[50px] sm:text-[80px] lg:text-[90px] font-extrabold leading-[1.15] tracking-tight text-text">
+          <h1 className="hero-heading w-full sm:w-auto text-[50px] sm:text-[80px] lg:text-[72px] font-extrabold leading-[1.15] tracking-tight text-text">
             <span className="flex flex-col items-center sm:hidden">
               <BlurText
                 text="We Drive"
@@ -147,7 +147,7 @@ export function Hero({ content }: HeroProps) {
             </p>
           )}
 
-          <p className="hero-subheading mt-1 w-[95%] max-w-none text-base sm:w-[440px] sm:text-lg lg:w-[560px] leading-relaxed text-text-muted">
+          <p className="hero-subheading mt-4 w-[95%] max-w-none text-base sm:w-[440px] sm:text-lg lg:w-[560px] leading-relaxed text-text-muted">
             {content.subheading}
           </p>
 
@@ -155,7 +155,7 @@ export function Hero({ content }: HeroProps) {
             <Button
               href="#contact"
               size="lg"
-              className="bg-primary hover:bg-primary-700 shadow-none hover:shadow-none hover:translate-y-0"
+              className="bg-primary hover:bg-primary-700 shadow-none hover:shadow-none hover:translate-y-0 lg:h-[41px] lg:px-6 lg:text-sm"
             >
               {content.primaryButton}
             </Button>
@@ -171,7 +171,7 @@ export function Hero({ content }: HeroProps) {
             alt="Meta Business Partner, Shopify Partners, Google Partner"
             width={2246}
             height={211}
-            className="h-auto w-full sm:h-[88px] sm:w-auto"
+            className="h-auto w-[93%] translate-x-[5%] grayscale sm:h-[88px] sm:w-auto sm:translate-x-0 lg:h-[70px]"
           />
         </div>
       </Container>

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Golos_Text } from "next/font/google";
+import { Golos_Text, Caveat } from "next/font/google";
 import { SmoothScrollProvider } from "@/components/layout/SmoothScrollProvider";
 import { ContactModalProvider } from "@/components/layout/ContactModalProvider";
 import { PageLoaderProvider } from "@/components/layout/PageLoaderProvider";
@@ -14,6 +14,13 @@ import "./globals.css";
 const golosText = Golos_Text({
   variable: "--font-golos",
   subsets: ["latin"],
+  display: "swap",
+});
+
+const caveat = Caveat({
+  variable: "--font-handwritten",
+  subsets: ["latin"],
+  weight: ["600", "700"],
   display: "swap",
 });
 
@@ -95,7 +102,7 @@ export default function RootLayout({
   const websiteJsonLd = buildWebsiteJsonLd(site);
 
   return (
-    <html lang="en" className={golosText.variable}>
+    <html lang="en" className={`${golosText.variable} ${caveat.variable}`}>
       <head>
         <script
           type="application/ld+json"

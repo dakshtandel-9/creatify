@@ -140,25 +140,18 @@ export function Services({ content }: ServicesProps) {
   return (
     <Section id="services" tone="surface" className="rounded-t-[100px]" ref={sectionRef}>
       <Container>
-        <BorderGlow
-          className="service-checklist mx-auto max-w-[880px]"
-          backgroundColor="#FEFFFF"
-          borderRadius={28}
-          colors={["#ff7a1a", "#46d3f3", "#0a355b"]}
-        >
-          <div className="p-6 shadow-lg sm:p-10 lg:p-14">
-            <div className="flex flex-col items-center gap-3 border-b border-border pb-8 text-center sm:pb-10">
-              <span className="text-[21px] font-semibold text-accent-600 [font-family:var(--font-display)]">
+        <div className="service-checklist mx-auto max-w-[880px] rounded-[28px] bg-[#FEFFFF] shadow-lg">
+          <div className="p-6 sm:p-10 lg:p-14">
+            <div className="relative flex flex-col items-center border-b border-border pb-8 pt-6 text-center sm:pb-10 sm:pt-8">
+              <span className="relative inline-flex items-center text-3xl font-bold leading-[1.1] text-primary-900 sm:text-4xl lg:text-[44px]">
                 {content.title}
+                <span
+                  aria-hidden="true"
+                  className="absolute -top-9 left-1/2 -translate-x-1/2 -rotate-[8deg] whitespace-nowrap text-[28px] tracking-wide text-accent-500 sm:-top-11 sm:text-[34px] [font-family:var(--font-handwritten)]"
+                >
+                  New!
+                </span>
               </span>
-              <h2 className="text-3xl font-bold leading-[1.1] text-primary-900 sm:text-4xl lg:text-[44px]">
-                {content.heading}
-              </h2>
-              {content.description ? (
-                <p className="max-w-[346px] text-base text-text-muted sm:text-[17px] lg:max-w-[560px]">
-                  {content.description}
-                </p>
-              ) : null}
             </div>
 
             <ul className="grid grid-cols-1 gap-x-12 gap-y-8 pt-8 sm:pt-10 md:grid-cols-2">
@@ -199,7 +192,7 @@ export function Services({ content }: ServicesProps) {
               </div>
             </div>
           </div>
-        </BorderGlow>
+        </div>
 
         <div className="mx-auto mt-8 flex max-w-[880px] flex-col gap-8">
           {content.items.map((item, index) => {
@@ -215,12 +208,14 @@ export function Services({ content }: ServicesProps) {
                     loop
                     muted
                     playsInline
+                    // eslint-disable-next-line react/no-unknown-property -- legacy iOS Safari still keys off this attribute
+                    webkit-playsinline="true"
                     controls={false}
                     preload="auto"
                     disablePictureInPicture
                     disableRemotePlayback
                     aria-hidden="true"
-                    className="h-full w-full object-cover transition-transform duration-[400ms] ease-[var(--ease-out)] group-hover:scale-[1.04]"
+                    className="pointer-events-none h-full w-full object-cover transition-transform duration-[400ms] ease-[var(--ease-out)] group-hover:scale-[1.04]"
                   />
                 ) : item.image ? (
                   <Image
