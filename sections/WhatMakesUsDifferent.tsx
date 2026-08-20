@@ -47,7 +47,7 @@ export function WhatMakesUsDifferent({ content }: WhatMakesUsDifferentProps) {
               <span className="inline-flex items-center rounded-full bg-accent-50 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.08em] text-accent-700">
                 {content.title}
               </span>
-              <h2 className="text-3xl font-bold leading-[1.1] text-primary-900 sm:text-4xl lg:text-[44px]">
+              <h2 className="bg-gradient-to-r from-[#2f6ee0] via-[#3f9ae6] to-[#61cdf1] bg-clip-text text-3xl font-bold leading-[1.1] text-transparent sm:text-4xl lg:text-[44px]">
                 {content.heading}
               </h2>
               <p className="text-base text-text-muted sm:text-[17px]">

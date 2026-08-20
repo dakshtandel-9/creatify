@@ -46,7 +46,7 @@ export function ServicesFaq({ content }: ServicesFaqProps) {
         >
           <div className="p-6 shadow-lg sm:p-10 lg:p-14">
             <div className="flex items-center justify-center gap-3 border-b border-border pb-8 text-center sm:pb-10">
-              <h2 className="text-3xl font-bold leading-[1.1] text-primary-900 sm:text-4xl lg:text-[44px]">
+              <h2 className="bg-gradient-to-r from-[#2f6ee0] via-[#3f9ae6] to-[#61cdf1] bg-clip-text text-3xl font-bold leading-[1.1] text-transparent sm:text-4xl lg:text-[44px]">
                 {content.title}
               </h2>
               {content.emoji ? (

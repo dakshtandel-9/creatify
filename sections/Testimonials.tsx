@@ -104,7 +104,7 @@ export function Testimonials({ content }: TestimonialsProps) {
           <span className="text-[21px] font-semibold text-accent-600 [font-family:var(--font-display)]">
             Testimonials
           </span>
-          <h2 className="text-3xl font-bold leading-[1.1] text-primary-900 sm:text-4xl lg:text-[44px]">
+          <h2 className="bg-gradient-to-r from-[#2f6ee0] via-[#3f9ae6] to-[#61cdf1] bg-clip-text text-3xl font-bold leading-[1.1] text-transparent sm:text-4xl lg:text-[44px]">
             {content.title}
           </h2>
         </div>

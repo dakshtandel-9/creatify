@@ -143,7 +143,7 @@ export function Services({ content }: ServicesProps) {
         <div className="service-checklist mx-auto max-w-[880px] rounded-[28px] bg-[#FEFFFF] shadow-lg">
           <div className="p-6 sm:p-10 lg:p-14">
             <div className="relative flex flex-col items-center border-b border-border pb-8 pt-6 text-center sm:pb-10 sm:pt-8">
-              <span className="relative inline-flex items-center text-3xl font-bold leading-[1.1] text-primary-900 sm:text-4xl lg:text-[44px]">
+              <span className="relative inline-flex items-center bg-gradient-to-r from-[#2f6ee0] via-[#3f9ae6] to-[#61cdf1] bg-clip-text text-3xl font-bold leading-[1.1] text-transparent sm:text-4xl lg:text-[44px]">
                 {content.title}
                 <span
                   aria-hidden="true"
@@ -159,16 +159,11 @@ export function Services({ content }: ServicesProps) {
                 const Icon = ICON_BY_TITLE[item.title] ?? FALLBACK_ICONS[index % FALLBACK_ICONS.length];
                 return (
                   <li key={item.title} className="service-checklist-item flex items-start gap-4">
-                    <span
-                      className={cn(
-                        "flex h-11 w-11 shrink-0 items-center justify-center rounded-xl",
-                        ACCENT_STYLES[item.accent]
-                      )}
-                    >
-                      <Icon className="h-5 w-5" aria-hidden="true" />
+                    <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl">
+                      <Icon className="h-5 w-5 text-black" aria-hidden="true" />
                     </span>
                     <div>
-                      <h3 className="text-base font-bold text-primary-900 sm:text-lg">
+                      <h3 className="bg-gradient-to-r from-[#2f6ee0] via-[#3f9ae6] to-[#61cdf1] bg-clip-text text-base font-bold text-transparent sm:text-lg">
                         {item.title}
                       </h3>
                       <p className="mt-1.5 text-sm leading-relaxed text-text-muted sm:text-[15px]">
@@ -249,7 +244,7 @@ export function Services({ content }: ServicesProps) {
                 >
                   {eyebrow}
                 </span>
-                <h3 className="text-2xl font-bold text-primary-900 sm:text-[26px]">
+                <h3 className="bg-gradient-to-r from-[#2f6ee0] via-[#3f9ae6] to-[#61cdf1] bg-clip-text text-2xl font-bold text-transparent sm:text-[26px]">
                   {item.title}
                 </h3>
                 <p className="text-sm leading-relaxed text-text-muted sm:text-[15px]">
