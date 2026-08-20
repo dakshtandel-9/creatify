@@ -204,7 +204,7 @@
   height: var(--nav-h);
   padding: 0 24px;
   flex-shrink: 0;
-  background: var(--color-accent, #ff7a1a);
+  background: var(--color-accent, #4a9fe6);
   color: #fff;
   text-decoration: none;
   border-radius: 9999px;
@@ -225,7 +225,7 @@
   justify-content: center;
   margin: 12px 4px 4px;
   padding: 14px 24px;
-  background: var(--color-accent, #ff7a1a);
+  background: var(--color-accent, #4a9fe6);
   color: #fff;
   text-decoration: none;
   border-radius: 9999px;
@@ -352,5 +352,5 @@
 
 .mobile-menu-popover .mobile-menu-link:hover {
   cursor: pointer;
-  color: var(--color-accent, #ff7a1a);
+  color: var(--color-accent, #4a9fe6);
 }

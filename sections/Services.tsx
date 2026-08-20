@@ -60,12 +60,12 @@ const PLACEHOLDER_GRADIENTS: Record<ServiceAccent, string> = {
 };
 
 const ACCENT_GLOW: Record<ServiceAccent, [string, string, string]> = {
-  orange: ["#ff7a1a", "#ffc699", "#0a355b"],
+  orange: ["#4a9fe6", "#b3dbfd", "#0a355b"],
   blue: ["#0a355b", "#46d3f3", "#7eaed3"],
   green: ["#10b981", "#46d3f3", "#0a355b"],
-  purple: ["#8b5cf6", "#ff7a1a", "#0a355b"],
-  cyan: ["#46d3f3", "#0a355b", "#ff7a1a"],
-  pink: ["#f472b6", "#ff7a1a", "#0a355b"],
+  purple: ["#8b5cf6", "#4a9fe6", "#0a355b"],
+  cyan: ["#46d3f3", "#0a355b", "#4a9fe6"],
+  pink: ["#f472b6", "#4a9fe6", "#0a355b"],
 };
 
 export function Services({ content }: ServicesProps) {
@@ -277,7 +277,7 @@ export function Services({ content }: ServicesProps) {
                 backgroundColor="#FEFFFF"
                 borderRadius={28}
                 colors={
-                  ACCENT_GLOW[item.accent] ?? ["#ff7a1a", "#46d3f3", "#0a355b"]
+                  ACCENT_GLOW[item.accent] ?? ["#4a9fe6", "#46d3f3", "#0a355b"]
                 }
               >
                 <div className="overflow-hidden shadow-lg">

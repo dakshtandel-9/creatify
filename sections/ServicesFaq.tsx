@@ -42,7 +42,7 @@ export function ServicesFaq({ content }: ServicesFaqProps) {
           className="service-faq mx-auto max-w-[880px]"
           backgroundColor="#F9FAFC"
           borderRadius={28}
-          colors={["#ff7a1a", "#46d3f3", "#0a355b"]}
+          colors={["#4a9fe6", "#46d3f3", "#0a355b"]}
         >
           <div className="p-6 shadow-lg sm:p-10 lg:p-14">
             <div className="flex items-center justify-center gap-3 border-b border-border pb-8 text-center sm:pb-10">

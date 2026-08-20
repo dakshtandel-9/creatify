@@ -269,7 +269,7 @@ export function ContactModal({ content, isOpen, onClose }: ContactModalProps) {
                         size="lg"
                         loading={isSubmitting}
                         className={cn(
-                          "mt-2 w-full rounded-none bg-[#FF841D] uppercase tracking-[0.08em] hover:bg-[#e6740f] sm:col-span-2"
+                          "mt-2 w-full rounded-none bg-[#4A9FE6] uppercase tracking-[0.08em] hover:bg-[#3182CE] sm:col-span-2"
                         )}
                       >
                         {isSubmitting ? "Sending..." : content.button}

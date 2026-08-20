@@ -89,7 +89,7 @@ export function GrowthChart() {
         cx={last[0]}
         cy={last[1]}
         r="5"
-        fill="#FF7A1A"
+        fill="#4A9FE6"
         stroke="white"
         strokeWidth="2"
         initial={{ opacity: 0, scale: 0 }}
@@ -101,7 +101,7 @@ export function GrowthChart() {
         cy={last[1]}
         r="5"
         fill="none"
-        stroke="#FF7A1A"
+        stroke="#4A9FE6"
         strokeWidth="2"
         initial={{ opacity: 0, scale: 1 }}
         animate={inView ? { opacity: [0.6, 0], scale: [1, 2.4] } : {}}

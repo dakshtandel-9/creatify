@@ -1,12 +1,11 @@
 import { Container } from "@/components/layout/Container";
 import { Logo } from "@/components/ui/Logo";
-import { LinkedInIcon, InstagramIcon, XIcon } from "@/components/ui/SocialIcons";
+import { InstagramIcon, XIcon } from "@/components/ui/SocialIcons";
 import type { FooterContent, NavigationContent } from "@/types/cms";
 
 const SOCIAL_LINKS = [
-  { label: "LinkedIn", href: "https://linkedin.com", icon: LinkedInIcon },
-  { label: "Instagram", href: "https://instagram.com", icon: InstagramIcon },
-  { label: "X (Twitter)", href: "https://x.com", icon: XIcon },
+  { label: "Instagram", href: "https://www.instagram.com/creadify_official", icon: InstagramIcon },
+  { label: "X (Twitter)", href: "https://x.com/creadify_com", icon: XIcon },
 ];
 
 function slugify(label: string) {

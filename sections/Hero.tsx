@@ -2,7 +2,7 @@
 
 import { Fragment, useRef } from "react";
 import Image from "next/image";
-import { ArrowUpRight, Star } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { Container } from "@/components/layout/Container";
 import { Button } from "@/components/ui/Button";
 import { DotGrid } from "@/components/ui/DotGrid";
@@ -145,15 +145,7 @@ export function Hero({ content }: HeroProps) {
 
       <Container wide className="relative z-10 px-4 sm:px-10 lg:px-16">
         <div className="mx-auto flex max-w-3xl flex-col items-center text-center">
-          <span className="hero-reveal inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 text-[13px] font-semibold text-[#2f6fd0] shadow-[0_6px_20px_-10px_rgba(10,53,91,0.35)] ring-1 ring-primary-100 sm:px-5 sm:py-2.5 sm:text-[15px]">
-            <Star
-              className="h-4 w-4 shrink-0 fill-amber-400 text-amber-400"
-              aria-hidden="true"
-            />
-            {content.badge}
-          </span>
-
-          <h1 className="hero-reveal mt-6 flex flex-col items-center text-[30px] font-extrabold leading-[1.1] tracking-[-0.03em] text-primary-900 xs:text-[34px] sm:mt-8 sm:text-[54px] lg:text-[68px] xl:text-[76px]">
+          <h1 className="hero-reveal flex flex-col items-center text-[30px] font-extrabold leading-[1.1] tracking-[-0.03em] text-primary-900 xs:text-[34px] sm:text-[54px] lg:text-[68px] xl:text-[76px]">
             <span>{leadLine}</span>
             <span className="flex flex-wrap justify-center gap-x-[0.28em]">
               <span>{bridgeWord}</span>

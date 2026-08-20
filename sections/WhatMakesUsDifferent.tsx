@@ -40,7 +40,7 @@ export function WhatMakesUsDifferent({ content }: WhatMakesUsDifferentProps) {
           className="service-comparison mx-auto max-w-[880px]"
           backgroundColor="#FFFFFF"
           borderRadius={28}
-          colors={["#ff7a1a", "#46d3f3", "#0a355b"]}
+          colors={["#4a9fe6", "#46d3f3", "#0a355b"]}
         >
           <div className="p-6 shadow-lg sm:p-10 lg:p-14">
             <div className="flex flex-col items-center gap-3 border-b border-border pb-8 text-center sm:pb-10">

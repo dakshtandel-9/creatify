@@ -21,7 +21,6 @@ export const FOOTER_LEGAL_LINKS = [
 ] as const;
 
 export const SOCIAL_LINKS = [
-  { label: "LinkedIn", href: "https://linkedin.com" },
-  { label: "Instagram", href: "https://instagram.com" },
-  { label: "X (Twitter)", href: "https://x.com" },
+  { label: "Instagram", href: "https://www.instagram.com/creadify_official" },
+  { label: "X (Twitter)", href: "https://x.com/creadify_com" },
 ] as const;

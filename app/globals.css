@@ -21,17 +21,17 @@
   --color-primary-900: #082744;
   --color-primary-950: #051a2e;
 
-  --color-accent: #ff7a1a;
-  --color-accent-50: #fff4ec;
-  --color-accent-100: #ffe3cc;
-  --color-accent-200: #ffc699;
-  --color-accent-300: #ffa45f;
-  --color-accent-400: #ff8c3d;
-  --color-accent-500: #ff7a1a;
-  --color-accent-600: #e86200;
-  --color-accent-700: #c04e00;
-  --color-accent-800: #983d02;
-  --color-accent-900: #7a3308;
+  --color-accent: #4a9fe6;
+  --color-accent-50: #eef7ff;
+  --color-accent-100: #d9edfe;
+  --color-accent-200: #b3dbfd;
+  --color-accent-300: #82c4fa;
+  --color-accent-400: #5fb0f2;
+  --color-accent-500: #4a9fe6;
+  --color-accent-600: #3182ce;
+  --color-accent-700: #2568a8;
+  --color-accent-800: #1e5486;
+  --color-accent-900: #19456c;
 
   --color-secondary: #46d3f3;
   --color-secondary-50: #edfbfe;
@@ -90,7 +90,7 @@
   --shadow-md: 0 12px 32px -8px rgba(10, 53, 91, 0.08), 0 2px 8px -2px rgba(10, 53, 91, 0.04);
   --shadow-lg: 0 24px 56px -12px rgba(10, 53, 91, 0.10), 0 4px 12px -2px rgba(10, 53, 91, 0.05);
   --shadow-xl: 0 32px 80px -16px rgba(10, 53, 91, 0.12), 0 8px 20px -4px rgba(10, 53, 91, 0.06);
-  --shadow-glow-accent: 0 0 0 1px rgba(255, 122, 26, 0.16), 0 8px 24px -6px rgba(255, 122, 26, 0.28);
+  --shadow-glow-accent: 0 0 0 1px rgba(74, 159, 230, 0.16), 0 8px 24px -6px rgba(74, 159, 230, 0.28);
   --shadow-glow-secondary: 0 0 0 1px rgba(70, 211, 243, 0.18), 0 8px 24px -6px rgba(70, 211, 243, 0.24);
 
   /* Motion timing (Part 5 §2) */

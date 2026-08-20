@@ -1,9 +1,10 @@
 "use client";
 
 import { useRef } from "react";
-import { CalendarDays, ShieldCheck } from "lucide-react";
+import { ArrowLeft, CalendarDays, ShieldCheck } from "lucide-react";
 import { Container } from "@/components/layout/Container";
 import { Badge } from "@/components/ui/Badge";
+import { Button } from "@/components/ui/Button";
 import { gsap, useGSAP } from "@/lib/gsap";
 
 type PrivacyPolicyHeroProps = {
@@ -36,7 +37,7 @@ export function PrivacyPolicyHero({ siteName, lastUpdated }: PrivacyPolicyHeroPr
       {/* Soft brand wash + dotted texture, both purely decorative */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(120%_100%_at_85%_0%,rgba(70,211,243,0.16),transparent_55%),radial-gradient(90%_80%_at_100%_40%,rgba(255,122,26,0.12),transparent_60%)]"
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(120%_100%_at_85%_0%,rgba(70,211,243,0.16),transparent_55%),radial-gradient(90%_80%_at_100%_40%,rgba(74,159,230,0.12),transparent_60%)]"
       />
       <div
         aria-hidden="true"
@@ -44,6 +45,12 @@ export function PrivacyPolicyHero({ siteName, lastUpdated }: PrivacyPolicyHeroPr
       />
 
       <Container className="relative">
+        <div className="policy-hero-reveal">
+          <Button href="/" variant="text" size="md" icon={ArrowLeft} iconPosition="left" className="mb-6 -ml-1">
+            Back to Home
+          </Button>
+        </div>
+
         <div className="policy-hero-reveal">
           <Badge icon={ShieldCheck} variant="secondary">
             Your Privacy Matters

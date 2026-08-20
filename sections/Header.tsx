@@ -107,14 +107,6 @@ export function Header({ navigation, header, site }: HeaderProps) {
                   {link.title}
                 </a>
               ))}
-              <a
-                href={header.primaryButton.link}
-                onClick={() => setMenuOpen(false)}
-                className="mt-2 inline-flex items-center justify-center gap-2.5 rounded-full bg-primary-900 px-6 py-4 text-[15px] font-semibold text-white"
-              >
-                {header.primaryButton.text}
-                <MessageCircle className="h-[18px] w-[18px] shrink-0" aria-hidden="true" />
-              </a>
             </nav>
           </motion.div>
         )}

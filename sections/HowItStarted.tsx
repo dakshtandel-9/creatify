@@ -75,7 +75,7 @@ export function HowItStarted({ content }: HowItStartedProps) {
           className="service-process mx-auto max-w-[880px]"
           backgroundColor="#FFFFFF"
           borderRadius={28}
-          colors={["#ff7a1a", "#46d3f3", "#0a355b"]}
+          colors={["#4a9fe6", "#46d3f3", "#0a355b"]}
         >
           <div className="p-6 shadow-lg sm:p-10 lg:p-14">
             <div className="flex flex-col items-center gap-3 border-b border-border pb-8 text-center sm:pb-10">
@@ -94,7 +94,7 @@ export function HowItStarted({ content }: HowItStartedProps) {
                   return (
                     <li key={step.title} className="service-process-step relative flex gap-5 pl-0">
                       <span className="relative flex flex-col items-center">
-                        <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-accent-600 text-sm font-bold text-white shadow-[0_0_0_1px_rgba(255,122,26,0.16),0_8px_20px_-4px_rgba(255,122,26,0.35)]">
+                        <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-accent-600 text-sm font-bold text-white shadow-[0_0_0_1px_rgba(74,159,230,0.16),0_8px_20px_-4px_rgba(74,159,230,0.35)]">
                           {String(index + 1).padStart(2, "0")}
                         </span>
                         {!isLast ? (
