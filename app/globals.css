@@ -217,7 +217,9 @@
 
 html {
   scroll-behavior: auto; /* Lenis handles smooth scroll; avoid double-smoothing */
-  overflow-x: hidden;
+  /* `clip` rather than `hidden`: both kill sideways scroll, but `hidden` turns the
+     element into a scroll container, which breaks `position: sticky` descendants. */
+  overflow-x: clip;
   width: 100%;
 }
 
@@ -227,7 +229,7 @@ body {
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
-  overflow-x: hidden;
+  overflow-x: clip;
   width: 100%;
 }
 

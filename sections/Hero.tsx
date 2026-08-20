@@ -2,65 +2,108 @@
 
 import { useRef } from "react";
 import Image from "next/image";
+import { ArrowUpRight, Star } from "lucide-react";
 import { Container } from "@/components/layout/Container";
 import { Button } from "@/components/ui/Button";
 import { DotGrid } from "@/components/ui/DotGrid";
-import BlurText from "@/components/ui/BlurText";
 import { usePageLoaderReady } from "@/components/layout/PageLoaderProvider";
 import { gsap, useGSAP } from "@/lib/gsap";
+import { cn } from "@/lib/utils";
 import type { HeroContent } from "@/types/cms";
 
 type HeroProps = {
   content: HeroContent;
 };
 
+const HIGHLIGHT_GRADIENT =
+  "bg-gradient-to-r bg-clip-text text-transparent from-[#2f6ee0] via-[#3f9ae6] to-[#61cdf1]";
+
 export function Hero({ content }: HeroProps) {
   const sectionRef = useRef<HTMLElement>(null);
   const isLoaderReady = usePageLoaderReady();
 
+  // The design breaks the headline as "Grow Your Business / With Smarter /
+  // Digital Marketing." — the last plain word shares a line with the first
+  // highlighted one, so the two content strings get split at that seam.
+  const headingWords = content.heading.split(" ");
+  const leadLine = headingWords.slice(0, -1).join(" ");
+  const bridgeWord = headingWords[headingWords.length - 1];
+  const highlightWords = content.headingHighlight.split(" ");
+  const highlightBridge = highlightWords[0];
+  const tailWords = highlightWords.slice(1);
+  const tailLead = tailWords.slice(0, -1).join(" ");
+  const tailLast = tailWords[tailWords.length - 1];
+
   useGSAP(
     () => {
-      const mm = gsap.matchMedia();
+      const targets = gsap.utils.toArray<HTMLElement>(".hero-reveal");
+      if (!targets.length) return;
 
-      mm.add("(prefers-reduced-motion: no-preference)", () => {
-        const tl = gsap.timeline({
-          defaults: { ease: "power3.out", duration: 0.7 },
-        });
+      const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      if (reduced) {
+        gsap.set(targets, { autoAlpha: 1, y: 0 });
+        return;
+      }
 
-        tl.from(".hero-heading", { autoAlpha: 0, y: 40 })
-          .from(".hero-stats", { autoAlpha: 0, y: 20 }, "-=0.4")
-          .from(".hero-subheading", { autoAlpha: 0, y: 28 }, "-=0.4")
-          .from(".hero-actions", { autoAlpha: 0, y: 24 }, "-=0.4")
-          .from(".hero-certified", { autoAlpha: 0, y: 12 }, "-=0.4");
-      });
+      // Hold everything back until the page loader has finished its reveal.
+      if (!isLoaderReady) {
+        gsap.set(targets, { autoAlpha: 0, y: 26 });
+        return;
+      }
 
-      return () => mm.revert();
+      gsap
+        .timeline({ defaults: { ease: "power3.out", duration: 0.8 } })
+        .to(targets, { autoAlpha: 1, y: 0, stagger: 0.11 })
+        .fromTo(
+          ".hero-underline-path",
+          { strokeDashoffset: 1 },
+          { strokeDashoffset: 0, duration: 0.7, ease: "power2.inOut" },
+          "-=0.5"
+        )
+        .fromTo(
+          ".hero-underline-dot",
+          { scale: 0, transformOrigin: "center" },
+          { scale: 1, duration: 0.3, ease: "back.out(2)" },
+          "-=0.12"
+        );
     },
-    { scope: sectionRef }
+    { scope: sectionRef, dependencies: [isLoaderReady] }
   );
 
   return (
     <section
       ref={sectionRef}
       id="home"
-      className="relative flex flex-col items-center justify-center overflow-hidden bg-background pt-[110px] pb-10 sm:min-h-screen sm:pt-[56px] sm:pb-14"
+      className="relative flex flex-col items-center justify-center overflow-hidden pt-[120px] pb-12 sm:min-h-screen sm:pt-[150px] sm:pb-16"
     >
-      {/* Ambient background — restrained, not a wall of gradient */}
+      {/* Ambient background — lavender at top-left, pale blue at right, white core */}
       <div aria-hidden="true" className="pointer-events-none absolute inset-0 z-0">
         <div
           className="absolute inset-0"
           style={{
+            background:
+              "radial-gradient(ellipse 55% 60% at 6% 6%, rgba(203,193,241,0.55) 0%, transparent 62%)," +
+              "radial-gradient(ellipse 48% 62% at 97% 58%, rgba(174,214,240,0.5) 0%, transparent 66%)," +
+              "radial-gradient(ellipse 70% 45% at 50% 0%, rgba(226,234,250,0.65) 0%, transparent 72%)," +
+              "linear-gradient(180deg, #f6f7fd 0%, #ffffff 46%, #f1f8fc 100%)",
+          }}
+        />
+
+        {/* Dot field hugging the left edge, as in the design */}
+        <div
+          className="absolute inset-y-0 left-0 w-[42%] sm:w-[28%] lg:w-[20%]"
+          style={{
             maskImage:
-              "radial-gradient(ellipse 70% 60% at 50% 30%, black, transparent 75%)",
+              "radial-gradient(130% 85% at 0% 50%, black 0%, black 34%, transparent 80%)",
             WebkitMaskImage:
-              "radial-gradient(ellipse 70% 60% at 50% 30%, black, transparent 75%)",
+              "radial-gradient(130% 85% at 0% 50%, black 0%, black 34%, transparent 80%)",
           }}
         >
           <DotGrid
-            dotSize={5}
-            gap={24}
-            baseColor="rgba(255, 122, 26, 0.2)"
-            activeColor="rgba(255, 122, 26, 0.2)"
+            dotSize={4}
+            gap={22}
+            baseColor="rgba(126,114,192,0.30)"
+            activeColor="rgba(126,114,192,0.30)"
             proximity={110}
             shockRadius={220}
             shockStrength={4}
@@ -68,102 +111,106 @@ export function Hero({ content }: HeroProps) {
             returnDuration={1.5}
           />
         </div>
+
+        {/* Thin arcs sweeping up the left margin */}
+        <svg
+          className="absolute bottom-[10%] left-0 hidden w-[200px] text-[#8fb4e4]/30 sm:block lg:w-[260px]"
+          viewBox="0 0 260 260"
+          fill="none"
+        >
+          <path
+            d="M-40 260C30 214 92 150 118 74 130 38 134 14 132 -12"
+            stroke="currentColor"
+            strokeWidth="1.25"
+          />
+          <path
+            d="M-40 224C44 182 114 116 144 36 157 0 161 -24 159 -50"
+            stroke="currentColor"
+            strokeWidth="1.25"
+          />
+        </svg>
+
+        {/* Softens the seam into the white section below */}
+        <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-b from-transparent to-background" />
       </div>
 
-      <Container wide className="relative z-10 px-2 sm:px-10 lg:px-16">
-        <div className="mx-auto max-w-3xl flex flex-col items-center text-center">
-          <h1 className="hero-heading w-full sm:w-auto text-[50px] sm:text-[80px] lg:text-[72px] font-extrabold leading-[1.15] tracking-tight text-text">
-            <span className="flex flex-col items-center sm:hidden">
-              <BlurText
-                text="We Drive"
-                animateBy="words"
-                direction="top"
-                delay={120}
-                active={isLoaderReady}
-                className="justify-center"
-              />
-              <BlurText
-                text="Growth You"
-                animateBy="words"
-                direction="top"
-                delay={120}
-                active={isLoaderReady}
-                className="justify-center"
-              />
-              <span className="flex flex-wrap justify-center gap-x-3">
-                <BlurText text="Get" animateBy="words" direction="top" delay={120} active={isLoaderReady} />
-                <BlurText
-                  text={content.headingHighlight}
-                  animateBy="words"
-                  direction="top"
-                  delay={120}
-                  active={isLoaderReady}
-                  className="text-accent-500"
-                />
-              </span>
+      <Container wide className="relative z-10 px-4 sm:px-10 lg:px-16">
+        <div className="mx-auto flex max-w-3xl flex-col items-center text-center">
+          <span className="hero-reveal inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 text-[13px] font-semibold text-[#2f6fd0] shadow-[0_6px_20px_-10px_rgba(10,53,91,0.35)] ring-1 ring-primary-100 sm:px-5 sm:py-2.5 sm:text-[15px]">
+            <Star
+              className="h-4 w-4 shrink-0 fill-amber-400 text-amber-400"
+              aria-hidden="true"
+            />
+            {content.badge}
+          </span>
+
+          <h1 className="hero-reveal mt-6 flex flex-col items-center text-[30px] font-extrabold leading-[1.1] tracking-[-0.03em] text-primary-900 xs:text-[34px] sm:mt-8 sm:text-[54px] lg:text-[68px] xl:text-[76px]">
+            <span>{leadLine}</span>
+            <span className="flex flex-wrap justify-center gap-x-[0.28em]">
+              <span>{bridgeWord}</span>
+              <span className={HIGHLIGHT_GRADIENT}>{highlightBridge}</span>
             </span>
-            <span className="hidden flex-col items-center sm:flex">
-              {(() => {
-                const breakWord = "Growth";
-                const breakIndex = content.heading.indexOf(breakWord) + breakWord.length;
-                const firstLine = content.heading.slice(0, breakIndex);
-                const secondLine = content.heading.slice(breakIndex + 1);
-                return (
-                  <>
-                    <BlurText
-                      text={firstLine}
-                      animateBy="words"
-                      direction="top"
-                      delay={120}
-                      active={isLoaderReady}
-                      className="justify-center"
-                    />
-                    <span className="flex flex-wrap justify-center gap-x-3">
-                      <BlurText
-                        text={secondLine}
-                        animateBy="words"
-                        direction="top"
-                        delay={120}
-                        active={isLoaderReady}
-                      />
-                      <BlurText
-                        text={content.headingHighlight}
-                        animateBy="words"
-                        direction="top"
-                        delay={120}
-                        active={isLoaderReady}
-                        className="text-accent-500"
-                      />
-                    </span>
-                  </>
-                );
-              })()}
+            {/* The gradient lives on the line, not the words, so it runs
+                continuously from deep blue to cyan across the whole phrase. */}
+            <span
+              className={cn(
+                "flex flex-wrap justify-center gap-x-[0.28em]",
+                HIGHLIGHT_GRADIENT
+              )}
+            >
+              {tailLead ? <span>{tailLead}</span> : null}
+              <span className="relative inline-block">
+                <span>{tailLast}</span>
+                {/* Hand-drawn underline sweep under the closing word */}
+                <svg
+                  className="absolute -left-[3%] top-full w-[106%] -translate-y-[0.16em]"
+                  viewBox="0 0 200 14"
+                  fill="none"
+                  aria-hidden="true"
+                >
+                  <defs>
+                    <linearGradient id="hero-underline" x1="0" y1="0" x2="1" y2="0">
+                      <stop offset="0%" stopColor="#2f6ee0" />
+                      <stop offset="100%" stopColor="#61cdf1" />
+                    </linearGradient>
+                  </defs>
+                  <path
+                    className="hero-underline-path"
+                    d="M3 10.2C42 5.6 104 3.4 148 4.4c16 .4 32 1.4 44 3.1"
+                    stroke="url(#hero-underline)"
+                    strokeWidth="3.6"
+                    strokeLinecap="round"
+                    pathLength={1}
+                    strokeDasharray={1}
+                  />
+                  <circle
+                    className="hero-underline-dot"
+                    cx="196.5"
+                    cy="11.4"
+                    r="2.8"
+                    fill="#61cdf1"
+                  />
+                </svg>
+              </span>
             </span>
           </h1>
 
-          {content.stats && (
-            <p className="hero-stats mt-4 text-sm sm:text-base font-medium text-text-muted">
-              {content.stats}
-            </p>
-          )}
-
-          <p className="hero-subheading mt-4 w-[95%] max-w-none text-base sm:w-[440px] sm:text-lg lg:w-[560px] leading-relaxed text-text-muted">
+          <p className="hero-reveal mt-7 max-w-[560px] text-base leading-relaxed text-text-muted sm:mt-10 sm:text-[17px]">
             {content.subheading}
           </p>
 
-          <div className="hero-actions mt-8 flex flex-col sm:flex-row gap-4">
-            <Button
-              href="#contact"
-              size="lg"
-              className="bg-primary hover:bg-primary-700 shadow-none hover:shadow-none hover:translate-y-0 lg:h-[41px] lg:px-6 lg:text-sm"
-            >
-              {content.primaryButton}
-            </Button>
-          </div>
+          <Button
+            href="#contact"
+            size="lg"
+            icon={ArrowUpRight}
+            className="hero-reveal mt-9 h-[56px] rounded-2xl bg-primary-900 px-8 text-base shadow-[0_16px_34px_-16px_rgba(8,39,68,0.65)] hover:bg-primary-800 hover:shadow-[0_20px_42px_-16px_rgba(8,39,68,0.7)] sm:mt-10"
+          >
+            {content.primaryButton}
+          </Button>
         </div>
 
-        <div className="hero-certified mt-16 lg:mt-20 flex w-full flex-col items-center gap-6">
-          <p className="whitespace-nowrap text-[13px] font-medium text-text text-center sm:whitespace-normal sm:text-base">
+        <div className="hero-reveal mt-16 flex w-full flex-col items-center gap-6 lg:mt-20">
+          <p className="whitespace-nowrap text-center text-[13px] font-medium text-text sm:whitespace-normal sm:text-base">
             Our Performance Marketing Services are Certified by
           </p>
           <Image

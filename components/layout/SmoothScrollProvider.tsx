@@ -7,6 +7,8 @@ import { ScrollTrigger } from "@/lib/gsap";
 type LenisControls = {
   stop: () => void;
   start: () => void;
+  /** Scrolls to a target (element or offset). Falls back to a native jump when Lenis is off. */
+  scrollTo: (target: string | HTMLElement | number, offset?: number) => void;
 };
 
 const LenisContext = createContext<LenisControls | null>(null);
@@ -55,6 +57,21 @@ export function SmoothScrollProvider({ children }: { children: React.ReactNode }
   const controls: LenisControls = {
     stop: () => lenisRef.current?.stop(),
     start: () => lenisRef.current?.start(),
+    scrollTo: (target, offset = 0) => {
+      const lenis = lenisRef.current;
+      if (lenis) {
+        lenis.scrollTo(target, { offset, duration: 1 });
+        return;
+      }
+      // Reduced motion (or pre-init): jump straight there.
+      const element =
+        typeof target === "string" ? document.querySelector(target) : target;
+      if (typeof target === "number") {
+        window.scrollTo({ top: target + offset });
+      } else if (element instanceof HTMLElement) {
+        window.scrollTo({ top: element.getBoundingClientRect().top + window.scrollY + offset });
+      }
+    },
   };
 
   return <LenisContext.Provider value={controls}>{children}</LenisContext.Provider>;

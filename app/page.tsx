@@ -1,4 +1,4 @@
-import PillNav from "@/components/ui/PillNav";
+import { Header } from "@/sections/Header";
 import { Hero } from "@/sections/Hero";
 import { Services } from "@/sections/Services";
 import { Testimonials } from "@/sections/Testimonials";
@@ -30,8 +30,6 @@ export default function Home() {
   const serviceJsonLd = buildServiceJsonLd(site, services.items);
   const faqJsonLd = services.faq ? buildFaqJsonLd(services.faq.items) : null;
 
-  const primaryButtonLink = header.primaryButton.link;
-
   return (
     <>
       <script
@@ -44,16 +42,7 @@ export default function Home() {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
         />
       ) : null}
-      <PillNav
-        items={navigation.items.map((item) => ({ label: item.title, href: item.href }))}
-        activeHref=""
-        ctaLabel={header.primaryButton.text}
-        ctaHref={header.primaryButton.link}
-        baseColor="#0A355B"
-        pillColor="#ffffff"
-        hoveredPillTextColor="#ffffff"
-        pillTextColor="#0A355B"
-      />
+      <Header navigation={navigation} header={header} site={site} />
       <main>
         <Hero content={hero} />
         <Services content={services} />

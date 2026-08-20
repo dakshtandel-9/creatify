@@ -100,10 +100,10 @@ export function PageLoader({ onReady }: PageLoaderProps = {}) {
         <div className="page-loader__logo-wrap">
           <span className="page-loader__logo-glow" aria-hidden="true" />
           <Image
-            src="/images/logo.png"
+            src="/images/logo-new.png"
             alt="Creadify"
-            width={550}
-            height={131}
+            width={923}
+            height={289}
             priority
             className="page-loader__logo"
           />

@@ -1,8 +1,8 @@
 {
   "sticky": true,
-  "showGlassEffect": true,
+  "showGlassEffect": false,
   "primaryButton": {
-    "text": "Contact Us",
+    "text": "Chat Now",
     "link": "#contact"
   }
 }

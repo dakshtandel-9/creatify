@@ -2,9 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { Menu, X } from "lucide-react";
-import { Container } from "@/components/layout/Container";
-import { Button } from "@/components/ui/Button";
+import { Menu, MessageCircle, X } from "lucide-react";
 import { Logo } from "@/components/ui/Logo";
 import { useScrolled } from "@/hooks/useScrolled";
 import { cn } from "@/lib/utils";
@@ -17,7 +15,7 @@ type HeaderProps = {
 };
 
 export function Header({ navigation, header, site }: HeaderProps) {
-  const scrolled = useScrolled(40);
+  const scrolled = useScrolled(24);
   const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
@@ -27,91 +25,97 @@ export function Header({ navigation, header, site }: HeaderProps) {
     };
   }, [menuOpen]);
 
-  const isSticky = header.sticky;
-  const useGlass = header.showGlassEffect;
-
   return (
     <header
       className={cn(
-        isSticky ? "fixed" : "relative",
-        "inset-x-0 top-0 z-50 h-[78px] lg:h-[96px] transition-all duration-[250ms] ease-[var(--ease-in-out)]",
-        scrolled || menuOpen
-          ? cn("border-b border-border shadow-sm bg-white/85", useGlass && "backdrop-blur-md")
-          : "bg-transparent border-b border-transparent"
+        header.sticky ? "fixed" : "absolute",
+        "inset-x-0 top-0 z-50 px-3 pt-3 sm:px-5 sm:pt-4 lg:px-8 lg:pt-5"
       )}
     >
-      <Container
-        wide
-        className="flex h-full items-center justify-between max-w-[1050px]"
+      {/* Floating card — the nav sits on the hero rather than banding across it */}
+      <div
+        className={cn(
+          "mx-auto flex h-[64px] w-full max-w-[1320px] items-center justify-between gap-4",
+          "rounded-[20px] bg-white px-4 sm:px-5 lg:h-[82px] lg:rounded-[26px] lg:px-7",
+          "transition-shadow duration-[250ms] ease-[var(--ease-out)]",
+          header.showGlassEffect &&
+            "supports-[backdrop-filter]:bg-white/95 supports-[backdrop-filter]:backdrop-blur-xl",
+          scrolled
+            ? "shadow-[0_14px_40px_-14px_rgba(10,53,91,0.26)]"
+            : "shadow-[0_8px_30px_-16px_rgba(10,53,91,0.22)]"
+        )}
       >
-        <a href="#home" className="flex items-center" aria-label={`${site.name} home`}>
-          <Logo />
+        <a
+          href="#home"
+          className="flex shrink-0 items-center"
+          aria-label={`${site.name} home`}
+        >
+          <Logo imageClassName="h-8 lg:h-11" />
         </a>
 
-        <nav className="hidden lg:flex items-center gap-8" aria-label="Primary">
+        <nav
+          className="hidden flex-1 items-center justify-center gap-7 lg:flex xl:gap-10"
+          aria-label="Primary"
+        >
           {navigation.items.map((link) => (
             <a
-              key={link.href}
+              key={`${link.title}-${link.href}`}
               href={link.href}
-              className="text-sm font-medium text-text-muted hover:text-primary-900 transition-colors duration-150"
+              className="whitespace-nowrap text-[15px] font-medium text-primary-900 transition-colors duration-150 hover:text-primary-500"
             >
               {link.title}
             </a>
           ))}
         </nav>
 
-        <div className="hidden lg:block">
-          <Button href={header.primaryButton.link} variant="primary" size="md">
-            {header.primaryButton.text}
-          </Button>
-        </div>
+        <a
+          href={header.primaryButton.link}
+          className="hidden shrink-0 items-center gap-2.5 rounded-full bg-primary-900 px-6 py-3.5 text-[15px] font-semibold text-white transition-all duration-[250ms] ease-[var(--ease-out)] hover:-translate-y-0.5 hover:bg-primary-800 hover:shadow-[0_12px_28px_-10px_rgba(8,39,68,0.55)] active:scale-[0.98] lg:inline-flex"
+        >
+          {header.primaryButton.text}
+          <MessageCircle className="h-[18px] w-[18px] shrink-0" aria-hidden="true" />
+        </a>
 
         <button
           type="button"
-          className="lg:hidden inline-flex h-11 w-11 items-center justify-center rounded-lg text-primary-900"
+          className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-xl text-primary-900 lg:hidden"
           aria-label={menuOpen ? "Close menu" : "Open menu"}
           aria-expanded={menuOpen}
           onClick={() => setMenuOpen((v) => !v)}
         >
           {menuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
         </button>
-      </Container>
+      </div>
 
       <AnimatePresence>
         {menuOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -8 }}
+            initial={{ opacity: 0, y: -12 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -8 }}
+            exit={{ opacity: 0, y: -12 }}
             transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
-            className="lg:hidden fixed inset-x-0 top-[72px] z-50 h-[calc(100vh-72px)] bg-white flex flex-col"
+            className="mx-auto mt-2 w-full max-w-[1320px] overflow-hidden rounded-[20px] bg-white shadow-[0_18px_44px_-16px_rgba(10,53,91,0.28)] lg:hidden"
           >
-            <nav
-              className="flex flex-col gap-1 px-6 py-8"
-              aria-label="Mobile primary"
-            >
+            <nav className="flex flex-col p-3" aria-label="Mobile primary">
               {navigation.items.map((link) => (
                 <a
-                  key={link.href}
+                  key={`${link.title}-${link.href}`}
                   href={link.href}
                   onClick={() => setMenuOpen(false)}
-                  className="rounded-lg px-3 py-3.5 text-lg font-medium text-primary-900 hover:bg-surface transition-colors"
+                  className="rounded-xl px-4 py-3.5 text-base font-medium text-primary-900 transition-colors hover:bg-surface"
                 >
                   {link.title}
                 </a>
               ))}
-            </nav>
-            <div className="mt-auto px-6 pb-10">
-              <Button
+              <a
                 href={header.primaryButton.link}
-                variant="primary"
-                size="lg"
-                className="w-full"
                 onClick={() => setMenuOpen(false)}
+                className="mt-2 inline-flex items-center justify-center gap-2.5 rounded-full bg-primary-900 px-6 py-4 text-[15px] font-semibold text-white"
               >
                 {header.primaryButton.text}
-              </Button>
-            </div>
+                <MessageCircle className="h-[18px] w-[18px] shrink-0" aria-hidden="true" />
+              </a>
+            </nav>
           </motion.div>
         )}
       </AnimatePresence>
