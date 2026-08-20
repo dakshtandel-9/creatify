@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { Fragment, useRef } from "react";
 import Image from "next/image";
 import { ArrowUpRight, Star } from "lucide-react";
 import { Container } from "@/components/layout/Container";
@@ -30,9 +30,7 @@ export function Hero({ content }: HeroProps) {
   const bridgeWord = headingWords[headingWords.length - 1];
   const highlightWords = content.headingHighlight.split(" ");
   const highlightBridge = highlightWords[0];
-  const tailWords = highlightWords.slice(1);
-  const tailLead = tailWords.slice(0, -1).join(" ");
-  const tailLast = tailWords[tailWords.length - 1];
+  const highlightTail = highlightWords.slice(1).join(" ");
 
   useGSAP(
     () => {
@@ -48,7 +46,18 @@ export function Hero({ content }: HeroProps) {
       // Hold everything back until the page loader has finished its reveal.
       if (!isLoaderReady) {
         gsap.set(targets, { autoAlpha: 0, y: 26 });
-        return;
+        // The loader waits on window `load`; if that is slow or never fires,
+        // show the hero anyway rather than leaving a blank screen.
+        const fallback = window.setTimeout(() => {
+          gsap.to(targets, {
+            autoAlpha: 1,
+            y: 0,
+            stagger: 0.11,
+            duration: 0.8,
+            ease: "power3.out",
+          });
+        }, 4000);
+        return () => window.clearTimeout(fallback);
       }
 
       gsap
@@ -150,52 +159,65 @@ export function Hero({ content }: HeroProps) {
               <span>{bridgeWord}</span>
               <span className={HIGHLIGHT_GRADIENT}>{highlightBridge}</span>
             </span>
-            {/* The gradient lives on the line, not the words, so it runs
-                continuously from deep blue to cyan across the whole phrase. */}
-            <span
-              className={cn(
-                "flex flex-wrap justify-center gap-x-[0.28em]",
-                HIGHLIGHT_GRADIENT
-              )}
-            >
-              {tailLead ? <span>{tailLead}</span> : null}
-              <span className="relative inline-block">
-                <span>{tailLast}</span>
-                {/* Hand-drawn underline sweep under the closing word */}
-                <svg
-                  className="absolute -left-[3%] top-full w-[106%] -translate-y-[0.16em]"
-                  viewBox="0 0 200 14"
-                  fill="none"
-                  aria-hidden="true"
-                >
-                  <defs>
-                    <linearGradient id="hero-underline" x1="0" y1="0" x2="1" y2="0">
-                      <stop offset="0%" stopColor="#2f6ee0" />
-                      <stop offset="100%" stopColor="#61cdf1" />
-                    </linearGradient>
-                  </defs>
-                  <path
-                    className="hero-underline-path"
-                    d="M3 10.2C42 5.6 104 3.4 148 4.4c16 .4 32 1.4 44 3.1"
-                    stroke="url(#hero-underline)"
-                    strokeWidth="3.6"
-                    strokeLinecap="round"
-                    pathLength={1}
-                    strokeDasharray={1}
-                  />
-                  <circle
-                    className="hero-underline-dot"
-                    cx="196.5"
-                    cy="11.4"
-                    r="2.8"
-                    fill="#61cdf1"
-                  />
-                </svg>
+            {/* The gradient element holds nothing but the text. Safari drops
+                a `background-clip: text` fill behind a positioned descendant,
+                so the underline is a sibling of the text, never a child. */}
+            <span className="relative inline-block">
+              <span className={cn("inline-block", HIGHLIGHT_GRADIENT)}>
+                {highlightTail}
               </span>
+              {/* Hand-drawn underline sweep under the closing word — width is
+                  in em so it tracks the last word across breakpoints. */}
+              <svg
+                className="absolute right-[-0.17em] top-full w-[5.75em] -translate-y-[0.16em]"
+                viewBox="0 0 200 14"
+                fill="none"
+                aria-hidden="true"
+              >
+                <defs>
+                  <linearGradient id="hero-underline" x1="0" y1="0" x2="1" y2="0">
+                    <stop offset="0%" stopColor="#2f6ee0" />
+                    <stop offset="100%" stopColor="#61cdf1" />
+                  </linearGradient>
+                </defs>
+                <path
+                  className="hero-underline-path"
+                  d="M3 10.2C42 5.6 104 3.4 148 4.4c16 .4 32 1.4 44 3.1"
+                  stroke="url(#hero-underline)"
+                  strokeWidth="3.6"
+                  strokeLinecap="round"
+                  pathLength={1}
+                  strokeDasharray={1}
+                />
+                <circle
+                  className="hero-underline-dot"
+                  cx="196.5"
+                  cy="11.4"
+                  r="2.8"
+                  fill="#61cdf1"
+                />
+              </svg>
             </span>
           </h1>
 
-          <p className="hero-reveal mt-7 max-w-[560px] text-base leading-relaxed text-text-muted sm:mt-10 sm:text-[17px]">
+          {/* Kept on one line at every width — wrapping would strand a
+              divider at the end of a line. */}
+          {content.stats && (
+            <p className="hero-reveal mt-6 flex items-center justify-center gap-x-2 whitespace-nowrap text-[13px] font-bold tracking-tight text-primary-900 xs:gap-x-3 xs:text-[15px] sm:mt-8 sm:gap-x-4 sm:text-xl lg:text-[22px]">
+              {content.stats.split("|").map((part, i) => (
+                <Fragment key={part}>
+                  {i > 0 ? (
+                    <span className="text-primary-200" aria-hidden="true">
+                      |
+                    </span>
+                  ) : null}
+                  <span>{part.trim()}</span>
+                </Fragment>
+              ))}
+            </p>
+          )}
+
+          <p className="hero-reveal mt-4 max-w-[560px] text-base leading-relaxed text-text-muted sm:mt-5 sm:text-[17px]">
             {content.subheading}
           </p>
 
@@ -209,8 +231,8 @@ export function Hero({ content }: HeroProps) {
           </Button>
         </div>
 
-        <div className="hero-reveal mt-16 flex w-full flex-col items-center gap-6 lg:mt-20">
-          <p className="whitespace-nowrap text-center text-[13px] font-medium text-text sm:whitespace-normal sm:text-base">
+        <div className="hero-reveal mt-14 flex w-full flex-col items-center gap-6 lg:mt-16">
+          <p className="text-center text-[13px] font-medium text-text xs:whitespace-nowrap sm:whitespace-normal sm:text-base">
             Our Performance Marketing Services are Certified by
           </p>
           <Image
