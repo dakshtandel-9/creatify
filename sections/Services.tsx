@@ -2,19 +2,10 @@
 
 import { useEffect, useRef } from "react";
 import Image from "next/image";
-import {
-  LineChart,
-  Palette,
-  Users,
-  MonitorSmartphone,
-  Search,
-  TrendingUp,
-  Workflow,
-  type LucideIcon,
-} from "lucide-react";
 import { Container } from "@/components/layout/Container";
 import { Section } from "@/components/layout/Section";
 import { BorderGlow } from "@/components/ui/BorderGlow";
+import { SERVICE_ICON_BY_TITLE, SERVICE_ICON_FALLBACKS } from "@/components/ui/ServiceIcons";
 import { cn } from "@/lib/utils";
 import { gsap, ScrollTrigger, useGSAP } from "@/lib/gsap";
 import type { ServiceAccent, ServicesContent } from "@/types/cms";
@@ -22,24 +13,6 @@ import type { ServiceAccent, ServicesContent } from "@/types/cms";
 type ServicesProps = {
   content: ServicesContent;
 };
-
-const ICON_BY_TITLE: Record<string, LucideIcon> = {
-  "Strategic Marketing": LineChart,
-  "Creative Design": Palette,
-  "Social Media Management": Users,
-  "Tech Solution": MonitorSmartphone,
-  SEO: TrendingUp,
-  Automation: Workflow,
-};
-
-const FALLBACK_ICONS: LucideIcon[] = [
-  LineChart,
-  Palette,
-  Users,
-  MonitorSmartphone,
-  Search,
-  Workflow,
-];
 
 const ACCENT_STYLES: Record<ServiceAccent, string> = {
   orange: "bg-accent-50 text-accent-700",
@@ -154,26 +127,34 @@ export function Services({ content }: ServicesProps) {
               </span>
             </div>
 
-            <ul className="grid grid-cols-1 gap-x-12 gap-y-8 pt-8 sm:pt-10 md:grid-cols-2">
-              {content.items.map((item, index) => {
-                const Icon = ICON_BY_TITLE[item.title] ?? FALLBACK_ICONS[index % FALLBACK_ICONS.length];
-                return (
-                  <li key={item.title} className="service-checklist-item flex items-start gap-4">
-                    <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl">
-                      <Icon className="h-5 w-5 text-black" aria-hidden="true" />
-                    </span>
-                    <div>
-                      <h3 className="bg-gradient-to-r from-[#2f6ee0] via-[#3f9ae6] to-[#61cdf1] bg-clip-text text-base font-bold text-transparent sm:text-lg">
-                        {item.title}
-                      </h3>
-                      <p className="mt-1.5 text-sm leading-relaxed text-text-muted sm:text-[15px]">
-                        {item.description}
-                      </p>
-                    </div>
-                  </li>
-                );
-              })}
-            </ul>
+            <div className="relative">
+              <div
+                aria-hidden="true"
+                className="pointer-events-none absolute left-1/2 top-1/2 -z-10 h-[420px] w-[420px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,_rgba(74,159,230,0.35)_0%,_rgba(74,159,230,0.16)_35%,_transparent_70%)] blur-2xl"
+              />
+              <ul className="grid grid-cols-1 gap-x-12 gap-y-8 pt-8 sm:pt-10 md:grid-cols-2">
+                {content.items.map((item, index) => {
+                  const Icon =
+                    SERVICE_ICON_BY_TITLE[item.title] ??
+                    SERVICE_ICON_FALLBACKS[index % SERVICE_ICON_FALLBACKS.length];
+                  return (
+                    <li key={item.title} className="service-checklist-item flex items-start gap-4">
+                      <span className="flex h-12 w-12 shrink-0 items-center justify-center">
+                        <Icon className="h-full w-full" />
+                      </span>
+                      <div>
+                        <h3 className="bg-gradient-to-r from-[#2f6ee0] via-[#3f9ae6] to-[#61cdf1] bg-clip-text text-base font-bold text-transparent sm:text-lg">
+                          {item.title}
+                        </h3>
+                        <p className="mt-1.5 text-sm leading-relaxed text-text-muted sm:text-[15px]">
+                          {item.description}
+                        </p>
+                      </div>
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
 
             <div className="mt-10 flex justify-center sm:mt-12">
               <div className="inline-flex max-w-full items-center gap-1.5 whitespace-nowrap rounded-full border border-border bg-surface px-3 py-2.5 text-xs text-text-muted sm:px-5 sm:text-sm">

@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Menu, MessageCircle, X } from "lucide-react";
-import { Logo } from "@/components/ui/Logo";
+import { LogoLoop } from "@/components/ui/LogoLoop";
 import { useScrolled } from "@/hooks/useScrolled";
 import { cn } from "@/lib/utils";
 import type { NavigationContent, HeaderContent, SiteContent } from "@/types/cms";
@@ -50,7 +50,7 @@ export function Header({ navigation, header, site }: HeaderProps) {
           className="flex shrink-0 items-center"
           aria-label={`${site.name} home`}
         >
-          <Logo imageClassName="h-8 lg:h-11" />
+          <LogoLoop className="h-[48px] lg:h-[66px]" />
         </a>
 
         <nav
