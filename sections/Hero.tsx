@@ -195,7 +195,7 @@ export function Hero({ content }: HeroProps) {
           {/* Kept on one line at every width — wrapping would strand a
               divider at the end of a line. */}
           {content.stats && (
-            <p className="hero-reveal mt-6 flex items-center justify-center gap-x-2 whitespace-nowrap text-[13px] font-bold tracking-tight text-primary-900 xs:gap-x-3 xs:text-[15px] sm:mt-8 sm:gap-x-4 sm:text-xl lg:text-[22px]">
+            <p className="hero-reveal mt-6 flex items-center justify-center gap-x-2 whitespace-nowrap text-[10px] font-normal tracking-tight text-primary-900 xs:gap-x-3 xs:text-[12px] sm:mt-8 sm:gap-x-4 sm:text-[16px] lg:text-[18px]">
               {content.stats.split("|").map((part, i) => (
                 <Fragment key={part}>
                   {i > 0 ? (
