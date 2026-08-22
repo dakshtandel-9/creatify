@@ -50,7 +50,7 @@ export function Header({ navigation, header, site }: HeaderProps) {
           className="flex shrink-0 items-center"
           aria-label={`${site.name} home`}
         >
-          <Logo imageClassName="h-[48px] lg:h-[66px]" />
+          <Logo imageClassName="h-[34px] lg:h-[46px]" />
         </a>
 
         <nav
