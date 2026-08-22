@@ -17,19 +17,16 @@ const BG = { r: 240, g: 240, b: 240 };
 const INNER_RADIUS = 14;
 const OUTER_RADIUS = 60;
 
-// Playback cycle: build up, hold on the full mark, unbuild in reverse,
-// hold on blank — then repeat. Native <video> only plays forward, so the
-// reverse leg is driven by scrubbing currentTime frame-by-frame.
+// Playback cycle: build up, hold on the full mark, then cut straight back
+// to the first frame and build up again — no reverse/unbuild leg.
 //
 // The source clip doesn't hold on the built logo through to its own end —
 // it fades itself back to blank in the last ~0.5s to loop natively. We cap
 // forward playback at PEAK_TIME (comfortably inside the fully-built plateau,
 // before that self-fade starts) and treat that as "fully built" for the
-// hold/reverse steps below, instead of running to the clip's true end.
+// hold step below, instead of running to the clip's true end.
 const PEAK_TIME = 3;
 const HOLD_FULL_MS = 2500;
-const HOLD_BLANK_MS = 3000;
-const REVERSE_FPS = 24;
 
 type LogoLoopProps = {
   className?: string;
@@ -37,17 +34,6 @@ type LogoLoopProps = {
 
 function wait(ms: number) {
   return new Promise<void>((resolve) => setTimeout(resolve, ms));
-}
-
-function seekTo(video: HTMLVideoElement, time: number) {
-  return new Promise<void>((resolve) => {
-    const onSeeked = () => {
-      video.removeEventListener("seeked", onSeeked);
-      resolve();
-    };
-    video.addEventListener("seeked", onSeeked);
-    video.currentTime = time;
-  });
 }
 
 function waitUntilTime(video: HTMLVideoElement, targetTime: number) {
@@ -118,8 +104,6 @@ export function LogoLoop({ className }: LogoLoopProps) {
       if (cancelled) return;
 
       const peakTime = Math.min(PEAK_TIME, video.duration || PEAK_TIME);
-      const totalFrames = Math.max(1, Math.round(peakTime * REVERSE_FPS));
-      const stepDelay = (peakTime * 1000) / totalFrames;
 
       while (!cancelled) {
         // Play forward: blank -> fully built logo.
@@ -134,19 +118,7 @@ export function LogoLoop({ className }: LogoLoopProps) {
         await wait(HOLD_FULL_MS);
         if (cancelled) return;
 
-        // Play in reverse, frame by frame: fully built logo -> blank.
-        for (let f = totalFrames; f >= 0; f--) {
-          const stepStart = performance.now();
-          await seekTo(video, (f / totalFrames) * peakTime);
-          if (cancelled) return;
-          const elapsed = performance.now() - stepStart;
-          if (elapsed < stepDelay) await wait(stepDelay - elapsed);
-          if (cancelled) return;
-        }
-
-        // Hold on blank — nothing visible.
-        await wait(HOLD_BLANK_MS);
-        if (cancelled) return;
+        // Cut straight back to the first frame and build up again.
       }
     };
 
