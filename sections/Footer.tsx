@@ -1,5 +1,5 @@
 import { Container } from "@/components/layout/Container";
-import { LogoLoop } from "@/components/ui/LogoLoop";
+import { Logo } from "@/components/ui/Logo";
 import { InstagramIcon, LinkedInIcon, XIcon } from "@/components/ui/SocialIcons";
 import type { FooterContent, NavigationContent } from "@/types/cms";
 
@@ -23,7 +23,7 @@ export function Footer({ content }: FooterProps) {
     <footer className="bg-surface">
       <Container wide className="py-16 sm:py-20">
         <div className="flex flex-col items-center text-center">
-          <LogoLoop className="h-[54px]" />
+          <Logo imageClassName="h-[54px]" />
         </div>
 
         <div className="mt-14 border-t border-border" />
