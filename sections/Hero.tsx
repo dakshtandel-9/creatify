@@ -85,13 +85,13 @@ export function Hero({ content }: HeroProps) {
       id="home"
       className="relative flex flex-col items-center justify-center overflow-hidden pt-[120px] pb-12 sm:min-h-screen sm:pt-[150px] sm:pb-16"
     >
-      {/* Ambient background — lavender at top-left, pale blue at right, white core */}
+      {/* Ambient background — soft blue at top-left, pale blue at right, white core */}
       <div aria-hidden="true" className="pointer-events-none absolute inset-0 z-0">
         <div
           className="absolute inset-0"
           style={{
             background:
-              "radial-gradient(ellipse 55% 60% at 6% 6%, rgba(203,193,241,0.55) 0%, transparent 62%)," +
+              "radial-gradient(ellipse 55% 60% at 6% 6%, rgba(191,220,245,0.55) 0%, transparent 62%)," +
               "radial-gradient(ellipse 48% 62% at 97% 58%, rgba(174,214,240,0.5) 0%, transparent 66%)," +
               "radial-gradient(ellipse 70% 45% at 50% 0%, rgba(226,234,250,0.65) 0%, transparent 72%)," +
               "linear-gradient(180deg, #f6f7fd 0%, #ffffff 46%, #f1f8fc 100%)",
@@ -111,8 +111,8 @@ export function Hero({ content }: HeroProps) {
           <DotGrid
             dotSize={4}
             gap={22}
-            baseColor="rgba(126,114,192,0.30)"
-            activeColor="rgba(126,114,192,0.30)"
+            baseColor="rgba(79,139,214,0.30)"
+            activeColor="rgba(79,139,214,0.30)"
             proximity={110}
             shockRadius={220}
             shockStrength={4}

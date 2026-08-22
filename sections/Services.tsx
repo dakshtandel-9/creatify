@@ -143,7 +143,7 @@ export function Services({ content }: ServicesProps) {
                         <Icon className="h-full w-full" />
                       </span>
                       <div>
-                        <h3 className="bg-gradient-to-r from-[#2f6ee0] via-[#3f9ae6] to-[#61cdf1] bg-clip-text text-base font-bold text-transparent sm:text-lg">
+                        <h3 className="text-base font-bold text-black sm:text-lg">
                           {item.title}
                         </h3>
                         <p className="mt-1.5 text-sm leading-relaxed text-text-muted sm:text-[15px]">

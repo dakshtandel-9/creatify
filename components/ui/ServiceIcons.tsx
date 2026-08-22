@@ -65,18 +65,18 @@ export function EyeCatchyDesignsIcon({ className }: ServiceIconProps) {
 export function SocialMediaIcon({ className }: ServiceIconProps) {
   return (
     <svg viewBox="0 0 48 48" className={className} aria-hidden="true">
-      <circle cx="19" cy="14" r="7" {...strokeProps} />
-      <path d="M6 39C6 30.7 11.8 25 19 25C26.2 25 32 30.7 32 39" {...strokeProps} />
-      <path
-        d="M14.5 30.5L18 34L23.5 25"
-        stroke={BADGE}
-        strokeWidth="2.6"
-        fill="none"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      <path d="M37 8L38.6 12L42.6 13.6L38.6 15.2L37 19.2L35.4 15.2L31.4 13.6L35.4 12Z" fill={BADGE} stroke="none" />
-      <path d="M41 23L41.8 25.2L44 26L41.8 26.8L41 29L40.2 26.8L38 26L40.2 25.2Z" fill={BADGE} stroke="none" />
+      <circle cx="21" cy="13" r="7" {...strokeProps} />
+      <path d="M8 38C8 29.7 13.8 24 21 24C28.2 24 34 29.7 34 38" {...strokeProps} />
+      <Badge>
+        <path
+          d="M-3.4 0L-1 2.6L3.6 -3"
+          stroke="#ffffff"
+          strokeWidth="1.8"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+      </Badge>
     </svg>
   );
 }

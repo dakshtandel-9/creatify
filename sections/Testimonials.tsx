@@ -24,7 +24,7 @@ function TestimonialCard({ item }: { item: TestimonialEntry }) {
                 key={i}
                 className={
                   i < item.rating
-                    ? "h-4 w-4 fill-accent-500 text-accent-500"
+                    ? "h-4 w-4 fill-[#FFB800] text-[#FFB800]"
                     : "h-4 w-4 fill-border text-border"
                 }
               />
